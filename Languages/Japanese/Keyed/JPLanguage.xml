@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Settings -->
+  <JetPack.Name>Jet Pack</JetPack.Name>
+  <JetPack.RoofPunch>ジェットパックが天井に突き破るのを許可（可能なら)：</JetPack.RoofPunch>
+  <JetPack.ApplyDFA>落下死（空からの墜落)の適用を許可：</JetPack.ApplyDFA>
+  <JetPack.ApplyDFASplash>空からの墜落で隣接したマスに爆発ダメージを与える:</JetPack.ApplyDFASplash>
+  <JetPack.DFASplashFactor>空からの墜落の隣接ダメージが着地マスと同等[％]：</JetPack.DFASplashFactor>
+  <JetPack.AllowWMD>範囲攻撃兵器を許可：</JetPack.AllowWMD>
+  <JetPack.AllowHVY>重い武器の装備を許可：</JetPack.AllowHVY>
+  <JetPack.AllowFire>ジェットパックで「飛翔」を開始した時に爆発する可能性を許可：</JetPack.AllowFire>
+  <JetPack.AllowSlowBurn>低速飛行で移動力を増加を許可：</JetPack.AllowSlowBurn>
+  <JetPack.AllowBoom>ジェットパックがHPダメージを受けると爆発するのを許可：</JetPack.AllowBoom>
+  <JetPack.DoAutoRefuel>ジェットパックに自動給油する：</JetPack.DoAutoRefuel>
+  <JetPack.RefuelPCT>自動給油を行う残り燃料レベル(％)[初期値は50％]：</JetPack.RefuelPCT>
+  <JetPack.UseCarry>運搬している重量をジェットパックで飛べる距離に適用する：</JetPack.UseCarry>
+  <JetPack.CooldownTime>冷却時間間隔(初期値は0):</JetPack.CooldownTime>
+  <JetPack.ResetTip>(この設定の変更は、ゲームを再起動するまで適用されません)</JetPack.ResetTip>
+  <!-- Content -->
+  <JetPack.JPLabel>{0} 燃料[{1}/{2}]</JetPack.JPLabel>
+  <JetPack.JPDesc>{0}を装備</JetPack.JPDesc>
+  <JetPack.JPSBSet>低速飛行</JetPack.JPSBSet>
+  <JetPack.JPSBDesc>低速飛行による移動力の増加を切替ます</JetPack.JPSBDesc>
+  <JetPack.SBOutOfFuel>{0}のジェットパックは低速飛行しているので燃料不足になった</JetPack.SBOutOfFuel>
+  <JetPack.JPDoNothing>何もしない</JetPack.JPDoNothing>
+  <JetPack.JPJump>ジャンプ</JetPack.JPJump>
+  <JetPack.JPDoRefuel>燃料の補給</JetPack.JPDoRefuel>
+  <JetPack.JPDoChangeFuel>{0}に変更</JetPack.JPDoChangeFuel>
+  <JetPack.JPDropFuel>燃料を空にする</JetPack.JPDropFuel>
+  <JetPack.CooldownTicks>冷却時間（{0})</JetPack.CooldownTicks>
+  <JetPack.FullyFueled>{0}は満タンです</JetPack.FullyFueled>
+  <JetPack.CantDo>{1}ので実行できない</JetPack.CantDo>
+  <JetPack.ReasonNotFound>パイロットが見つからない</JetPack.ReasonNotFound>
+  <JetPack.ReasonOnFire>パイロットの体が燃えている</JetPack.ReasonOnFire>
+  <JetPack.ReasonDead>パイロットが死亡している</JetPack.ReasonDead>
+  <JetPack.ReasonMental>パイロットの精神が崩壊している</JetPack.ReasonMental>
+  <JetPack.ReasonIncap>パイロットが行動不可能な</JetPack.ReasonIncap>
+  <JetPack.ReasonOperate>パイロットは操作できない</JetPack.ReasonOperate>
+  <JetPack.ChecksReason>{0}{1}</JetPack.ChecksReason>
+  <JetPack.ChecksLocation>の場所が見えません</JetPack.ChecksLocation>
+  <JetPack.ChecksRoofed>の居る場所には屋根がある</JetPack.ChecksRoofed>
+  <JetPack.ChecksRefuel>燃料を補給する必要がある</JetPack.ChecksRefuel>
+  <JetPack.ChecksSFNotRPunch>の{0}は天井を突き破るには相応しくありません。</JetPack.ChecksSFNotRPunch>
+  <JetPack.JumpReason>{0}からその場所にジャンプできません</JetPack.JumpReason>
+  <JetPack.JumpReasonInvalid>目標地点が不適当です</JetPack.JumpReasonInvalid>
+  <JetPack.JumpReasonReserved>目標地点は指定済です</JetPack.JumpReasonReserved>
+  <JetPack.JumpFuelRateInvalid>燃料の割合が不適当です：（{0}）</JetPack.JumpFuelRateInvalid>
+  <JetPack.JumpReasonMinRange>最小ジャンプ範囲より近いです：({0})</JetPack.JumpReasonMinRange>
+  <JetPack.JumpReasonMaxRange>最大ジャンプ範囲より遠いです：({0})</JetPack.JumpReasonMaxRange>
+  <JetPack.JumpReasonRoofed>屋根がある</JetPack.JumpReasonRoofed>
+  <JetPack.JumpReasonSFNotRPunch>{0}を使用して天井を突き破るのは危険すぎます</JetPack.JumpReasonSFNotRPunch>
+  <JetPack.JumpReasonNotWalk>歩けない場所です</JetPack.JumpReasonNotWalk>
+  <JetPack.JumpReasonDeadly>そこはパイロットに致命的です</JetPack.JumpReasonDeadly>
+  <JetPack.JumpReasonOnCooldown>ジェットパックは冷却中です</JetPack.JumpReasonOnCooldown>
+  <JetPack.NoFuelFound>補給できる燃料({0})がありません</JetPack.NoFuelFound>
+  <JetPack.FullyRefueled>{0}のジェットパックは燃料満タンです</JetPack.FullyRefueled>
+  <JetPack.Refueled>{0}のジェットパックは{1}{2}給油されました</JetPack.Refueled>
+  <JetPack.DAllowReason>{0}{1}が理由でジャンプを使用できません</JetPack.DAllowReason>
+  <JetPack.DAllowEQHVY>重すぎる武器：（{0}）を装備中</JetPack.DAllowEQHVY>
+  <JetPack.DAllowEQWMD>大量破壊兵器：（{0}）を装備中</JetPack.DAllowEQWMD>
+  <JetPack.DAllowIVHVY>インベントリに重すぎる武器を所持：({0})</JetPack.DAllowIVHVY>
+  <JetPack.DAllowIVWMD>インベントリに範囲攻撃兵器を所持：({0})</JetPack.DAllowIVWMD>
+  <JetPack.DAllowCYHVY>重すぎる武器を運搬中：({0})</JetPack.DAllowCYHVY>
+  <JetPack.DAllowCYWMD>範囲攻撃兵器を運搬中：({0})</JetPack.DAllowCYWMD>
+</LanguageData>

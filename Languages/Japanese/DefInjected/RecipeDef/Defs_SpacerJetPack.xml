@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <MakeJPSpacerJetPack.label>ジェットパック(外付)を作る</MakeJPSpacerJetPack.label>
+  <MakeJPSpacerJetPack.description>ジェットパック(外付)を作る。</MakeJPSpacerJetPack.description>
+  <MakeJPSpacerJetPack.jobString>ジェットパック(外付)を製作中</MakeJPSpacerJetPack.jobString>
+  <!-- Dismantle -->
+  <DismantleJPSpacerJetPack.label>ジェットパックを解体</DismantleJPSpacerJetPack.label>
+  <DismantleJPSpacerJetPack.description>ジェットパックを1つ解体する。</DismantleJPSpacerJetPack.description>
+  <DismantleJPSpacerJetPack.jobString>ジェットパックを解体中</DismantleJPSpacerJetPack.jobString>
+</LanguageData>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <MakeJPBoosterJetPack.label>Make Booster Pack</MakeJPBoosterJetPack.label>
+  <MakeJPBoosterJetPack.description>Make 1 Booster Pack</MakeJPBoosterJetPack.description>
+  <MakeJPBoosterJetPack.jobString>Making a Booster Pack</MakeJPBoosterJetPack.jobString>
+
+
+  <!-- Dismantle -->
+
+  <DismantleJPBoosterJetPack.label>Dismantle Booster Pack</DismantleJPBoosterJetPack.label>
+  <DismantleJPBoosterJetPack.description>Dismantle 1 Booster Pack</DismantleJPBoosterJetPack.description>
+  <DismantleJPBoosterJetPack.jobString>Dismantle a Booster Pack</DismantleJPBoosterJetPack.jobString>
+
+
+</LanguageData>

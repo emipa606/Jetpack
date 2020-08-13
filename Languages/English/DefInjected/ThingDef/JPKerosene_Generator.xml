@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <JPKerosene_Generator.label>kerosene generator</JPKerosene_Generator.label>
+  <JPKerosene_Generator.description>Produces power by consuming kerosene. Must be periodically loaded with kerosene as fuel by hand.</JPKerosene_Generator.description>
+
+
+</LanguageData>

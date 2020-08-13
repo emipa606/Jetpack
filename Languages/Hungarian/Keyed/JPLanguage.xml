@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Settings -->
+  <JetPack.Name>Jet Pack</JetPack.Name>
+  <JetPack.RoofPunch>Allow JetPacks to Roof Punch (if capable):</JetPack.RoofPunch>
+  <JetPack.ApplyDFA>Apply DFA (Death From Above) use:</JetPack.ApplyDFA>
+  <JetPack.AllowWMD>Allow Weapons of Mass Destruction:</JetPack.AllowWMD>
+  <JetPack.AllowHVY>Allow Heavy Weapons use:</JetPack.AllowHVY>
+  <JetPack.AllowFire>Allow potential fires to start with "takeoff" jets:</JetPack.AllowFire>
+  <JetPack.AllowSlowBurn>Allow Slow Burn movement boost to be used:</JetPack.AllowSlowBurn>
+  <JetPack.AllowBoom>Allow Jet Pack explosions due to Jet Pack damage:</JetPack.AllowBoom>
+  <JetPack.DoAutoRefuel>Auto refuel Jet packs:</JetPack.DoAutoRefuel>
+  <JetPack.RefuelPCT>Percentage fuel level to auto-refuel [Default 50]:</JetPack.RefuelPCT>
+  <JetPack.UseCarry>Apply carry weight as a factor to jump jet use:</JetPack.UseCarry>
+  <JetPack.ResetTip>(Changing the settings above will not take full effect until after reloading Rimworld)</JetPack.ResetTip>
+  <!-- Content -->
+  <JetPack.JPLabel>{0} Fuel[{1}/{2}]</JetPack.JPLabel>
+  <JetPack.JPDesc>Equipped with a {0}</JetPack.JPDesc>
+  <JetPack.JPSBSet>Slow Burn</JetPack.JPSBSet>
+  <JetPack.JPSBDesc>Toggle slow burn movement boost</JetPack.JPSBDesc>
+  <JetPack.SBOutOfFuel>{0}'s Jet Pack is out of fuel due to slow burning</JetPack.SBOutOfFuel>
+  <JetPack.JPDoNothing>Do Nothing</JetPack.JPDoNothing>
+  <JetPack.JPJump>Jump</JetPack.JPJump>
+  <JetPack.JPDoRefuel>Refuel</JetPack.JPDoRefuel>
+  <JetPack.JPDoChangeFuel>Change to {0}</JetPack.JPDoChangeFuel>
+  <JetPack.JPDropFuel>Drop fuel</JetPack.JPDropFuel>
+  <JetPack.FullyFueled>{0} is fully fueled</JetPack.FullyFueled>
+  <JetPack.CantDo>Cannot do that due to {1}</JetPack.CantDo>
+  <JetPack.ReasonNotFound>pilot not being found</JetPack.ReasonNotFound>
+  <JetPack.ReasonOnFire>pilot being on fire</JetPack.ReasonOnFire>
+  <JetPack.ReasonDead>pilot being dead</JetPack.ReasonDead>
+  <JetPack.ReasonMental>pilot being mentally incapable</JetPack.ReasonMental>
+  <JetPack.ReasonIncap>pilot being incapacitated</JetPack.ReasonIncap>
+  <JetPack.ReasonOperate>pilot cannot operate </JetPack.ReasonOperate>
+  <JetPack.ChecksReason>{0}{1}</JetPack.ChecksReason>
+  <JetPack.ChecksLocation>'s location not found</JetPack.ChecksLocation>
+  <JetPack.ChecksRoofed>'s current position is roofed</JetPack.ChecksRoofed>
+  <JetPack.ChecksRefuel> needs to refuel the </JetPack.ChecksRefuel>
+  <JetPack.ChecksSFNotRPunch>'s {0} is not ideal for roof punching with.</JetPack.ChecksSFNotRPunch>
+  <JetPack.JumpReason>Cannot jump to loaction since {0}</JetPack.JumpReason>
+  <JetPack.JumpReasonInvalid>the target location is invalid</JetPack.JumpReasonInvalid>
+  <JetPack.JumpReasonReserved>the target location is reserved</JetPack.JumpReasonReserved>
+  <JetPack.JumpFuelRateInvalid>the fuel Rate is invalid: ({0})</JetPack.JumpFuelRateInvalid>
+  <JetPack.JumpReasonMinRange>it is below the minimum jump range: ({0})</JetPack.JumpReasonMinRange>
+  <JetPack.JumpReasonMaxRange>it is above the maximum jump range: ({0})</JetPack.JumpReasonMaxRange>
+  <JetPack.JumpReasonRoofed>it is roofed</JetPack.JumpReasonRoofed>
+  <JetPack.JumpReasonSFNotRPunch>roof punching is too dangerous using a {0}</JetPack.JumpReasonSFNotRPunch>
+  <JetPack.JumpReasonNotWalk>it is not walkable</JetPack.JumpReasonNotWalk>
+  <JetPack.JumpReasonDeadly>it is deadly to the pilot</JetPack.JumpReasonDeadly>
+  <JetPack.NoFuelFound>Cannot find any {0} for refueling</JetPack.NoFuelFound>
+  <JetPack.FullyRefueled>{0}'s Jetpack has been fully refueled</JetPack.FullyRefueled>
+  <JetPack.Refueled>{0}'s Jetpack has been refueled by {1} unit{2}</JetPack.Refueled>
+  <JetPack.DAllowReason>Cannot use jump jets since {0} {1}</JetPack.DAllowReason>
+  <JetPack.DAllowEQHVY>is equipped with a heavy weapon: ({0}).</JetPack.DAllowEQHVY>
+  <JetPack.DAllowEQWMD>is equipped with a WMD: ({0}</JetPack.DAllowEQWMD>
+  <JetPack.DAllowIVHVY>has a heavy weapon in inventory: ({0}).</JetPack.DAllowIVHVY>
+  <JetPack.DAllowIVWMD>has a WMD in inventory: ({0})</JetPack.DAllowIVWMD>
+  <JetPack.DAllowCYHVY>is carrying a heavy weapon: ({0})</JetPack.DAllowCYHVY>
+  <JetPack.DAllowCYWMD>is carrying a WMD: ({0})</JetPack.DAllowCYWMD>
+</LanguageData>

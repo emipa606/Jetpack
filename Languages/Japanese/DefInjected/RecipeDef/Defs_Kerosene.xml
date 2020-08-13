@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Recipes -->
+  <MakeJPKerosene.label>ケロシンを精製</MakeJPKerosene.label>
+  <MakeJPKerosene.description>ケロシンを5つ精製する。</MakeJPKerosene.description>
+  <MakeJPKerosene.jobString>ケロシンを精製中</MakeJPKerosene.jobString>
+  <MakeBulkJPKerosene.label>ケロシンをまとめて精製</MakeBulkJPKerosene.label>
+  <MakeBulkJPKerosene.description>ケロシンを25個精製する。</MakeBulkJPKerosene.description>
+  <MakeBulkJPKerosene.jobString>ケロシンを精製中</MakeBulkJPKerosene.jobString>
+</LanguageData>

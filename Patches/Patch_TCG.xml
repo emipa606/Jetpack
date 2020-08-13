@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Tactical Charged Gear</li>
+    </mods>
+    <match Class="PatchOperationFindMod">
+      <mods>
+        <li>Medical Supplements</li>
+      </mods>
+      <match Class="PatchOperationSequence">
+        <success>Always</success>
+        <operations>
+          <li Class="PatchOperationAdd">
+            <xpath>/Defs</xpath>
+            <value>
+              <ThingDef ParentName="ArmorCGearMachineableBase">
+                <defName>Apparel_PowArmCGearJetPack</defName>
+                <label>TC Marine Jet Pack Armor</label>
+                <description>A TC Marine armor equipped with a Jet Pack</description>
+                <tickerType>Normal</tickerType>
+                <techLevel>Spacer</techLevel>
+                <thingClass>JetPack.JetPackApparel</thingClass>
+                <comps>
+                  <li Class="JetPack.CompProperties_JetPack">
+                    <JPFuelLevel>0</JPFuelLevel>
+                    <JPFuel>MSHydrogenPeroxide</JPFuel>
+                    <JPFuelMaximum>150</JPFuelMaximum>
+                    <JPFuelBurnRate>0.75</JPFuelBurnRate>
+                    <JPSKType>SFJetPackCGear</JPSKType>
+                  </li>
+                </comps>
+                <recipeMaker>
+                  <unfinishedThingDef>UnfinishedTCGTechArmor</unfinishedThingDef>
+                  <researchPrerequisite>CGearTech_ArmJP</researchPrerequisite>
+                  <skillRequirements>
+                    <Crafting>11</Crafting>
+                  </skillRequirements>
+                  <recipeUsers Inherit="False">
+                    <li>TableCGear</li>
+                  </recipeUsers>
+                </recipeMaker>
+                <graphicData>
+                  <texPath>Things/Item/PowArmJPCGear/PowArmJPCGear</texPath>
+                  <graphicClass>Graphic_Single</graphicClass>
+                </graphicData>
+                <generateCommonality>0.00001</generateCommonality>
+                <statBases>
+                  <WorkToMake>59000</WorkToMake>
+                  <MaxHitPoints>300</MaxHitPoints>
+                  <Mass>15</Mass>
+                  <Flammability>0.5</Flammability>
+                  <ArmorRating_Sharp>1.08</ArmorRating_Sharp>
+                  <ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+                  <ArmorRating_Heat>0.54</ArmorRating_Heat>
+                  <Insulation_Cold>35</Insulation_Cold>
+                  <Insulation_Heat>10</Insulation_Heat>
+                  <EquipDelay>12</EquipDelay>
+                </statBases>
+                <equippedStatOffsets>
+                  <MoveSpeed>-0.12</MoveSpeed>
+                  <MeleeHitChance>+0.10</MeleeHitChance>
+                  <MeleeDodgeChance>+0.05</MeleeDodgeChance>
+                </equippedStatOffsets>
+                <thingCategories>
+                  <li>ApparelArmor</li>
+                </thingCategories>
+                <costList>
+                  <ComponentSpacer>5</ComponentSpacer>
+                  <Plasteel>100</Plasteel>
+                  <Uranium>20</Uranium>
+                  <CGearCtrlChip>1</CGearCtrlChip>
+                </costList>
+                <apparel>
+                  <bodyPartGroups>
+                    <li>Torso</li>
+                    <li>Neck</li>
+                    <li>Shoulders</li>
+                    <li>Arms</li>
+                    <li>Legs</li>
+                    <li>Hands</li>
+                    <li>Feet</li>
+                  </bodyPartGroups>
+                  <wornGraphicPath>Things/Item/PowArmJPCGear/PowArmJPCGear</wornGraphicPath>
+                  <layers>
+                    <li>Middle</li>
+                    <li>Shell</li>
+                  </layers>
+                  <tags>
+                    <li>SpacerMilitary</li>
+                    <li>RoyalCombatGear</li>
+                  </tags>
+                  <defaultOutfitTags>
+                    <li>Soldier</li>
+                  </defaultOutfitTags>
+                  <useDeflectMetalEffect>true</useDeflectMetalEffect>
+                </apparel>
+                <colorGenerator Class="ColorGenerator_Options">
+                  <options>
+                    <li>
+                      <weight>10</weight>
+                      <only>(0.34,0.76,0.76)</only>
+                    </li>
+                    <li>
+                      <weight>10</weight>
+                      <only>(0.34,0.76,0.76)</only>
+                    </li>
+                    <li>
+                      <weight>6</weight>
+                      <min>(0.33,0.75,0.75)</min>
+                      <max>(0.35,0.77,0.77)</max>
+                    </li>
+                    <li>
+                      <weight>10</weight>
+                      <only>(0.34,0.76,0.76)</only>
+                    </li>
+                  </options>
+                </colorGenerator>
+                <thingSetMakerTags>
+                  <li>RewardSpecial</li>
+                </thingSetMakerTags>
+              </ThingDef>
+            </value>
+          </li>
+          <li Class="PatchOperationAdd">
+            <xpath>/Defs</xpath>
+            <value>
+              <ResearchProjectDef>
+                <defName>CGearTech_ArmJP</defName>
+                <label>TC Armour Jet Packs</label>
+                <description>Grants the ability to equip TC armours with Jet Packs.</description>
+                <baseCost>500</baseCost>
+                <techLevel>Spacer</techLevel>
+                <prerequisites>
+                  <li>CGearTech_Armour</li>
+                  <li>PowArmJetPack</li>
+                </prerequisites>
+                <requiredResearchFacilities>
+                  <li>MultiAnalyzer</li>
+                </requiredResearchFacilities>
+                <tab>CGearTab</tab>
+              </ResearchProjectDef>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/ThingDef[defName="SFJetPackCGear"]/skyfaller/speed</xpath>
+            <value>
+              <speed>0.15</speed>
+            </value>
+          </li>
+          <li Class="PatchOperationAdd">
+            <xpath>/Defs</xpath>
+            <value>
+              <RecipeDef>
+                <defName>Make_Convert_MArmrJP_CGear</defName>
+                <label>Convert Marine Jet Pack Pow Armour</label>
+                <description>Convert Marine JP armour to TC JP Armour</description>
+                <jobString>Converting TC JP Armour</jobString>
+                <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                <workSkill>Crafting</workSkill>
+                <effectWorking>Smith</effectWorking>
+                <soundWorking>Recipe_Machining</soundWorking>
+                <workAmount>5000</workAmount>
+                <allowMixingIngredients>true</allowMixingIngredients>
+                <targetCountAdjustment>1</targetCountAdjustment>
+                <recipeUsers>
+                  <li>TableCGear</li>
+                </recipeUsers>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Apparel_PowArmJetPack</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>CGearCtrlChip</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>Apparel_PowArmJetPack</li>
+                    <li>CGearCtrlChip</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <Apparel_PowArmCGearJetPack>1</Apparel_PowArmCGearJetPack>
+                </products>
+                <skillRequirements>
+                  <Crafting>12</Crafting>
+                </skillRequirements>
+                <researchPrerequisite>CGearTech_ArmJP</researchPrerequisite>
+                <unfinishedThingDef>UnfinishedTCGTechArmor</unfinishedThingDef>
+              </RecipeDef>
+            </value>
+          </li>
+          <li Class="PatchOperationAdd">
+            <xpath>/Defs</xpath>
+            <value>
+              <RecipeDef>
+                <defName>Make_Convert_CGearPowArmToJP</defName>
+                <label>Convert TC Marine Pow Armour To JP</label>
+                <description>Convert TC Power Armour to use a jet pack</description>
+                <jobString>Converting TC Pow Armour to use JP</jobString>
+                <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                <workSkill>Crafting</workSkill>
+                <effectWorking>Smith</effectWorking>
+                <soundWorking>Recipe_Machining</soundWorking>
+                <workAmount>5000</workAmount>
+                <allowMixingIngredients>true</allowMixingIngredients>
+                <targetCountAdjustment>1</targetCountAdjustment>
+                <recipeUsers>
+                  <li>TableCGear</li>
+                </recipeUsers>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Apparel_PowerArmorCGear</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>ComponentSpacer</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>Apparel_PowerArmorCGear</li>
+                    <li>ComponentSpacer</li>
+                    <li>Plasteel</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <Apparel_PowArmCGearJetPack>1</Apparel_PowArmCGearJetPack>
+                </products>
+                <skillRequirements>
+                  <Crafting>11</Crafting>
+                </skillRequirements>
+                <researchPrerequisite>CGearTech_ArmJP</researchPrerequisite>
+                <unfinishedThingDef>UnfinishedTCGTechArmor</unfinishedThingDef>
+              </RecipeDef>
+            </value>
+          </li>
+        </operations>
+      </match>
+      <nomatch Class="PatchOperationSequence">
+        <success>Always</success>
+        <operations>
+          <li Class="PatchOperationAdd">
+            <xpath>/Defs</xpath>
+            <value>
+              <ThingDef ParentName="ArmorCGearMachineableBase">
+                <defName>Apparel_PowArmCGearJetPack</defName>
+                <label>TC Marine Jet Pack Armor</label>
+                <description>A TC Marine armor equipped with a Jet Pack</description>
+                <tickerType>Normal</tickerType>
+                <techLevel>Spacer</techLevel>
+                <thingClass>JetPack.JetPackApparel</thingClass>
+                <comps>
+                  <li Class="JetPack.CompProperties_JetPack">
+                    <JPFuelLevel>0</JPFuelLevel>
+                    <JPFuel>Chemfuel</JPFuel>
+                    <JPFuelMaximum>150</JPFuelMaximum>
+                    <JPFuelBurnRate>1.0</JPFuelBurnRate>
+                    <JPSKType>SFJetPackCGear</JPSKType>
+                  </li>
+                </comps>
+                <recipeMaker>
+                  <unfinishedThingDef>UnfinishedTCGTechArmor</unfinishedThingDef>
+                  <researchPrerequisite>CGearTech_ArmJP</researchPrerequisite>
+                  <skillRequirements>
+                    <Crafting>11</Crafting>
+                  </skillRequirements>
+                  <recipeUsers Inherit="False">
+                    <li>TableCGear</li>
+                  </recipeUsers>
+                </recipeMaker>
+                <graphicData>
+                  <texPath>Things/Item/PowArmJPCGear/PowArmJPCGear</texPath>
+                  <graphicClass>Graphic_Single</graphicClass>
+                </graphicData>
+                <generateCommonality>0.00001</generateCommonality>
+                <statBases>
+                  <WorkToMake>59000</WorkToMake>
+                  <MaxHitPoints>300</MaxHitPoints>
+                  <Mass>15</Mass>
+                  <Flammability>0.5</Flammability>
+                  <ArmorRating_Sharp>1.08</ArmorRating_Sharp>
+                  <ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+                  <ArmorRating_Heat>0.54</ArmorRating_Heat>
+                  <Insulation_Cold>35</Insulation_Cold>
+                  <Insulation_Heat>10</Insulation_Heat>
+                  <EquipDelay>12</EquipDelay>
+                </statBases>
+                <equippedStatOffsets>
+                  <MoveSpeed>-0.12</MoveSpeed>
+                  <MeleeHitChance>+0.10</MeleeHitChance>
+                  <MeleeDodgeChance>+0.05</MeleeDodgeChance>
+                </equippedStatOffsets>
+                <thingCategories>
+                  <li>ApparelArmor</li>
+                </thingCategories>
+                <costList>
+                  <ComponentSpacer>5</ComponentSpacer>
+                  <Plasteel>100</Plasteel>
+                  <Uranium>20</Uranium>
+                  <CGearCtrlChip>1</CGearCtrlChip>
+                </costList>
+                <apparel>
+                  <bodyPartGroups>
+                    <li>Torso</li>
+                    <li>Neck</li>
+                    <li>Shoulders</li>
+                    <li>Arms</li>
+                    <li>Legs</li>
+                    <li>Hands</li>
+                    <li>Feet</li>
+                  </bodyPartGroups>
+                  <wornGraphicPath>Things/Item/PowArmJPCGear/PowArmJPCGear</wornGraphicPath>
+                  <layers>
+                    <li>Middle</li>
+                    <li>Shell</li>
+                  </layers>
+                  <tags>
+                    <li>SpacerMilitary</li>
+                    <li>RoyalCombatGear</li>
+                  </tags>
+                  <defaultOutfitTags>
+                    <li>Soldier</li>
+                  </defaultOutfitTags>
+                  <useDeflectMetalEffect>true</useDeflectMetalEffect>
+                </apparel>
+                <colorGenerator Class="ColorGenerator_Options">
+                  <options>
+                    <li>
+                      <weight>10</weight>
+                      <only>(0.34,0.76,0.76)</only>
+                    </li>
+                    <li>
+                      <weight>10</weight>
+                      <only>(0.34,0.76,0.76)</only>
+                    </li>
+                    <li>
+                      <weight>6</weight>
+                      <min>(0.33,0.75,0.75)</min>
+                      <max>(0.35,0.77,0.77)</max>
+                    </li>
+                    <li>
+                      <weight>10</weight>
+                      <only>(0.34,0.76,0.76)</only>
+                    </li>
+                  </options>
+                </colorGenerator>
+                <thingSetMakerTags>
+                  <li>RewardSpecial</li>
+                </thingSetMakerTags>
+              </ThingDef>
+            </value>
+          </li>
+          <li Class="PatchOperationAdd">
+            <xpath>/Defs</xpath>
+            <value>
+              <ResearchProjectDef>
+                <defName>CGearTech_ArmJP</defName>
+                <label>TC Armour Jet Packs</label>
+                <description>Grants the ability to equip TC armours with Jet Packs.</description>
+                <baseCost>500</baseCost>
+                <techLevel>Spacer</techLevel>
+                <prerequisites>
+                  <li>CGearTech_Armour</li>
+                  <li>PowArmJetPack</li>
+                </prerequisites>
+                <requiredResearchFacilities>
+                  <li>MultiAnalyzer</li>
+                </requiredResearchFacilities>
+                <tab>CGearTab</tab>
+              </ResearchProjectDef>
+            </value>
+          </li>
+          <li Class="PatchOperationAdd">
+            <xpath>/Defs</xpath>
+            <value>
+              <RecipeDef>
+                <defName>Make_Convert_MArmrJP_CGear</defName>
+                <label>Convert Marine Jet Pack Pow Armour</label>
+                <description>Convert Marine JP armour to TC JP Armour</description>
+                <jobString>Converting TC JP Armour</jobString>
+                <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                <workSkill>Crafting</workSkill>
+                <effectWorking>Smith</effectWorking>
+                <soundWorking>Recipe_Machining</soundWorking>
+                <workAmount>5000</workAmount>
+                <allowMixingIngredients>true</allowMixingIngredients>
+                <targetCountAdjustment>1</targetCountAdjustment>
+                <recipeUsers>
+                  <li>TableCGear</li>
+                </recipeUsers>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Apparel_PowArmJetPack</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>CGearCtrlChip</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>Apparel_PowArmJetPack</li>
+                    <li>CGearCtrlChip</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <Apparel_PowArmCGearJetPack>1</Apparel_PowArmCGearJetPack>
+                </products>
+                <skillRequirements>
+                  <Crafting>12</Crafting>
+                </skillRequirements>
+                <researchPrerequisite>CGearTech_ArmJP</researchPrerequisite>
+                <unfinishedThingDef>UnfinishedTCGTechArmor</unfinishedThingDef>
+              </RecipeDef>
+            </value>
+          </li>
+          <li Class="PatchOperationAdd">
+            <xpath>/Defs</xpath>
+            <value>
+              <RecipeDef>
+                <defName>Make_Convert_CGearPowArmToJP</defName>
+                <label>Convert TC Marine Pow Armour To JP</label>
+                <description>Convert TC Power Armour to use a jet pack</description>
+                <jobString>Converting TC Pow Armour to use JP</jobString>
+                <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                <workSkill>Crafting</workSkill>
+                <effectWorking>Smith</effectWorking>
+                <soundWorking>Recipe_Machining</soundWorking>
+                <workAmount>5000</workAmount>
+                <allowMixingIngredients>true</allowMixingIngredients>
+                <targetCountAdjustment>1</targetCountAdjustment>
+                <recipeUsers>
+                  <li>TableCGear</li>
+                </recipeUsers>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Apparel_PowerArmorCGear</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>ComponentSpacer</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>Apparel_PowerArmorCGear</li>
+                    <li>ComponentSpacer</li>
+                    <li>Plasteel</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <Apparel_PowArmCGearJetPack>1</Apparel_PowArmCGearJetPack>
+                </products>
+                <skillRequirements>
+                  <Crafting>11</Crafting>
+                </skillRequirements>
+                <researchPrerequisite>CGearTech_ArmJP</researchPrerequisite>
+                <unfinishedThingDef>UnfinishedTCGTechArmor</unfinishedThingDef>
+              </RecipeDef>
+            </value>
+          </li>
+        </operations>
+      </nomatch>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Tactical Charged Gear</li>
+    </mods>
+    <match Class="PatchOperationFindMod">
+      <mods>
+        <li>Camouflage and Stealth</li>
+      </mods>
+      <match Class="PatchOperationSequence">
+        <success>Always</success>
+        <operations>
+          <li Class="PatchOperationConditional">
+            <xpath>/Defs/ThingDef[defName="Apparel_PowArmCGearJetPack"]/comps</xpath>
+            <match Class="PatchOperationSequence">
+              <operations>
+                <li Class="PatchOperationTest">
+                  <success>Invert</success>
+                  <xpath>/Defs/ThingDef[defName="Apparel_PowArmCGearJetPack"]/comps/li[@Class="CompCamo.CompProperties_GearCamo"]</xpath>
+                </li>
+                <li Class="PatchOperationAdd">
+                  <xpath>/Defs/ThingDef[defName="Apparel_PowArmCGearJetPack"]/comps</xpath>
+                  <value>
+                    <!--
+								<li Class="CompCamo.CompProperties_GearCamo">
+									<ArcticCamoEff>1.00</ArcticCamoEff>
+        							<DesertCamoEff>1.00</DesertCamoEff>
+        							<JungleCamoEff>1.00</JungleCamoEff>
+        							<StoneCamoEff>1.00</StoneCamoEff>
+        							<WoodlandCamoEff>1.00</WoodlandCamoEff>
+        							<UrbanCamoEff>1.00</UrbanCamoEff>
+								</li>
+								-->
+                    <li Class="CompCamo.CompProperties_GearCamo">
+                      <ArcticCamoEff>0.40</ArcticCamoEff>
+                      <DesertCamoEff>0.35</DesertCamoEff>
+                      <JungleCamoEff>0.32</JungleCamoEff>
+                      <StoneCamoEff>0.10</StoneCamoEff>
+                      <WoodlandCamoEff>0.33</WoodlandCamoEff>
+                      <UrbanCamoEff>0.63</UrbanCamoEff>
+                    </li>
+                  </value>
+                </li>
+              </operations>
+            </match>
+            <nomatch Class="PatchOperationAdd">
+              <xpath>/Defs/ThingDef[defName="Apparel_PowArmCGearJetPack"]</xpath>
+              <value>
+                <comps>
+                  <!--
+								<li Class="CompCamo.CompProperties_GearCamo">
+									<ArcticCamoEff>1.00</ArcticCamoEff>
+        							<DesertCamoEff>1.00</DesertCamoEff>
+        							<JungleCamoEff>1.00</JungleCamoEff>
+        							<StoneCamoEff>1.00</StoneCamoEff>
+        							<WoodlandCamoEff>1.00</WoodlandCamoEff>
+        							<UrbanCamoEff>1.00</UrbanCamoEff>
+								</li>
+								-->
+                  <li Class="CompCamo.CompProperties_GearCamo">
+                    <ArcticCamoEff>0.40</ArcticCamoEff>
+                    <DesertCamoEff>0.35</DesertCamoEff>
+                    <JungleCamoEff>0.32</JungleCamoEff>
+                    <StoneCamoEff>0.30</StoneCamoEff>
+                    <WoodlandCamoEff>0.33</WoodlandCamoEff>
+                    <UrbanCamoEff>0.63</UrbanCamoEff>
+                  </li>
+                </comps>
+              </value>
+            </nomatch>
+          </li>
+        </operations>
+      </match>
+    </match>
+  </Operation>
+</Patch>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Recipe Users: TableMachining, FabricationBench -->
+  <Make_Apparel_PowArmJetPack.label>マリーンアーマー(ジェット付)を作る</Make_Apparel_PowArmJetPack.label>
+  <Make_Apparel_PowArmJetPack.description>マリーンアーマー(ジェット付)を作る。</Make_Apparel_PowArmJetPack.description>
+  <Make_Apparel_PowArmJetPack.jobString>マリーンアーマー(ジェット付)を製作中</Make_Apparel_PowArmJetPack.jobString>
+  <!-- Recipe Users: ElectricTailoringBench, HandTailoringBench -->
+  <Make_JPJumpSuit.label>ジャンプスーツを縫う</Make_JPJumpSuit.label>
+  <Make_JPJumpSuit.description>ジャンプスーツを縫う。</Make_JPJumpSuit.description>
+  <Make_JPJumpSuit.jobString>ジャンプスーツを裁縫中</Make_JPJumpSuit.jobString>
+</LanguageData>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <MakeJPBoosterJetPack.label>ブースターパックを作る</MakeJPBoosterJetPack.label>
+  <MakeJPBoosterJetPack.description>ブースターパックを1つ作る。</MakeJPBoosterJetPack.description>
+  <MakeJPBoosterJetPack.jobString>ブースターパックを製作中</MakeJPBoosterJetPack.jobString>
+  <!-- Dismantle -->
+  <DismantleJPBoosterJetPack.label>ブースターパックを分解する</DismantleJPBoosterJetPack.label>
+  <DismantleJPBoosterJetPack.description>ブースターパックを1つ分解する。</DismantleJPBoosterJetPack.description>
+  <DismantleJPBoosterJetPack.jobString>ブースターパックを分解中</DismantleJPBoosterJetPack.jobString>
+</LanguageData>
