@@ -34,8 +34,9 @@ namespace JetPack
                     int JPFuel = 0;
                     int JPMax = 0;
                     Pawn obj = actor;
-                    if (obj != null && obj.apparel.WornApparelCount > 0)
+                    if (obj != null && obj.apparel.WornApparelCount == 0)
                     {
+                        //Log.Message("True: obj != null && obj.apparel.WornApparelCount == 0");
                         this.EndJobWith(JobCondition.Incompletable);
                         return;
                     }
@@ -56,22 +57,26 @@ namespace JetPack
                     }
                     if (JetPack is JetPackApparel)
                     {
+                        //Log.Message("True: JetPack is JetPackApparel");
                         JPFuel = (JetPack as JetPackApparel).JPFuelAmount;
                         JPMax = (JetPack as JetPackApparel).JPFuelMax;
                     }
                     if (JPMax - JPFuel <= 0)
                     {
+                        //Log.Message("True: JPMax - JPFuel <= 0");
                         this.EndJobWith(JobCondition.Incompletable);
                         return;
                     }
                     if (this.TargetThingA.stackCount > JPMax - JPFuel)
                     {
+                        //Log.Message("True: this.TargetThingA.stackCount > JPMax - JPFuel");
                         (JetPack as JetPackApparel).JPFuelAmount = JPMax;
                         this.TargetThingA.stackCount -= JPMax - JPFuel;
                         Messages.Message(TranslatorFormattedStringExtensions.Translate("JetPack.FullyRefueled", actor.LabelShort), actor, MessageTypeDefOf.NeutralEvent, false);
                         this.EndJobWith(JobCondition.Succeeded);
                         return;
                     }
+                    //Log.Message("False");
                     (JetPack as JetPackApparel).JPFuelAmount = JPFuel + this.TargetThingA.stackCount;
                     Messages.Message(TranslatorFormattedStringExtensions.Translate("JetPack.Refueled", GenText.CapitalizeFirst(actor.LabelShort), this.TargetThingA.stackCount.ToString(), (this.TargetThingA.stackCount > 1) ? "s" : ""), actor, MessageTypeDefOf.NeutralEvent, false);
                     this.TargetThingA.Destroy(0);

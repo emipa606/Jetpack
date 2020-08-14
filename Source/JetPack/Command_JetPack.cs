@@ -12,14 +12,16 @@ namespace JetPack
         // Token: 0x0600000B RID: 11 RVA: 0x000022B8 File Offset: 0x000004B8
         internal static TargetingParameters ForJetPacksDestination()
         {
-            TargetingParameters targetingParameters = new TargetingParameters();
-            targetingParameters.canTargetLocations = true;
-            targetingParameters.canTargetSelf = false;
-            targetingParameters.canTargetPawns = false;
-            targetingParameters.canTargetFires = false;
-            targetingParameters.canTargetBuildings = false;
-            targetingParameters.canTargetItems = false;
-            targetingParameters.validator = ((TargetInfo x) => DropCellFinder.IsGoodDropSpot(x.Cell, x.Map, true, Command_JetPack.JPRoofPunch, true));
+            TargetingParameters targetingParameters = new TargetingParameters
+            {
+                canTargetLocations = true,
+                canTargetSelf = false,
+                canTargetPawns = false,
+                canTargetFires = false,
+                canTargetBuildings = false,
+                canTargetItems = false,
+                validator = ((TargetInfo x) => DropCellFinder.IsGoodDropSpot(x.Cell, x.Map, true, Command_JetPack.JPRoofPunch, true))
+            };
             return targetingParameters;
         }
 
