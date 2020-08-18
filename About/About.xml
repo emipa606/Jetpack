@@ -18,11 +18,6 @@
   </modDependencies>
   <loadAfter>
     <li>brrainz.harmony</li>
-    <li>JangoDsoul.StarWars.JABFAS</li>
-    <li>JangoDsoul.StarWars.DDAPVAS</li>
-    <li>Mlie.TacticalChargedGear</li>
-    <li>Mlie.MedicalSupplements</li>
-    <li>Dubwise.Rimefeller</li>
   </loadAfter>
   <description>Update of peladors mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2002341555
