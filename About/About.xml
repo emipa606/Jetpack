@@ -19,23 +19,26 @@
   <loadAfter>
     <li>brrainz.harmony</li>
   </loadAfter>
-  <description>Update of peladors mod
+  <description>[img]https://i.imgur.com/WAEzk68.png[/img]
+Update of peladors mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2002341555
 
-[img]https://i.imgur.com/GYswkZ7.png[/img]
+[img]https://i.imgur.com/7Gzt3Rg.png[/img]
 
-Support-chat:
-https://invite.gg/mlie
-
-Non-steam version:
-https://github.com/emipa606/JetPack
+[table]
+	[tr]
+		[td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+		[td][url=https://github.com/emipa606/Jetpack][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+	[/tr]
+[/table]
 	
---- Original Description ---
-Overview
+[img]https://i.imgur.com/NOW7jU1.png[/img]
+
+[h1]Overview[/h1] V1.1
 
 Provides jet pack capabilities.
 
-Details
+[h1]Details[/h1]
 
 A jet pack can be made (once researched) and Marine power armour can also be made with a jet pack installed as a variant to the standard marine armour. This provides the capability for the pawn/pilot to traverse above normal terrain. The jet pack uses a fuel (default Chemfuel) and this will need to be supplied and refuelled with use.
 
@@ -57,7 +60,7 @@ The Booster pack is like the individual jet pack but it's flight configuration i
 
 The Jump Suit is an all-in-one fire retardant body garment that can be worn as an under layer. It's primary role being that of protection from heat and flames.
 
-Mod Options
+[h1]Mod Options[/h1]
 
 1) Exclude the use of WMDs and Heavy weapons with Jet packs.
 
@@ -73,9 +76,9 @@ Mod Options
 
 7) Auto-refuel allows you to set refuelling and the % fuel level you would like this to occur. (Colonists will only attempt to auto-refuel when they are not drafted, the manual option is still also available to use).
 
-8 ) Carrying capacity can be applied as a potential effect to the jump pack range and fuel use. This is a subtle change that is modified by the type of fuel used and type of pack.
+8 ) Carrying capacity can be applied as a potential effect to the jump pack range and fuel use. This is a subtle change that is modified by the type of fuel used and type of pack. 
 
-Mod details
+[h1]Mod details[/h1]
 
 Additional research needed. (Individual Jet Pack requires the research for the powered armour jet pack).
 
@@ -89,33 +92,26 @@ Removal will require all mod buildings and items to be removed from the game and
 
 (Note there is no AI at present with the use of the Jet Packs except for the refuelling process, it is a player interactive process mostly).
 
-Compatibilty Notes
-*** Subject to Conversion ***
+[h1]Compatibilty Notes[/h1] *** Subject to Conversion ***
 
-If using the mod RPG Style inventory then individual jet packs have been supported by the mod to go into a unique slot.
-https://steamcommunity.com/sharedfiles/filedetails/?id=1561221991
+If using the mod [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1561221991]RPG Style inventory[/url] then individual jet packs have been supported by the mod to go into a unique slot.
 
-With the use of the mod Tactical Charged Gear a TC version of the jump pack is available.
-https://steamcommunity.com/sharedfiles/filedetails/?id=2196429233
+With the use of the mod [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1620639986]Tactical Charged Gear[/url] a TC version of the jump pack is available.
 
-With the use of both TCG and Medical Supplements mods, Hydrogen Peroxide can be used as a fuel which offers a slight improvement with performance to existing TC JPs as well as a fuel that will last significantly longer.
-https://steamcommunity.com/sharedfiles/filedetails/?id=2195037369
+With the use of both TCG and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1600830185]Medical Supplements[/url] mods, Hydrogen Peroxide can be used as a fuel which offers a slight improvement with performance to existing TC JPs as well as a fuel that will last significantly longer.
 
 Using Rimefeller will add a refiner to make Kerosene.
-https://steamcommunity.com/sharedfiles/filedetails/?id=1321849735
 
 Multiplayer - native support (beta)
 
 Infused - Using the armour conversion recipes will "NOT" transfer existing infusion properties. However, any newly created jet pack armours have the normal potential for infusions themselves.
-https://steamcommunity.com/sharedfiles/filedetails/?id=731287727
 
-Supports Jet pack items from the following mods:
+[b]Supports Jet pack items from the following mods:[/b]
 
-[JDS] Star Wars Jango and Boba Fett
-https://steamcommunity.com/sharedfiles/filedetails/?id=1933848576
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=1933848576][JDS] Star Wars Jango and Boba Fett[/url]
 
 
-Future Considerations
+[h1]Future Considerations[/h1]
 
 1) If an artist more capable than myself wants to supply graphics for pawns akin to a 20th/21st century styled pack (as a back pack) then I can implement an earlier industrial pack for use.
 
@@ -131,11 +127,13 @@ Future Considerations
 (tbd = to be determined).
 
 
-Credits:
+[h1]Credits:[/h1]
 
 Japanese translation provided by Proxyer.
 
 Graphic Revisions - Oleg Marko.
+
+
 
 
 (CC BY-NC-SA 4.0)</description>
