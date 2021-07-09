@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
 namespace JetPack
@@ -7,50 +6,89 @@ namespace JetPack
     // Token: 0x02000016 RID: 22
     public class Settings : ModSettings
     {
+        // Token: 0x04000036 RID: 54
+        public static bool DoAutoRefuel;
+
+        // Token: 0x04000037 RID: 55
+        public static int RefuelPCT = 50;
+
+        // Token: 0x04000038 RID: 56
+        public static int CooldownTime;
+
+        // Token: 0x04000039 RID: 57
+        public static bool AllowSlowBurn;
+
+        // Token: 0x0400003A RID: 58
+        public static bool RoofPunch;
+
+        // Token: 0x0400003B RID: 59
+        public static bool ApplyDFA;
+
+        // Token: 0x0400003C RID: 60
+        public static bool ApplyDFASplash;
+
+        // Token: 0x0400003D RID: 61
+        public static float DFASplashFactor = 50f;
+
+        // Token: 0x0400003E RID: 62
+        public static bool AllowBoom;
+
+        // Token: 0x0400003F RID: 63
+        public static bool AllowWMD;
+
+        // Token: 0x04000040 RID: 64
+        public static bool AllowHVY;
+
+        // Token: 0x04000041 RID: 65
+        public static bool AllowFire;
+
+        // Token: 0x04000042 RID: 66
+        public static bool UseCarry;
+
         // Token: 0x06000078 RID: 120 RVA: 0x000056C0 File Offset: 0x000038C0
         public void DoWindowContents(Rect canvas)
         {
-            Listing_Standard listing_Standard = new Listing_Standard
+            var listing_Standard = new Listing_Standard
             {
                 ColumnWidth = canvas.width
             };
             listing_Standard.Begin(canvas);
             listing_Standard.Gap(3f);
-            float gap = 3f;
-            listing_Standard.CheckboxLabeled(Translator.Translate("JetPack.RoofPunch"), ref Settings.RoofPunch, null);
+            var gap = 3f;
+            listing_Standard.CheckboxLabeled("JetPack.RoofPunch".Translate(), ref RoofPunch);
             listing_Standard.Gap(gap);
-            listing_Standard.CheckboxLabeled(Translator.Translate("JetPack.AllowFire"), ref Settings.AllowFire, null);
+            listing_Standard.CheckboxLabeled("JetPack.AllowFire".Translate(), ref AllowFire);
             listing_Standard.Gap(gap);
             Text.Font = GameFont.Tiny;
-            listing_Standard.Label("          " + Translator.Translate("JetPack.ResetTip"), -1f, null);
+            listing_Standard.Label("          " + "JetPack.ResetTip".Translate());
             Text.Font = GameFont.Small;
             listing_Standard.Gap(gap);
-            listing_Standard.CheckboxLabeled(Translator.Translate("JetPack.DoAutoRefuel"), ref Settings.DoAutoRefuel, null);
+            listing_Standard.CheckboxLabeled("JetPack.DoAutoRefuel".Translate(), ref DoAutoRefuel);
             listing_Standard.Gap(gap);
-            listing_Standard.Label(Translator.Translate("JetPack.RefuelPCT") + "  " + Settings.RefuelPCT, -1f, null);
+            listing_Standard.Label("JetPack.RefuelPCT".Translate() + "  " + RefuelPCT);
             checked
             {
-                Settings.RefuelPCT = (int)listing_Standard.Slider((float)Settings.RefuelPCT, 0f, 75f);
+                RefuelPCT = (int) listing_Standard.Slider(RefuelPCT, 0f, 75f);
                 listing_Standard.Gap(gap);
-                listing_Standard.Label(Translator.Translate("JetPack.CooldownTime") + "  " + Settings.CooldownTime, -1f, null);
-                Settings.CooldownTime = (int)listing_Standard.Slider((float)Settings.CooldownTime, 0f, 10f);
+                listing_Standard.Label("JetPack.CooldownTime".Translate() + "  " + CooldownTime);
+                CooldownTime = (int) listing_Standard.Slider(CooldownTime, 0f, 10f);
                 listing_Standard.Gap(gap);
-                listing_Standard.CheckboxLabeled(Translator.Translate("JetPack.AllowSlowBurn"), ref Settings.AllowSlowBurn, null);
+                listing_Standard.CheckboxLabeled("JetPack.AllowSlowBurn".Translate(), ref AllowSlowBurn);
                 listing_Standard.Gap(gap);
-                listing_Standard.CheckboxLabeled(Translator.Translate("JetPack.ApplyDFA"), ref Settings.ApplyDFA, null);
+                listing_Standard.CheckboxLabeled("JetPack.ApplyDFA".Translate(), ref ApplyDFA);
                 listing_Standard.Gap(gap);
-                listing_Standard.CheckboxLabeled(Translator.Translate("JetPack.ApplyDFASplash"), ref Settings.ApplyDFASplash, null);
+                listing_Standard.CheckboxLabeled("JetPack.ApplyDFASplash".Translate(), ref ApplyDFASplash);
                 listing_Standard.Gap(gap);
-                listing_Standard.Label(Translator.Translate("JetPack.DFASplashFactor") + "  " + (int)Settings.DFASplashFactor, -1f, null);
-                Settings.DFASplashFactor = (float)((int)listing_Standard.Slider((float)((int)Settings.DFASplashFactor), 25f, 75f));
+                listing_Standard.Label("JetPack.DFASplashFactor".Translate() + "  " + (int) DFASplashFactor);
+                DFASplashFactor = (int) listing_Standard.Slider((int) DFASplashFactor, 25f, 75f);
                 listing_Standard.Gap(gap);
-                listing_Standard.CheckboxLabeled(Translator.Translate("JetPack.AllowBoom"), ref Settings.AllowBoom, null);
+                listing_Standard.CheckboxLabeled("JetPack.AllowBoom".Translate(), ref AllowBoom);
                 listing_Standard.Gap(gap);
-                listing_Standard.CheckboxLabeled(Translator.Translate("JetPack.AllowWMD"), ref Settings.AllowWMD, null);
+                listing_Standard.CheckboxLabeled("JetPack.AllowWMD".Translate(), ref AllowWMD);
                 listing_Standard.Gap(gap);
-                listing_Standard.CheckboxLabeled(Translator.Translate("JetPack.AllowHVY"), ref Settings.AllowHVY, null);
+                listing_Standard.CheckboxLabeled("JetPack.AllowHVY".Translate(), ref AllowHVY);
                 listing_Standard.Gap(gap);
-                listing_Standard.CheckboxLabeled(Translator.Translate("JetPack.UseCarry"), ref Settings.UseCarry, null);
+                listing_Standard.CheckboxLabeled("JetPack.UseCarry".Translate(), ref UseCarry);
                 listing_Standard.Gap(gap);
                 listing_Standard.End();
             }
@@ -60,58 +98,19 @@ namespace JetPack
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<bool>(ref Settings.DoAutoRefuel, "DoAutoRefuel", false, false);
-            Scribe_Values.Look<int>(ref Settings.RefuelPCT, "RefuelPCT", 50, false);
-            Scribe_Values.Look<int>(ref Settings.CooldownTime, "CooldownTime", 0, false);
-            Scribe_Values.Look<bool>(ref Settings.AllowSlowBurn, "AllowSlowBurn", false, false);
-            Scribe_Values.Look<bool>(ref Settings.RoofPunch, "RoofPunch", false, false);
-            Scribe_Values.Look<bool>(ref Settings.ApplyDFA, "ApplyDFA", false, false);
-            Scribe_Values.Look<bool>(ref Settings.ApplyDFASplash, "ApplyDFASplash", false, false);
-            Scribe_Values.Look<float>(ref Settings.DFASplashFactor, "DFASplashFactor", 50f, false);
-            Scribe_Values.Look<bool>(ref Settings.AllowBoom, "AllowBoom", false, false);
-            Scribe_Values.Look<bool>(ref Settings.AllowWMD, "AllowWMD", false, false);
-            Scribe_Values.Look<bool>(ref Settings.AllowHVY, "AllowHVY", false, false);
-            Scribe_Values.Look<bool>(ref Settings.AllowFire, "AllowFire", false, false);
-            Scribe_Values.Look<bool>(ref Settings.UseCarry, "UseCarry", false, false);
+            Scribe_Values.Look(ref DoAutoRefuel, "DoAutoRefuel");
+            Scribe_Values.Look(ref RefuelPCT, "RefuelPCT", 50);
+            Scribe_Values.Look(ref CooldownTime, "CooldownTime");
+            Scribe_Values.Look(ref AllowSlowBurn, "AllowSlowBurn");
+            Scribe_Values.Look(ref RoofPunch, "RoofPunch");
+            Scribe_Values.Look(ref ApplyDFA, "ApplyDFA");
+            Scribe_Values.Look(ref ApplyDFASplash, "ApplyDFASplash");
+            Scribe_Values.Look(ref DFASplashFactor, "DFASplashFactor", 50f);
+            Scribe_Values.Look(ref AllowBoom, "AllowBoom");
+            Scribe_Values.Look(ref AllowWMD, "AllowWMD");
+            Scribe_Values.Look(ref AllowHVY, "AllowHVY");
+            Scribe_Values.Look(ref AllowFire, "AllowFire");
+            Scribe_Values.Look(ref UseCarry, "UseCarry");
         }
-
-        // Token: 0x04000036 RID: 54
-        public static bool DoAutoRefuel = false;
-
-        // Token: 0x04000037 RID: 55
-        public static int RefuelPCT = 50;
-
-        // Token: 0x04000038 RID: 56
-        public static int CooldownTime = 0;
-
-        // Token: 0x04000039 RID: 57
-        public static bool AllowSlowBurn = false;
-
-        // Token: 0x0400003A RID: 58
-        public static bool RoofPunch = false;
-
-        // Token: 0x0400003B RID: 59
-        public static bool ApplyDFA = false;
-
-        // Token: 0x0400003C RID: 60
-        public static bool ApplyDFASplash = false;
-
-        // Token: 0x0400003D RID: 61
-        public static float DFASplashFactor = 50f;
-
-        // Token: 0x0400003E RID: 62
-        public static bool AllowBoom = false;
-
-        // Token: 0x0400003F RID: 63
-        public static bool AllowWMD = false;
-
-        // Token: 0x04000040 RID: 64
-        public static bool AllowHVY = false;
-
-        // Token: 0x04000041 RID: 65
-        public static bool AllowFire = false;
-
-        // Token: 0x04000042 RID: 66
-        public static bool UseCarry = false;
     }
 }

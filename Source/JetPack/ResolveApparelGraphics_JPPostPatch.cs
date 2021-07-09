@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -15,36 +14,42 @@ namespace JetPack
         [HarmonyPriority(0)]
         public static void PostFix(ref PawnGraphicSet __instance)
         {
-            Pawn p = __instance.pawn;
-            if (p.apparel.WornApparelCount > 0)
+            var p = __instance.pawn;
+            if (p.apparel.WornApparelCount <= 0)
             {
-                List<ApparelGraphicRecord> jps = new List<ApparelGraphicRecord>();
-                List<ApparelGraphicRecord> newList = new List<ApparelGraphicRecord>();
-                foreach (Apparel apparel in p.apparel.WornApparel)
+                return;
+            }
+
+            var jps = new List<ApparelGraphicRecord>();
+            var newList = new List<ApparelGraphicRecord>();
+            foreach (var apparel in p.apparel.WornApparel)
+            {
+                if (!ApparelGraphicRecordGetter.TryGetGraphicApparel(apparel, p.story.bodyType, out var rec))
                 {
-                    if (ApparelGraphicRecordGetter.TryGetGraphicApparel(apparel, p.story.bodyType, out ApparelGraphicRecord rec))
-                    {
-                        if (apparel is JetPackApparel)
-                        {
-                            jps.Add(rec);
-                        }
-                        else
-                        {
-                            newList.Add(rec);
-                        }
-                    }
+                    continue;
                 }
-                if (jps.Count > 0)
+
+                if (apparel is JetPackApparel)
                 {
-                    foreach (ApparelGraphicRecord apr in jps)
-                    {
-                        newList.Add(apr);
-                    }
+                    jps.Add(rec);
                 }
-                if (newList.Count > 0)
+                else
                 {
-                    __instance.apparelGraphics = newList;
+                    newList.Add(rec);
                 }
+            }
+
+            if (jps.Count > 0)
+            {
+                foreach (var apr in jps)
+                {
+                    newList.Add(apr);
+                }
+            }
+
+            if (newList.Count > 0)
+            {
+                __instance.apparelGraphics = newList;
             }
         }
     }

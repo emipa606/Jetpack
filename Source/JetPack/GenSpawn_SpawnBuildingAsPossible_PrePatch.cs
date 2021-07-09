@@ -1,5 +1,4 @@
-﻿using System;
-using HarmonyLib;
+﻿using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -14,12 +13,18 @@ namespace JetPack
         [HarmonyPriority(800)]
         public static bool PreFix(Building building, Map map, bool respawningAfterLoad = false)
         {
-            if (respawningAfterLoad && CorrectJPKeroseneRefiner.RFLoaded() && CorrectJPKeroseneRefiner.IsProblematicItem(building) && (building?.Faction) != Faction.OfPlayer)
+            if (!respawningAfterLoad || !CorrectJPKeroseneRefiner.RFLoaded() ||
+                !CorrectJPKeroseneRefiner.IsProblematicItem(building) || building?.Faction == Faction.OfPlayer)
             {
-                GenSpawn.Spawn(DefDatabase<ThingDef>.GetNamed("Marble", false), building.Position, map, 0);
-                return false;
+                return true;
             }
-            return true;
+
+            if (building != null)
+            {
+                GenSpawn.Spawn(DefDatabase<ThingDef>.GetNamed("Marble", false), building.Position, map);
+            }
+
+            return false;
         }
     }
 }

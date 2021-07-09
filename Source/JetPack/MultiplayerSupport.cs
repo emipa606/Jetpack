@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using HarmonyLib;
 using Multiplayer.API;
 using Verse;
@@ -10,6 +9,9 @@ namespace JetPack
     [StaticConstructorOnStartup]
     internal static class MultiplayerSupport
     {
+        // Token: 0x04000035 RID: 53
+        private static readonly Harmony harmony = new Harmony("rimworld.pelador.jetpack.multiplayersupport");
+
         // Token: 0x06000074 RID: 116 RVA: 0x0000552C File Offset: 0x0000372C
         static MultiplayerSupport()
         {
@@ -17,30 +19,32 @@ namespace JetPack
             {
                 return;
             }
-            MP.RegisterSyncMethod(typeof(JetPackApparel), "UseJetPack", null);
-            MP.RegisterSyncMethod(typeof(JetPackApparel), "ToggleSlowBurn", null);
-            MP.RegisterSyncMethod(typeof(JetPackApparel), "RefuelJP", null);
-            MP.RegisterSyncMethod(typeof(JetPackApparel), "DropFuelJP", null);
-            MP.RegisterSyncMethod(typeof(JetPackApparel), "ChangeFuelJP", null);
-            MP.RegisterSyncMethod(typeof(JetPackApparel), "DebugUseJP", null);
-            MethodInfo[] array = new MethodInfo[]
+
+            MP.RegisterSyncMethod(typeof(JetPackApparel), "UseJetPack");
+            MP.RegisterSyncMethod(typeof(JetPackApparel), "ToggleSlowBurn");
+            MP.RegisterSyncMethod(typeof(JetPackApparel), "RefuelJP");
+            MP.RegisterSyncMethod(typeof(JetPackApparel), "DropFuelJP");
+            MP.RegisterSyncMethod(typeof(JetPackApparel), "ChangeFuelJP");
+            MP.RegisterSyncMethod(typeof(JetPackApparel), "DebugUseJP");
+            MethodInfo[] array =
             {
-                AccessTools.Method(typeof(JPInjury), "CheckForExplosion", null, null),
-                AccessTools.Method(typeof(JPInjury), "DoJPRelatedInjury", null, null),
-                AccessTools.Method(typeof(JPInjury), "SetUpInjVars", null, null),
-                AccessTools.Method(typeof(JPSkyFaller), "JPImpact", null, null),
-                AccessTools.Method(typeof(JPSkyFaller), "JPIgnite", null, null)
+                AccessTools.Method(typeof(JPInjury), "CheckForExplosion"),
+                AccessTools.Method(typeof(JPInjury), "DoJPRelatedInjury"),
+                AccessTools.Method(typeof(JPInjury), "SetUpInjVars"),
+                AccessTools.Method(typeof(JPSkyFaller), "JPImpact"),
+                AccessTools.Method(typeof(JPSkyFaller), "JPIgnite")
             };
-            for (int i = 0; i < array.Length; i++)
+            foreach (var methodInfo in array)
             {
-                MultiplayerSupport.FixRNG(array[i]);
+                FixRNG(methodInfo);
             }
         }
 
         // Token: 0x06000075 RID: 117 RVA: 0x0000566E File Offset: 0x0000386E
         private static void FixRNG(MethodInfo method)
         {
-            MultiplayerSupport.harmony.Patch(method, new HarmonyMethod(typeof(MultiplayerSupport), "FixRNGPre", null), new HarmonyMethod(typeof(MultiplayerSupport), "FixRNGPos", null), null, null);
+            harmony.Patch(method, new HarmonyMethod(typeof(MultiplayerSupport), "FixRNGPre"),
+                new HarmonyMethod(typeof(MultiplayerSupport), "FixRNGPos"));
         }
 
         // Token: 0x06000076 RID: 118 RVA: 0x000056A8 File Offset: 0x000038A8
@@ -54,8 +58,5 @@ namespace JetPack
         {
             Rand.PopState();
         }
-
-        // Token: 0x04000035 RID: 53
-        private static Harmony harmony = new Harmony("rimworld.pelador.jetpack.multiplayersupport");
     }
 }

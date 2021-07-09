@@ -1,5 +1,4 @@
-﻿using System;
-using HarmonyLib;
+﻿using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -17,11 +16,13 @@ namespace JetPack
             {
                 return;
             }
-            Thing thing = req.Thing;
+
+            var thing = req.Thing;
             if (!(thing is Pawn))
             {
                 return;
             }
+
             if (___stat == StatDefOf.MoveSpeed)
             {
                 __result += JPUtility.GetSlowBurn(thing as Pawn);

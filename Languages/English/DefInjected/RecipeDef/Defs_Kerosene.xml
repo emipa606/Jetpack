@@ -1,15 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <!-- Recipes -->
-
   <MakeJPKerosene.label>Make Kerosene</MakeJPKerosene.label>
   <MakeJPKerosene.description>Make 5 Kerosene.</MakeJPKerosene.description>
   <MakeJPKerosene.jobString>Preparing Kerosene.</MakeJPKerosene.jobString>
-
   <MakeBulkJPKerosene.label>Make Kerosene in Bulk</MakeBulkJPKerosene.label>
   <MakeBulkJPKerosene.description>Make 25 Kerosene.</MakeBulkJPKerosene.description>
   <MakeBulkJPKerosene.jobString>Preparing Kerosene.</MakeBulkJPKerosene.jobString>
-
-
 </LanguageData>

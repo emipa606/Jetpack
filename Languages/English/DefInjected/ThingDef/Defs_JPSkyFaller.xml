@@ -1,24 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <!-- Back Jet Pack -->
-
   <SFJetPack.label>JetPack Skyfaller</SFJetPack.label>
-
-
   <!-- Back Boost Pack -->
-
   <SFBoostPack.label>BoostPack Skyfaller</SFBoostPack.label>
-
-
   <!-- Regular Power Armour -->
-
   <SFJetPackPowArm.label>JetPack Skyfaller</SFJetPackPowArm.label>
-
-
   <!-- TCG Power Armour -->
-
   <SFJetPackCGear.label>JetPack Skyfaller (TC)</SFJetPackCGear.label>
-
-
 </LanguageData>

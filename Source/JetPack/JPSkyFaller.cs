@@ -10,121 +10,156 @@ namespace JetPack
     // Token: 0x02000012 RID: 18
     public class JPSkyFaller : Skyfaller
     {
+        // Token: 0x04000024 RID: 36
+        private readonly SoundDef JumpSound = DefDatabase<SoundDef>.GetNamed("JetPack", false);
+
+        // Token: 0x04000023 RID: 35
+        private bool anticipationSoundPlayed;
+
+        // Token: 0x04000026 RID: 38
+        private bool PilotRoofPunchDown;
+
+        // Token: 0x04000025 RID: 37
+        private bool PilotRoofPunchUp;
+
+        // Token: 0x04000027 RID: 39
+        private int ticksToHeadAche;
+
         // Token: 0x0600004A RID: 74 RVA: 0x0000417C File Offset: 0x0000237C
         public override void Tick()
         {
-            this.innerContainer.ThingOwnerTick(true);
-            this.ticksToImpact--;
-            this.ticksToHeadAche++;
-            Vector3 drawLoc = base.DrawPos;
-            if (this.ticksToImpact % 3 == 0)
+            innerContainer.ThingOwnerTick();
+            ticksToImpact--;
+            ticksToHeadAche++;
+            var drawLoc = base.DrawPos;
+            if (ticksToImpact % 3 == 0)
             {
-                int numMotes = Math.Min(2, this.def.skyfaller.motesPerCell);
-                for (int i = 0; i < numMotes; i++)
+                var numMotes = Math.Min(2, def.skyfaller.motesPerCell);
+                for (var i = 0; i < numMotes; i++)
                 {
-                    MoteMaker.ThrowSmoke(drawLoc, base.Map, 2f);
+                    FleckMaker.ThrowSmoke(drawLoc, Map, 2f);
                 }
             }
-            if (this.ticksToImpact % 25 == 0 && this.JumpSound != null)
+
+            if (ticksToImpact % 25 == 0 && JumpSound != null)
             {
-                IntVec3 SoundPos = IntVec3Utility.ToIntVec3(drawLoc);
-                SoundStarter.PlayOneShot(this.JumpSound, new TargetInfo(SoundPos, base.Map, false));
+                var SoundPos = drawLoc.ToIntVec3();
+                JumpSound.PlayOneShot(new TargetInfo(SoundPos, Map));
             }
-            if (this.ticksToHeadAche == 3 && Settings.AllowFire)
+
+            if (ticksToHeadAche == 3 && Settings.AllowFire)
             {
-                this.JPIgnite(IntVec3Utility.ToIntVec3(drawLoc), base.Map);
+                JPIgnite(drawLoc.ToIntVec3(), Map);
             }
-            if (this.ticksToHeadAche == 10)
+
+            if (ticksToHeadAche == 10)
             {
-                this.JPHitRoof(true);
+                JPHitRoof(true);
             }
-            if (this.ticksToImpact == 15)
+
+            if (ticksToImpact == 15)
             {
-                this.JPHitRoof(false);
+                JPHitRoof(false);
             }
-            if (!this.anticipationSoundPlayed && this.def.skyfaller.anticipationSound != null && this.ticksToImpact < this.def.skyfaller.anticipationSoundTicks)
+
+            if (!anticipationSoundPlayed && def.skyfaller.anticipationSound != null &&
+                ticksToImpact < def.skyfaller.anticipationSoundTicks)
             {
-                this.anticipationSoundPlayed = true;
-                SoundStarter.PlayOneShot(this.def.skyfaller.anticipationSound, new TargetInfo(base.Position, base.Map, false));
+                anticipationSoundPlayed = true;
+                def.skyfaller.anticipationSound.PlayOneShot(new TargetInfo(Position, Map));
             }
-            if (this.ticksToImpact == 3)
+
+            if (ticksToImpact == 3)
             {
-                this.EjectPilot();
+                EjectPilot();
             }
-            if (this.ticksToImpact == 0)
+
+            if (ticksToImpact == 0)
             {
-                this.JPImpact();
+                JPImpact();
                 return;
             }
-            if (this.ticksToImpact < 0)
+
+            if (ticksToImpact >= 0)
             {
-                Log.Error("ticksToImpact < 0. Was there an exception? Destroying skyfaller.", false);
-                this.EjectPilot();
-                this.Destroy(0);
+                return;
             }
+
+            Log.Error("ticksToImpact < 0. Was there an exception? Destroying skyfaller.");
+            EjectPilot();
+            Destroy();
         }
 
         // Token: 0x0600004B RID: 75 RVA: 0x00004318 File Offset: 0x00002518
         private void EjectPilot()
         {
-            Thing pilot = this.GetThingForGraphic();
+            var pilot = GetThingForGraphic();
             if (pilot != null)
             {
-                GenPlace.TryPlaceThing(pilot, base.Position, base.Map, ThingPlaceMode.Near, delegate (Thing thing, int count)
+                GenPlace.TryPlaceThing(pilot, Position, Map, ThingPlaceMode.Near, delegate(Thing thing, int _)
                 {
                     PawnUtility.RecoverFromUnwalkablePositionOrKill(thing.Position, thing.Map);
-                    if (thing.def.Fillage == FillCategory.Full && this.def.skyfaller.CausesExplosion && thing.Position.InHorDistOf(base.Position, this.def.skyfaller.explosionRadius))
+                    if (thing.def.Fillage == FillCategory.Full && def.skyfaller.CausesExplosion &&
+                        thing.Position.InHorDistOf(Position, def.skyfaller.explosionRadius))
                     {
-                        base.Map.terrainGrid.Notify_TerrainDestroyed(thing.Position);
+                        Map.terrainGrid.Notify_TerrainDestroyed(thing.Position);
                     }
-                    this.CheckDrafting(thing);
-                    JPInjury.CheckDFA(thing, base.Position);
-                    this.CheckAndApplyPostInjury(thing);
+
+                    CheckDrafting(thing);
+                    JPInjury.CheckDFA(thing, Position);
+                    CheckAndApplyPostInjury(thing);
                     if (Settings.CooldownTime > 0)
                     {
-                        this.JPApplyCooldown(thing, Math.Min(10, Settings.CooldownTime));
+                        JPApplyCooldown(thing, Math.Min(10, Settings.CooldownTime));
                     }
-                }, null, default);
+                });
             }
         }
 
         // Token: 0x0600004C RID: 76 RVA: 0x0000435C File Offset: 0x0000255C
         internal void JPApplyCooldown(Thing pilot, int cd)
         {
-            Apparel JP = JPUtility.GetWornJP(pilot);
-            if (JP != null && JP is JetPackApparel)
+            var JP = JPUtility.GetWornJP(pilot);
+            if (JP is JetPackApparel apparel)
             {
-                (JP as JetPackApparel).JPCooldownTicks = Math.Max(0, 60 * cd);
+                apparel.JPCooldownTicks = Math.Max(0, 60 * cd);
             }
         }
 
         // Token: 0x0600004D RID: 77 RVA: 0x00004390 File Offset: 0x00002590
         internal void CheckAndApplyPostInjury(Thing pilot)
         {
-            if (this.PilotRoofPunchUp)
+            if (PilotRoofPunchUp)
             {
                 JPInjury.DoJPRelatedInjury(pilot, true, false, null, false);
-                this.PilotRoofPunchUp = false;
+                PilotRoofPunchUp = false;
             }
-            if (this.PilotRoofPunchDown)
+
+            if (!PilotRoofPunchDown)
             {
-                JPInjury.DoJPRelatedInjury(pilot, false, false, null, true);
-                this.PilotRoofPunchDown = false;
+                return;
             }
+
+            JPInjury.DoJPRelatedInjury(pilot, false, false, null, true);
+            PilotRoofPunchDown = false;
         }
 
         // Token: 0x0600004E RID: 78 RVA: 0x000043C4 File Offset: 0x000025C4
         internal void CheckDrafting(Thing pilot)
         {
-            if (pilot != null && pilot is Pawn)
+            if (pilot is not Pawn)
             {
-                Apparel JP = JPUtility.GetWornJP(pilot);
-                if (JP != null && (JP as JetPackApparel).JPPilotIsDrafted)
-                {
-                    (JP as JetPackApparel).JPPilotIsDrafted = false;
-                    (pilot as Pawn).drafter.Drafted = true;
-                }
+                return;
             }
+
+            var JP = JPUtility.GetWornJP(pilot);
+            if (JP == null || !((JetPackApparel) JP).JPPilotIsDrafted)
+            {
+                return;
+            }
+
+            (JP as JetPackApparel).JPPilotIsDrafted = false;
+            ((Pawn) pilot).drafter.Drafted = true;
         }
 
         // Token: 0x0600004F RID: 79 RVA: 0x00004410 File Offset: 0x00002610
@@ -140,147 +175,160 @@ namespace JetPack
         private Thing GetThingForGraphic()
         {
             Thing pilot = null;
-            if (this.innerContainer.Any && this.innerContainer.Count > 0)
+            if (!innerContainer.Any || innerContainer.Count <= 0)
             {
-                for (int i = 0; i < this.innerContainer.Count; i++)
+                return null;
+            }
+
+            foreach (var thingchk in innerContainer)
+            {
+                if (thingchk is Pawn)
                 {
-                    Thing thingchk = this.innerContainer[i];
-                    if (thingchk is Pawn)
-                    {
-                        pilot = thingchk;
-                    }
+                    pilot = thingchk;
                 }
             }
+
             return pilot as Pawn;
         }
 
         // Token: 0x06000051 RID: 81 RVA: 0x00004498 File Offset: 0x00002698
         internal void JPHitRoof(bool up)
         {
-            if (!this.def.skyfaller.hitRoof)
+            if (!def.skyfaller.hitRoof)
             {
                 return;
             }
+
             CellRect cr;
             if (up)
             {
-                IntVec3 hrpcell = IntVec3Utility.ToIntVec3(base.DrawPos);
-                IntVec2 punchsize = new IntVec2(3, 3);
-                cr = GenAdj.OccupiedRect(hrpcell, base.Rotation, punchsize);
+                var hrpcell = base.DrawPos.ToIntVec3();
+                var punchsize = new IntVec2(3, 3);
+                cr = GenAdj.OccupiedRect(hrpcell, Rotation, punchsize);
             }
             else
             {
-                cr = GenAdj.OccupiedRect(this);
+                cr = this.OccupiedRect();
             }
-            if (cr.Cells.Any((IntVec3 x) => GridsUtility.Roofed(x, this.Map)))
+
+            if (!cr.Cells.Any(x => x.Roofed(Map)))
             {
-                RoofDef roof = GridsUtility.GetRoof(cr.Cells.First((IntVec3 x) => GridsUtility.Roofed(x, this.Map)), base.Map);
-                if (!SoundDefHelper.NullOrUndefined(roof.soundPunchThrough))
+                return;
+            }
+
+            var roof = cr.Cells.First(x => x.Roofed(Map)).GetRoof(Map);
+            if (!roof.soundPunchThrough.NullOrUndefined())
+            {
+                roof.soundPunchThrough.PlayOneShot(new TargetInfo(Position, Map));
+            }
+
+            RoofCollapserImmediate.DropRoofInCells(cr.ExpandedBy(1).ClipInsideMap(Map).Cells.Where(
+                delegate(IntVec3 c)
                 {
-                    SoundStarter.PlayOneShot(roof.soundPunchThrough, new TargetInfo(base.Position, base.Map, false));
-                }
-                RoofCollapserImmediate.DropRoofInCells(cr.ExpandedBy(1).ClipInsideMap(base.Map).Cells.Where(delegate (IntVec3 c)
-                {
-                    if (!GenGrid.InBounds(c, this.Map))
+                    if (!c.InBounds(Map))
                     {
                         return false;
                     }
+
                     if (cr.Contains(c))
                     {
                         return true;
                     }
-                    if (GridsUtility.GetFirstPawn(c, this.Map) != null)
+
+                    if (c.GetFirstPawn(Map) != null)
                     {
                         return false;
                     }
-                    Building edifice = GridsUtility.GetEdifice(c, this.Map);
+
+                    var edifice = c.GetEdifice(Map);
                     return edifice == null || !edifice.def.holdsRoof;
-                }), base.Map, null);
-                if (up)
-                {
-                    this.PilotRoofPunchUp = true;
-                    return;
-                }
-                this.PilotRoofPunchDown = true;
+                }), Map);
+            if (up)
+            {
+                PilotRoofPunchUp = true;
+                return;
             }
+
+            PilotRoofPunchDown = true;
         }
 
         // Token: 0x06000052 RID: 82 RVA: 0x000045CC File Offset: 0x000027CC
         public void JPImpact()
         {
-            if (this.def.skyfaller.CausesExplosion)
+            if (def.skyfaller.CausesExplosion)
             {
-                GenExplosion.DoExplosion(base.Position, base.Map, this.def.skyfaller.explosionRadius, this.def.skyfaller.explosionDamage, null, GenMath.RoundRandom((float)this.def.skyfaller.explosionDamage.defaultDamage * this.def.skyfaller.explosionDamageFactor), -1f, null, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false, null, null);
+                GenExplosion.DoExplosion(Position, Map, def.skyfaller.explosionRadius, def.skyfaller.explosionDamage,
+                    null,
+                    GenMath.RoundRandom(def.skyfaller.explosionDamage.defaultDamage *
+                                        def.skyfaller.explosionDamageFactor));
             }
-            for (int num = this.innerContainer.Count - 1; num >= 0; num--)
+
+            for (var num = innerContainer.Count - 1; num >= 0; num--)
             {
-                GenPlace.TryPlaceThing(this.innerContainer[num], base.Position, base.Map, ThingPlaceMode.Near, delegate (Thing thing, int count)
-                {
-                    PawnUtility.RecoverFromUnwalkablePositionOrKill(thing.Position, thing.Map);
-                    if (thing.def.Fillage == FillCategory.Full && this.def.skyfaller.CausesExplosion && thing.Position.InHorDistOf(base.Position, this.def.skyfaller.explosionRadius))
+                GenPlace.TryPlaceThing(innerContainer[num], Position, Map, ThingPlaceMode.Near,
+                    delegate(Thing thing, int _)
                     {
-                        base.Map.terrainGrid.Notify_TerrainDestroyed(thing.Position);
-                    }
-                }, null, default);
+                        PawnUtility.RecoverFromUnwalkablePositionOrKill(thing.Position, thing.Map);
+                        if (thing.def.Fillage == FillCategory.Full && def.skyfaller.CausesExplosion &&
+                            thing.Position.InHorDistOf(Position, def.skyfaller.explosionRadius))
+                        {
+                            Map.terrainGrid.Notify_TerrainDestroyed(thing.Position);
+                        }
+                    });
             }
-            this.innerContainer.ClearAndDestroyContents(0);
-            CellRect cellRect = GenAdj.OccupiedRect(this);
-            for (int i = 0; i < cellRect.Area * this.def.skyfaller.motesPerCell; i++)
+
+            innerContainer.ClearAndDestroyContents();
+            var cellRect = this.OccupiedRect();
+            for (var i = 0; i < cellRect.Area * def.skyfaller.motesPerCell; i++)
             {
-                MoteMaker.ThrowDustPuff(cellRect.RandomVector3, base.Map, 2f);
+                FleckMaker.ThrowDustPuff(cellRect.RandomVector3, Map, 2f);
             }
-            if (this.def.skyfaller.MakesShrapnel)
+
+            if (def.skyfaller.MakesShrapnel)
             {
-                SkyfallerShrapnelUtility.MakeShrapnel(base.Position, base.Map, this.shrapnelDirection, this.def.skyfaller.shrapnelDistanceFactor, this.def.skyfaller.metalShrapnelCountRange.RandomInRange, this.def.skyfaller.rubbleShrapnelCountRange.RandomInRange, true);
+                SkyfallerShrapnelUtility.MakeShrapnel(Position, Map, shrapnelDirection,
+                    def.skyfaller.shrapnelDistanceFactor, def.skyfaller.metalShrapnelCountRange.RandomInRange,
+                    def.skyfaller.rubbleShrapnelCountRange.RandomInRange, true);
             }
-            if (this.def.skyfaller.cameraShake > 0f && base.Map == Find.CurrentMap)
+
+            if (def.skyfaller.cameraShake > 0f && Map == Find.CurrentMap)
             {
-                Find.CameraDriver.shaker.DoShake(this.def.skyfaller.cameraShake);
+                Find.CameraDriver.shaker.DoShake(def.skyfaller.cameraShake);
             }
-            if (this.def.skyfaller.impactSound != null)
-            {
-                SoundStarter.PlayOneShot(this.def.skyfaller.impactSound, SoundInfo.InMap(new TargetInfo(base.Position, base.Map, false), 0));
-            }
-            this.Destroy(0);
+
+            def.skyfaller.impactSound?.PlayOneShot(SoundInfo.InMap(new TargetInfo(Position, Map)));
+
+            Destroy();
         }
 
         // Token: 0x06000053 RID: 83 RVA: 0x00004800 File Offset: 0x00002A00
         public void JPIgnite(IntVec3 cell, Map map)
         {
-            Thing pilot = this.GetThingForGraphic();
-            if (pilot != null)
+            var pilot = GetThingForGraphic();
+            if (pilot == null)
             {
-                Apparel JP = JPUtility.GetWornJP(pilot);
-                if (JP != null)
-                {
-                    JetPackApparel jetPackApparel = JP as JetPackApparel;
-                    ThingDef fuel = jetPackApparel?.JPFuelItem;
-                    if (fuel != null)
-                    {
-                        float factor = JPUtility.GetIgnitionFactor(fuel);
-                        int Rnd = Rand.Range(1, 100);
-                        if ((float)Rnd < factor)
-                        {
-                            FireUtility.TryStartFireIn(cell, map, Math.Max(10f, factor - (float)Rnd) / 100f);
-                        }
-                    }
-                }
+                return;
+            }
+
+            var JP = JPUtility.GetWornJP(pilot);
+            if (JP == null)
+            {
+                return;
+            }
+
+            var jetPackApparel = JP as JetPackApparel;
+            var fuel = jetPackApparel?.JPFuelItem;
+            if (fuel == null)
+            {
+                return;
+            }
+
+            var factor = JPUtility.GetIgnitionFactor(fuel);
+            var Rnd = Rand.Range(1, 100);
+            if (Rnd < factor)
+            {
+                FireUtility.TryStartFireIn(cell, map, Math.Max(10f, factor - Rnd) / 100f);
             }
         }
-
-        // Token: 0x04000023 RID: 35
-        private bool anticipationSoundPlayed;
-
-        // Token: 0x04000024 RID: 36
-        private readonly SoundDef JumpSound = DefDatabase<SoundDef>.GetNamed("JetPack", false);
-
-        // Token: 0x04000025 RID: 37
-        private bool PilotRoofPunchUp;
-
-        // Token: 0x04000026 RID: 38
-        private bool PilotRoofPunchDown;
-
-        // Token: 0x04000027 RID: 39
-        private int ticksToHeadAche;
     }
 }
