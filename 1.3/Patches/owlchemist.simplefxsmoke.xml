@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/FleckDef[defName="Owl_SmokeHeavy"]</xpath>
+    <success>Always</success>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="JPKerosene_Generator"]/comps</xpath>
+          <value>
+            <li Class="Flecker.CompProperties_Smoker">
+              <fleckDef>Owl_SmokeHeavy</fleckDef>
+              <particleOffset>(-0.5,0,-0.5)</particleOffset>
+            </li>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

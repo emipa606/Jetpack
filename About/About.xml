@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>JetPack (Continued)</name>
   <packageId>Mlie.JetPack</packageId>
@@ -20,11 +20,11 @@
   <loadAfter>
     <li>brrainz.harmony</li>
   </loadAfter>
-  <description>[img]https://i.imgur.com/WAEzk68.png[/img]
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
 Update of peladors mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2002341555
 
-[img]https://i.imgur.com/7Gzt3Rg.png[/img]
+[img]https://i.imgur.com/pufA0kM.png[/img]
 
 [table]
 	[tr]
@@ -33,7 +33,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2002341555
 	[/tr]
 [/table]
 	
-[img]https://i.imgur.com/NOW7jU1.png[/img]
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
 
 [h1]Overview[/h1] V1.1
 
@@ -51,15 +51,15 @@ The pack cannot jump when under a roofed area or can jump to a location that is 
 
 The refuelling button allows an AI job/task of sourcing appropriate fuel and refuelling it. It also provides the ability to switch the fuel types available to the Jet Pack and to dump fuel.
 
-Kerosene has been added that can be distilled from Chemfuel at the biofuel refinery, which is a more efficient fuel to use for &quot;all&quot; Jet Packs. There is/are additional item(s) included here to help with the stock control of this fuel as alternative use.
+Kerosene has been added that can be distilled from Chemfuel at the biofuel refinery, which is a more efficient fuel to use for "all" Jet Packs. There is/are additional item(s) included here to help with the stock control of this fuel as alternative use.
 
-Order of efficiencies for fuel types with least first: Chemfuel  &lt; Hydrogen Peroxide &lt; Kerosene.
+Order of efficiencies for fuel types with least first: Chemfuel   Hydrogen Peroxide  Kerosene.
 
-The individual jet pack (not armour integrated) is set to use the &quot;Outer, waist&quot; body part area to allow for greatest flexibility with other clothing sets and items. This currently can cause some rendering issues with how some of the items are drawn (especially with Flak jackets and other overcoats). Note also that the clothing combination rules will automatically prevent you from wearing more than one item of apparel/clothing that is considered to be a jet pack. So for instance you cannot wear both an individual jet pack and an armour integrated version at the same time.
+The individual jet pack (not armour integrated) is set to use the "Outer, waist" body part area to allow for greatest flexibility with other clothing sets and items. This currently can cause some rendering issues with how some of the items are drawn (especially with Flak jackets and other overcoats). Note also that the clothing combination rules will automatically prevent you from wearing more than one item of apparel/clothing that is considered to be a jet pack. So for instance you cannot wear both an individual jet pack and an armour integrated version at the same time.
 
-The Booster pack is like the individual jet pack but it&apos;s flight configuration is changed so that it focuses more on lateral movement than lift, this makes the pack have a decreased jump range but improved speed and also gives this pack more capability when slow boosting. The fuel consumption rates are the same but the pack carries slightly less fuel.
+The Booster pack is like the individual jet pack but it's flight configuration is changed so that it focuses more on lateral movement than lift, this makes the pack have a decreased jump range but improved speed and also gives this pack more capability when slow boosting. The fuel consumption rates are the same but the pack carries slightly less fuel.
 
-The Jump Suit is an all-in-one fire retardant body garment that can be worn as an under layer. It&apos;s primary role being that of protection from heat and flames.
+The Jump Suit is an all-in-one fire retardant body garment that can be worn as an under layer. It's primary role being that of protection from heat and flames.
 
 [h1]Mod Options[/h1]
 
@@ -67,11 +67,11 @@ The Jump Suit is an all-in-one fire retardant body garment that can be worn as a
 
 2) Apply DFA (Death From Above) (Beta) (Also chance of injury to pilot, warning can DFA own colonists).
 
-3) Allow &quot;Roof Punching&quot;. (Chance of slight injuries to pilot) (Need to restart RW when changing this setting)
+3) Allow "Roof Punching". (Chance of slight injuries to pilot) (Need to restart RW when changing this setting)
 
 4) Allow slight chance (approx 10%, varies with fuel) to ignite flammable terrain on take off.
 
-5) Allow the Jet Packs to apply a slow burn mode (toggle command) that boosts the movement speed of the pilot on the ground. Will slowly use fuel as a result and the effects and fuel consumption are correlated with fuel efficiencies. The jet packs have a safety mechanism/valve to automatically &quot;suspend&quot; this use when the pilot is laying down. You do not have to do anything to restart this after suspension, it will reapply the boosting accordingly when the pilot&apos;s stance changes.
+5) Allow the Jet Packs to apply a slow burn mode (toggle command) that boosts the movement speed of the pilot on the ground. Will slowly use fuel as a result and the effects and fuel consumption are correlated with fuel efficiencies. The jet packs have a safety mechanism/valve to automatically "suspend" this use when the pilot is laying down. You do not have to do anything to restart this after suspension, it will reapply the boosting accordingly when the pilot's stance changes.
 
 6) Jet Pack explosion. Each time the jet pack is operated below a threshold of 33% of its health there is a chance it will explode. The chance also increases based on how badly damaged the jet pack is. And any resulting explosion relates to how much and what type of fuel is stored for use.
 
@@ -87,7 +87,7 @@ Includes recipes to convert standard power armour into the jet pack version.
 
 Can be loaded to existing save games.
 
-Removal will require all mod buildings and items to be removed from the game and would suggest not doing this when a pilot is &quot;airbourne&quot;.
+Removal will require all mod buildings and items to be removed from the game and would suggest not doing this when a pilot is "airbourne".
 
 (Note that the armour used in the demo video relates to the Tactical Charged Gear Mod version).
 
@@ -105,7 +105,7 @@ Using Rimefeller will add a refiner to make Kerosene.
 
 Multiplayer - native support (beta)
 
-Infused - Using the armour conversion recipes will &quot;NOT&quot; transfer existing infusion properties. However, any newly created jet pack armours have the normal potential for infusions themselves.
+Infused - Using the armour conversion recipes will "NOT" transfer existing infusion properties. However, any newly created jet pack armours have the normal potential for infusions themselves.
 
 [b]Supports Jet pack items from the following mods:[/b]
 
@@ -122,7 +122,7 @@ Infused - Using the armour conversion recipes will &quot;NOT&quot; transfer exis
 
 4) Bombing runs. Ability to drop equipped grenade during a jump. (tbd)
 
-5) &quot;Slam Burst&quot; - Boosting the jetpack into other pawns on the ground as a physical attack. Or DFTS (Death from the side).
+5) "Slam Burst" - Boosting the jetpack into other pawns on the ground as a physical attack. Or DFTS (Death from the side).
 
 
 (tbd = to be determined).
@@ -138,7 +138,7 @@ Graphic Revisions - Oleg Marko.
 (CC BY-NC-SA 4.0)
 
 
-[img]https://i.imgur.com/Rs6T6cr.png[/img]
+[img]https://i.imgur.com/PwoNOj4.png[/img]
 [list]
 [*] See if the the error persists if you just have this mod and its requirements active.
 [*] If not, try adding your other mods until it happens again.
@@ -146,7 +146,5 @@ Graphic Revisions - Oleg Marko.
 [*] For best support, please use the Discord-channel for error-reporting.
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
-[/list]
-</description>
+[/list]</description>
 </ModMetaData>
-
