@@ -1,9 +1,7 @@
-﻿using System;
+using System;
 
-namespace JetPack
+namespace JetPack;
+
+internal class StaticConstructorOnStartUpAttribute : Attribute
 {
-    // Token: 0x02000017 RID: 23
-    internal class StaticConstructorOnStartUpAttribute : Attribute
-    {
-    }
 }

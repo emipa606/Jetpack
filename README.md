@@ -5,6 +5,8 @@
 Update of peladors mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2002341555
 
+- Added support for https://steamcommunity.com/sharedfiles/filedetails/?id=2574489704]Simple FX: Smoke
+
 ![Image](https://i.imgur.com/pufA0kM.png)
 
 	

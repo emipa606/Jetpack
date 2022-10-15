@@ -1,5 +1,9 @@
 # Changelog for Jetpack
 
+1.4.1 - Mod updated for 1.4 and passed autotests.
+Used DeepL to update translations for ChineseSimplified, Czech, Danish, Estonian, Finnish, French, German, Hungarian, Japanese, Polish, Portuguese, Romanian, Russian, Slovak, Spanish, Swedish, Turkish
+
+
 1.0.6.0 - Added support for Simple FX: Smoke
 
 

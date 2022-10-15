@@ -1,32 +1,29 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
-namespace JetPack
+namespace JetPack;
+
+[HarmonyPatch(typeof(StatWorker), "GetValueUnfinalized")]
+public class GetValueUnfinalized_JPPostPatch
 {
-    // Token: 0x0200000C RID: 12
-    [HarmonyPatch(typeof(StatWorker), "GetValueUnfinalized")]
-    public class GetValueUnfinalized_JPPostPatch
+    [HarmonyPostfix]
+    public static void PostFix(ref float __result, StatWorker __instance, StatDef ___stat, StatRequest req)
     {
-        // Token: 0x0600001D RID: 29 RVA: 0x00002580 File Offset: 0x00000780
-        [HarmonyPostfix]
-        public static void PostFix(ref float __result, StatWorker __instance, StatDef ___stat, StatRequest req)
+        if (!req.HasThing)
         {
-            if (!req.HasThing)
-            {
-                return;
-            }
+            return;
+        }
 
-            var thing = req.Thing;
-            if (!(thing is Pawn))
-            {
-                return;
-            }
+        var thing = req.Thing;
+        if (!(thing is Pawn pawn))
+        {
+            return;
+        }
 
-            if (___stat == StatDefOf.MoveSpeed)
-            {
-                __result += JPUtility.GetSlowBurn(thing as Pawn);
-            }
+        if (___stat == StatDefOf.MoveSpeed)
+        {
+            __result += JPUtility.GetSlowBurn(pawn);
         }
     }
 }

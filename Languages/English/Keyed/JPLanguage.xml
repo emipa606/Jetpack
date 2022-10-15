@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <!-- Settings -->
+  <JetPack.ModVersion>Installed mod-version: {0}</JetPack.ModVersion>
   <JetPack.Name>Jet Pack</JetPack.Name>
   <JetPack.RoofPunch>Allow JetPacks to Roof Punch (if capable):</JetPack.RoofPunch>
   <JetPack.ApplyDFA>Apply DFA (Death From Above) use:</JetPack.ApplyDFA>

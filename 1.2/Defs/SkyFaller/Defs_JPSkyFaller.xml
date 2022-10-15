@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Back Jet Pack -->
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SFJetPack</defName>
+    <label>JetPack Skyfaller</label>
+    <thingClass>JetPack.JPSkyFaller</thingClass>
+    <size>(1, 1)</size>
+    <useHitPoints>false</useHitPoints>
+    <drawOffscreen>true</drawOffscreen>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <skyfaller>
+      <movementType>ConstantSpeed</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowRectangle</shadow>
+      <shadowSize>(1, 1)</shadowSize>
+      <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+      <motesPerCell>5</motesPerCell>
+      <speed>0.10</speed>
+      <hitRoof>true</hitRoof>
+    </skyfaller>
+  </ThingDef>
+  <!-- Back Boost Pack -->
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SFBoostPack</defName>
+    <label>BoostPack Skyfaller</label>
+    <thingClass>JetPack.JPSkyFaller</thingClass>
+    <size>(1, 1)</size>
+    <useHitPoints>false</useHitPoints>
+    <drawOffscreen>true</drawOffscreen>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <skyfaller>
+      <movementType>ConstantSpeed</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowRectangle</shadow>
+      <shadowSize>(1, 1)</shadowSize>
+      <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+      <motesPerCell>5</motesPerCell>
+      <speed>0.25</speed>
+      <hitRoof>true</hitRoof>
+    </skyfaller>
+  </ThingDef>
+  <!-- Regular Power Armour -->
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SFJetPackPowArm</defName>
+    <label>JetPack Skyfaller</label>
+    <thingClass>JetPack.JPSkyFaller</thingClass>
+    <size>(1, 1)</size>
+    <useHitPoints>false</useHitPoints>
+    <drawOffscreen>true</drawOffscreen>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <skyfaller>
+      <movementType>ConstantSpeed</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowRectangle</shadow>
+      <shadowSize>(1, 1)</shadowSize>
+      <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+      <motesPerCell>5</motesPerCell>
+      <speed>0.11</speed>
+      <hitRoof>true</hitRoof>
+    </skyfaller>
+  </ThingDef>
+  <!-- TCG Power Armour -->
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SFJetPackCGear</defName>
+    <label>JetPack Skyfaller (TC)</label>
+    <thingClass>JetPack.JPSkyFaller</thingClass>
+    <size>(1, 1)</size>
+    <useHitPoints>false</useHitPoints>
+    <drawOffscreen>true</drawOffscreen>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <skyfaller>
+      <movementType>ConstantSpeed</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowRectangle</shadow>
+      <shadowSize>(1, 1)</shadowSize>
+      <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+      <motesPerCell>5</motesPerCell>
+      <speed>0.13</speed>
+      <hitRoof>true</hitRoof>
+    </skyfaller>
+  </ThingDef>
+</Defs>

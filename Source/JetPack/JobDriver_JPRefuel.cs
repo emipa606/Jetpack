@@ -1,45 +1,43 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace JetPack
+namespace JetPack;
+
+public class JobDriver_JPRefuel : JobDriver
 {
-    // Token: 0x0200000E RID: 14
-    public class JobDriver_JPRefuel : JobDriver
+    public override bool TryMakePreToilReservations(bool errorOnFailed)
     {
-        // Token: 0x0600003B RID: 59 RVA: 0x00003884 File Offset: 0x00001A84
-        public override bool TryMakePreToilReservations(bool errorOnFailed)
-        {
-            return pawn.Reserve(job.targetA, job);
-        }
+        return pawn.Reserve(job.targetA, job);
+    }
 
-        // Token: 0x0600003C RID: 60 RVA: 0x000038A6 File Offset: 0x00001AA6
-        protected override IEnumerable<Toil> MakeNewToils()
+    protected override IEnumerable<Toil> MakeNewToils()
+    {
+        var actor = GetActor();
+        this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
+        yield return Toils_Reserve.Reserve(TargetIndex.A);
+        yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch)
+            .FailOnDespawnedNullOrForbidden(TargetIndex.A);
+        var refuel = Toils_General.Wait(180);
+        refuel.FailOnDespawnedNullOrForbidden(TargetIndex.A);
+        refuel.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
+        refuel.WithProgressBarToilDelay(TargetIndex.A);
+        yield return refuel;
+        yield return new Toil
         {
-            var actor = GetActor();
-            this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
-            yield return Toils_Reserve.Reserve(TargetIndex.A);
-            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch)
-                .FailOnDespawnedNullOrForbidden(TargetIndex.A);
-            var refuel = Toils_General.Wait(180);
-            refuel.FailOnDespawnedNullOrForbidden(TargetIndex.A);
-            refuel.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
-            refuel.WithProgressBarToilDelay(TargetIndex.A);
-            yield return refuel;
-            yield return new Toil
+            initAction = delegate
             {
-                initAction = delegate
+                if (actor != null && actor.apparel.WornApparelCount == 0)
                 {
-                    var obj = actor;
-                    if (obj != null && obj.apparel.WornApparelCount == 0)
-                    {
-                        //Log.Message("True: obj != null && obj.apparel.WornApparelCount == 0");
-                        EndJobWith(JobCondition.Incompletable);
-                        return;
-                    }
+                    //Log.Message("True: obj != null && obj.apparel.WornApparelCount == 0");
+                    EndJobWith(JobCondition.Incompletable);
+                    return;
+                }
 
-                    Apparel JetPack = null;
+                Apparel JetPack = null;
+                if (actor != null)
+                {
                     var list = actor.apparel.WornApparel;
                     foreach (var jetPack in list)
                     {
@@ -51,45 +49,45 @@ namespace JetPack
                         JetPack = jetPack;
                         break;
                     }
-
-                    if (JetPack == null)
-                    {
-                        EndJobWith(JobCondition.Incompletable);
-                        return;
-                    }
-
-                    //Log.Message("True: JetPack is JetPackApparel");
-                    var JPFuel = (JetPack as JetPackApparel).JPFuelAmount;
-                    var JPMax = (JetPack as JetPackApparel).JPFuelMax;
-
-                    if (JPMax - JPFuel <= 0)
-                    {
-                        //Log.Message("True: JPMax - JPFuel <= 0");
-                        EndJobWith(JobCondition.Incompletable);
-                        return;
-                    }
-
-                    if (TargetThingA.stackCount > JPMax - JPFuel)
-                    {
-                        //Log.Message("True: this.TargetThingA.stackCount > JPMax - JPFuel");
-                        (JetPack as JetPackApparel).JPFuelAmount = JPMax;
-                        TargetThingA.stackCount -= JPMax - JPFuel;
-                        Messages.Message("JetPack.FullyRefueled".Translate(actor.LabelShort), actor,
-                            MessageTypeDefOf.NeutralEvent, false);
-                        EndJobWith(JobCondition.Succeeded);
-                        return;
-                    }
-
-                    //Log.Message("False");
-                    (JetPack as JetPackApparel).JPFuelAmount = JPFuel + TargetThingA.stackCount;
-                    Messages.Message(
-                        "JetPack.Refueled".Translate(actor.LabelShort.CapitalizeFirst(),
-                            TargetThingA.stackCount.ToString(), TargetThingA.stackCount > 1 ? "s" : ""), actor,
-                        MessageTypeDefOf.NeutralEvent, false);
-                    TargetThingA.Destroy();
-                    EndJobWith(JobCondition.Succeeded);
                 }
-            };
-        }
+
+                if (JetPack == null)
+                {
+                    EndJobWith(JobCondition.Incompletable);
+                    return;
+                }
+
+                //Log.Message("True: JetPack is JetPackApparel");
+                var JPFuel = (JetPack as JetPackApparel).JPFuelAmount;
+                var JPMax = (JetPack as JetPackApparel).JPFuelMax;
+
+                if (JPMax - JPFuel <= 0)
+                {
+                    //Log.Message("True: JPMax - JPFuel <= 0");
+                    EndJobWith(JobCondition.Incompletable);
+                    return;
+                }
+
+                if (TargetThingA.stackCount > JPMax - JPFuel)
+                {
+                    //Log.Message("True: this.TargetThingA.stackCount > JPMax - JPFuel");
+                    (JetPack as JetPackApparel).JPFuelAmount = JPMax;
+                    TargetThingA.stackCount -= JPMax - JPFuel;
+                    Messages.Message("JetPack.FullyRefueled".Translate(actor.LabelShort), actor,
+                        MessageTypeDefOf.NeutralEvent, false);
+                    EndJobWith(JobCondition.Succeeded);
+                    return;
+                }
+
+                //Log.Message("False");
+                (JetPack as JetPackApparel).JPFuelAmount = JPFuel + TargetThingA.stackCount;
+                Messages.Message(
+                    "JetPack.Refueled".Translate(actor.LabelShort.CapitalizeFirst(),
+                        TargetThingA.stackCount.ToString(), TargetThingA.stackCount > 1 ? "s" : ""), actor,
+                    MessageTypeDefOf.NeutralEvent, false);
+                TargetThingA.Destroy();
+                EndJobWith(JobCondition.Succeeded);
+            }
+        };
     }
 }
