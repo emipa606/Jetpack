@@ -3,8 +3,7 @@ using Verse;
 
 namespace JetPack;
 
-[HarmonyPatch(typeof(MapPawns))]
-[HarmonyPatch("AnyPawnBlockingMapRemoval", MethodType.Getter)]
+[HarmonyPatch(typeof(MapPawns), nameof(MapPawns.AnyPawnBlockingMapRemoval), MethodType.Getter)]
 internal static class AnyPawnBlockingMapRemoval_JPPostPatch
 {
     [HarmonyPriority(800)]

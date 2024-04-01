@@ -4,11 +4,11 @@ using Verse;
 
 namespace JetPack;
 
-[HarmonyPatch(typeof(StatWorker), "GetValueUnfinalized")]
+[HarmonyPatch(typeof(StatWorker), nameof(StatWorker.GetValueUnfinalized))]
 public class GetValueUnfinalized_JPPostPatch
 {
     [HarmonyPostfix]
-    public static void PostFix(ref float __result, StatWorker __instance, StatDef ___stat, StatRequest req)
+    public static void PostFix(ref float __result, StatDef ___stat, StatRequest req)
     {
         if (!req.HasThing)
         {
@@ -16,7 +16,7 @@ public class GetValueUnfinalized_JPPostPatch
         }
 
         var thing = req.Thing;
-        if (!(thing is Pawn pawn))
+        if (thing is not Pawn pawn)
         {
             return;
         }

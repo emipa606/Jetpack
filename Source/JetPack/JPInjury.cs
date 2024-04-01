@@ -9,6 +9,10 @@ namespace JetPack;
 public class JPInjury
 {
     internal const float PEP = 0.33f;
+    public static readonly BodyPartDef neck = DefDatabase<BodyPartDef>.GetNamedSilentFail("Neck");
+    public static readonly BodyPartDef insectHead = DefDatabase<BodyPartDef>.GetNamedSilentFail("InsectHead");
+    public static readonly BodyPartDef body = DefDatabase<BodyPartDef>.GetNamedSilentFail("Body");
+
 
     public static bool CheckForExplosion(JetPackApparel JP)
     {
@@ -216,16 +220,16 @@ public class JPInjury
         var potentials = new List<BodyPartRecord>();
         if (headspace)
         {
-            var body = Victim?.RaceProps.body;
-            if (body?.GetPartsWithDef(BodyPartDefOf.Head) != null)
+            var bodyDef = Victim?.RaceProps.body;
+            if (bodyDef?.GetPartsWithDef(BodyPartDefOf.Head) != null)
             {
                 potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Head));
             }
 
             var body2 = Victim?.RaceProps.body;
-            if (body2?.GetPartsWithDef(BodyPartDefOf.Neck) != null)
+            if (body2?.GetPartsWithDef(neck) != null)
             {
-                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Neck));
+                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(neck));
             }
 
             var body3 = Victim?.RaceProps.body;
@@ -241,9 +245,9 @@ public class JPInjury
             }
 
             var body5 = Victim?.RaceProps.body;
-            if (body5?.GetPartsWithDef(BodyPartDefOf.InsectHead) != null)
+            if (body5?.GetPartsWithDef(insectHead) != null)
             {
-                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(BodyPartDefOf.InsectHead));
+                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(insectHead));
             }
         }
         else
@@ -258,9 +262,9 @@ public class JPInjury
         if (potentials.Count <= 0)
         {
             var body7 = Victim?.RaceProps.body;
-            if (body7?.GetPartsWithDef(BodyPartDefOf.Body) != null)
+            if (body7?.GetPartsWithDef(body) != null)
             {
-                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Body));
+                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(body));
             }
         }
 

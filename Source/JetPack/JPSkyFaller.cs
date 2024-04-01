@@ -151,7 +151,8 @@ public class JPSkyFaller : Skyfaller
         pawn.drafter.Drafted = true;
     }
 
-    public override void DrawAt(Vector3 drawLoc, bool flip = false)
+
+    protected override void DrawAt(Vector3 drawLoc, bool flip = false)
     {
         if (GetThingForGraphic() is Pawn Pilot)
         {
@@ -311,7 +312,7 @@ public class JPSkyFaller : Skyfaller
         var Rnd = Rand.Range(1, 100);
         if (Rnd < factor)
         {
-            FireUtility.TryStartFireIn(cell, map, Math.Max(10f, factor - Rnd) / 100f);
+            FireUtility.TryStartFireIn(cell, map, Math.Max(10f, factor - Rnd) / 100f, null);
         }
     }
 }

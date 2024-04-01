@@ -2,6 +2,4 @@ using System;
 
 namespace JetPack;
 
-internal class StaticConstructorOnStartUpAttribute : Attribute
-{
-}
+internal class StaticConstructorOnStartUpAttribute : Attribute;

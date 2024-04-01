@@ -38,7 +38,7 @@ public class JPUtility
     {
         Apparel JP = null;
         bool b;
-        if (!(pilot is Pawn pawn))
+        if (pilot is not Pawn pawn)
         {
             b = false;
         }
@@ -63,7 +63,7 @@ public class JPUtility
         }
 
         var apparels = list;
-        if (apparels == null || apparels.Count <= 0)
+        if (apparels is not { Count: > 0 })
         {
             return null;
         }
@@ -107,10 +107,10 @@ public class JPUtility
     internal static List<string> GetSkyFallList()
     {
         var list = new List<string>();
-        list.AddDistinct("SFJetPack");
-        list.AddDistinct("SFJetPackPowArm");
-        list.AddDistinct("SFJetPackCGear");
-        list.AddDistinct("SFBoostPack");
+        list.AddDistinct(SK_PAK);
+        list.AddDistinct(SK_POW);
+        list.AddDistinct(SK_TCG);
+        list.AddDistinct(SK_BST);
         return list;
     }
 
@@ -118,13 +118,13 @@ public class JPUtility
     {
         var types = new List<string>
         {
-            "Chemfuel",
-            "JPKerosene"
+            JPFuel_Chemfuel,
+            JPFuel_Kerosene
         };
-        if (JPDef.defName == "Apparel_PowArmCGearJetPack" &&
-            DefDatabase<ThingDef>.GetNamed("MSHydrogenPeroxide", false) != null)
+        if (JPDef.defName == JP_TCG &&
+            DefDatabase<ThingDef>.GetNamed(JPFuel_H2O2, false) != null)
         {
-            types.Add("MSHydrogenPeroxide");
+            types.Add(JPFuel_H2O2);
         }
 
         return types;
@@ -151,9 +151,9 @@ public class JPUtility
     {
         var range = 20;
         var defName = fuel.defName;
-        if (defName != "MSHydrogenPeroxide")
+        if (defName != JPFuel_H2O2)
         {
-            if (defName == "JPKerosene")
+            if (defName == JPFuel_Kerosene)
             {
                 range = 25;
             }
@@ -163,7 +163,7 @@ public class JPUtility
             range = 23;
         }
 
-        if (JP.defName == "Apparel_BoosterJetPack")
+        if (JP.defName == JP_BST)
         {
             range = 10;
         }
@@ -184,9 +184,9 @@ public class JPUtility
         {
             slowBurnMoveOffset = 1.5f;
             var defName = (JP as JetPackApparel).JPFuelItem.defName;
-            if (defName != "MSHydrogenPeroxide")
+            if (defName != JPFuel_H2O2)
             {
-                if (defName == "JPKerosene")
+                if (defName == JPFuel_Kerosene)
                 {
                     slowBurnMoveOffset *= 1.2f;
                 }
@@ -197,7 +197,7 @@ public class JPUtility
             }
         }
 
-        if (JP.def.defName == "Apparel_BoosterJetPack")
+        if (JP.def.defName == JP_BST)
         {
             slowBurnMoveOffset *= 2f;
         }
@@ -214,9 +214,9 @@ public class JPUtility
     {
         var rate = 1f;
         var defName = fuel.defName;
-        if (defName != "MSHydrogenPeroxide")
+        if (defName != JPFuel_H2O2)
         {
-            if (defName == "JPKerosene")
+            if (defName == JPFuel_Kerosene)
             {
                 rate = 0.5f;
             }
@@ -233,9 +233,9 @@ public class JPUtility
     {
         var MC = 70f;
         var defName = fuel.defName;
-        if (defName != "MSHydrogenPeroxide")
+        if (defName != JPFuel_H2O2)
         {
-            if (defName == "JPKerosene")
+            if (defName == JPFuel_Kerosene)
             {
                 MC *= 2f;
             }
@@ -252,9 +252,9 @@ public class JPUtility
     {
         var factor = 10f;
         var defName = fuel.defName;
-        if (defName != "MSHydrogenPeroxide")
+        if (defName != JPFuel_H2O2)
         {
-            if (defName == "JPKerosene")
+            if (defName == JPFuel_Kerosene)
             {
                 factor *= 1.2f;
             }
@@ -376,7 +376,7 @@ public class JPUtility
         }
 
         var def2 = thing.def;
-        if (def2 == null || !(def2.BaseMass >= 5f))
+        if (def2 is not { BaseMass: >= 5f })
         {
             return false;
         }

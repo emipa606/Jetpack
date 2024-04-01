@@ -4,7 +4,7 @@ using Verse;
 
 namespace JetPack;
 
-[HarmonyPatch(typeof(GenSpawn), "SpawnBuildingAsPossible")]
+[HarmonyPatch(typeof(GenSpawn), nameof(GenSpawn.SpawnBuildingAsPossible))]
 public class GenSpawn_SpawnBuildingAsPossible_PrePatch
 {
     [HarmonyPrefix]

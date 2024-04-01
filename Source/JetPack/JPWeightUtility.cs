@@ -49,7 +49,7 @@ public class JPWeightUtility
         }
 
         var Eq = list;
-        if (Eq == null || Eq.Count <= 0)
+        if (Eq is not { Count: > 0 })
         {
             return weight;
         }
@@ -97,7 +97,7 @@ public class JPWeightUtility
         }
 
         var Inv = list;
-        if (Inv == null || Inv.Count <= 0)
+        if (Inv is not { Count: > 0 })
         {
             return weight;
         }
@@ -125,7 +125,7 @@ public class JPWeightUtility
         }
 
         var App = list;
-        if (App == null || App.Count <= 0)
+        if (App is not { Count: > 0 })
         {
             return weight;
         }

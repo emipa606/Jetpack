@@ -271,7 +271,7 @@ public class JetPackApparel : Apparel
         var pilot = Wearer;
         JPJumpRangeMax = JPUtility.GetJumpRange(pilot, def, JPFuelItem, JPJumpRangeMin);
         JPFuelRate = JPUtility.GetFuelRate(JPFuelItem);
-        if (Wearer == null || !Wearer.IsColonistPlayerControlled)
+        if (Wearer is not { IsColonistPlayerControlled: true })
         {
             yield break;
         }
@@ -718,7 +718,7 @@ public class JetPackApparel : Apparel
         var bestpoints = 0f;
         foreach (var targchk in listfuel)
         {
-            if (targchk.IsForbidden(pilot) || targchk?.Faction != null && !targchk.Faction.IsPlayer ||
+            if (targchk.IsForbidden(pilot) || targchk?.Faction is { IsPlayer: false } ||
                 !pilot.CanReserveAndReach(targchk, PathEndMode.ClosestTouch, Danger.None))
             {
                 continue;

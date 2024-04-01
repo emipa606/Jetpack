@@ -8,11 +8,11 @@ namespace JetPack;
 
 public class Command_JetPack : Command
 {
-    public static bool JPRoofPunch = Settings.RoofPunch;
+    public static readonly bool JPRoofPunch = Settings.RoofPunch;
 
-    internal static TargetingParameters targParms = ForJetPacksDestination();
+    internal static readonly TargetingParameters targParms = ForJetPacksDestination();
 
-    [NoTranslate] internal static string JPIconPath = "Things/Special/JetPackIcon";
+    [NoTranslate] internal static readonly string JPIconPath = "Things/Special/JetPackIcon";
 
     public Action<IntVec3> action;
 
@@ -27,8 +27,6 @@ public class Command_JetPack : Command
     public string JPSKFStr;
 
     public Pawn Pilot;
-
-    public override Color IconDrawColor => base.IconDrawColor;
 
     internal static TargetingParameters ForJetPacksDestination()
     {
@@ -50,9 +48,10 @@ public class Command_JetPack : Command
         base.ProcessInput(ev);
         SoundDefOf.Tick_Tiny.PlayOneShotOnCamera();
         var JPIcon = ContentFinder<Texture2D>.Get(JPIconPath);
-        Find.Targeter.BeginTargeting(targParms, delegate(LocalTargetInfo target) { action(target.Cell); }, Pilot,
-            null, JPIcon);
+        Find.Targeter.BeginTargeting(targParms, delegate(LocalTargetInfo target) { action(target.Cell); }, null, null,
+            Pilot, null, JPIcon, onUpdateAction: _ => GizmoUpdateOnMouseover());
     }
+
 
     public override void GizmoUpdateOnMouseover()
     {

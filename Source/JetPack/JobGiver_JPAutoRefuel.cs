@@ -71,7 +71,7 @@ public class JobGiver_JPAutoRefuel : ThinkNode_JobGiver
         var bestpoints = 0f;
         foreach (var targchk in listfuel)
         {
-            if (targchk.IsForbidden(pilot) || targchk?.Faction != null && !targchk.Faction.IsPlayer ||
+            if (targchk.IsForbidden(pilot) || targchk?.Faction is { IsPlayer: false } ||
                 !pilot.CanReserveAndReach(targchk, PathEndMode.ClosestTouch, Danger.None))
             {
                 continue;

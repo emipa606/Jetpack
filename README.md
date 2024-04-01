@@ -14,7 +14,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2002341555
 
 
 # Overview
- V1.1
+
 
 Provides jet pack capabilities.
 
@@ -45,83 +45,40 @@ The Jump Suit is an all-in-one fire retardant body garment that can be worn as a
 
 
 1) Exclude the use of WMDs and Heavy weapons with Jet packs.
-
 2) Apply DFA (Death From Above) (Beta) (Also chance of injury to pilot, warning can DFA own colonists).
-
 3) Allow "Roof Punching". (Chance of slight injuries to pilot) (Need to restart RW when changing this setting)
-
 4) Allow slight chance (approx 10%, varies with fuel) to ignite flammable terrain on take off.
-
 5) Allow the Jet Packs to apply a slow burn mode (toggle command) that boosts the movement speed of the pilot on the ground. Will slowly use fuel as a result and the effects and fuel consumption are correlated with fuel efficiencies. The jet packs have a safety mechanism/valve to automatically "suspend" this use when the pilot is laying down. You do not have to do anything to restart this after suspension, it will reapply the boosting accordingly when the pilot's stance changes.
-
 6) Jet Pack explosion. Each time the jet pack is operated below a threshold of 33% of its health there is a chance it will explode. The chance also increases based on how badly damaged the jet pack is. And any resulting explosion relates to how much and what type of fuel is stored for use.
-
 7) Auto-refuel allows you to set refuelling and the % fuel level you would like this to occur. (Colonists will only attempt to auto-refuel when they are not drafted, the manual option is still also available to use).
-
 8 ) Carrying capacity can be applied as a potential effect to the jump pack range and fuel use. This is a subtle change that is modified by the type of fuel used and type of pack. 
 
 # Mod details
 
 
 Additional research needed. (Individual Jet Pack requires the research for the powered armour jet pack).
-
 Includes recipes to convert standard power armour into the jet pack version.
-
 Can be loaded to existing save games.
 
 Removal will require all mod buildings and items to be removed from the game and would suggest not doing this when a pilot is "airbourne".
-
-(Note that the armour used in the demo video relates to the Tactical Charged Gear Mod version).
-
-(Note there is no AI at present with the use of the Jet Packs except for the refuelling process, it is a player interactive process mostly).
 
 # Compatibilty Notes
  *** Subject to Conversion ***
 
 If using the mod https://steamcommunity.com/sharedfiles/filedetails/?id=1561221991]RPG Style inventory then individual jet packs have been supported by the mod to go into a unique slot.
-
 With the use of the mod https://steamcommunity.com/sharedfiles/filedetails/?id=1620639986]Tactical Charged Gear a TC version of the jump pack is available.
-
 With the use of both TCG and https://steamcommunity.com/sharedfiles/filedetails/?id=1600830185]Medical Supplements mods, Hydrogen Peroxide can be used as a fuel which offers a slight improvement with performance to existing TC JPs as well as a fuel that will last significantly longer.
-
 Using Rimefeller will add a refiner to make Kerosene.
-
-Multiplayer - native support (beta)
-
 Infused - Using the armour conversion recipes will "NOT" transfer existing infusion properties. However, any newly created jet pack armours have the normal potential for infusions themselves.
 
 **Supports Jet pack items from the following mods:**
-
 https://steamcommunity.com/sharedfiles/filedetails/?id=1933848576][JDS] Star Wars Jango and Boba Fett
-
-
-# Future Considerations
-
-
-1) If an artist more capable than myself wants to supply graphics for pawns akin to a 20th/21st century styled pack (as a back pack) then I can implement an earlier industrial pack for use.
-
-2) AI, including enemy raid usage. [tbd]
-
-3) Arc pathing for the jet pack trajectories for immersion. (Cosmetic/Nice to have) (tbd). Research suggests there may be mesh issues with trying to emulate alternative sizes of rendered images to make this more of a reality. This in the absence of Z level functionality. Will need to test further.
-
-4) Bombing runs. Ability to drop equipped grenade during a jump. (tbd)
-
-5) "Slam Burst" - Boosting the jetpack into other pawns on the ground as a physical attack. Or DFTS (Death from the side).
-
-
-(tbd = to be determined).
-
 
 # Credits:
 
-
 Japanese translation provided by Proxyer.
-
 Graphic Revisions - Oleg Marko.
-
-
 (CC BY-NC-SA 4.0)
-
 
 ![Image](https://i.imgur.com/PwoNOj4.png)
 
@@ -129,9 +86,13 @@ Graphic Revisions - Oleg Marko.
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib and command Ctrl+F12
+-  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib or the standalone https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Uploader and command Ctrl+F12
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
+-  Use https://github.com/RimSort/RimSort/releases/latest]RimSort to sort your mods
 
+
+
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2196487991]![Image](https://img.shields.io/github/v/release/emipa606/Jetpack?label=latest%20version&style=plastic&color=9f1111&labelColor=black)
 

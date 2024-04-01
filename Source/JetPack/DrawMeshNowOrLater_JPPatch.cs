@@ -5,7 +5,7 @@ using Verse;
 
 namespace JetPack;
 
-[HarmonyPatch(typeof(GenDraw), "DrawMeshNowOrLater", typeof(Mesh), typeof(Vector3), typeof(Quaternion),
+[HarmonyPatch(typeof(GenDraw), nameof(GenDraw.DrawMeshNowOrLater), typeof(Mesh), typeof(Vector3), typeof(Quaternion),
     typeof(Material), typeof(bool))]
 public class DrawMeshNowOrLater_JPPatch
 {
@@ -43,7 +43,7 @@ public class DrawMeshNowOrLater_JPPatch
 
         foreach (var JPName in JPNames())
         {
-            if (material.EndsWith("_north") && mat.name.StartsWith("Custom/Cutout_" + JPName))
+            if (material.EndsWith("_north") && mat.name.StartsWith($"Custom/Cutout_{JPName}"))
             {
                 return true;
             }

@@ -24,13 +24,13 @@ internal static class MultiplayerSupport
         MP.RegisterSyncMethod(typeof(JetPackApparel), "ChangeFuelJP");
         MP.RegisterSyncMethod(typeof(JetPackApparel), "DebugUseJP");
         MethodInfo[] array =
-        {
+        [
             AccessTools.Method(typeof(JPInjury), "CheckForExplosion"),
             AccessTools.Method(typeof(JPInjury), "DoJPRelatedInjury"),
             AccessTools.Method(typeof(JPInjury), "SetUpInjVars"),
             AccessTools.Method(typeof(JPSkyFaller), "JPImpact"),
             AccessTools.Method(typeof(JPSkyFaller), "JPIgnite")
-        };
+        ];
         foreach (var methodInfo in array)
         {
             FixRNG(methodInfo);
