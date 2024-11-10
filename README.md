@@ -1,17 +1,15 @@
-# Jetpack
+# [JetPack (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2196487991)
 
 ![Image](https://i.imgur.com/buuPQel.png)
 
 Update of peladors mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2002341555
 
-- Added support for https://steamcommunity.com/sharedfiles/filedetails/?id=2574489704]Simple FX: Smoke
+- Added support for [Simple FX: Smoke](https://steamcommunity.com/sharedfiles/filedetails/?id=2574489704)
 
 ![Image](https://i.imgur.com/pufA0kM.png)
-
 	
 ![Image](https://i.imgur.com/Z4GOv8H.png)
-
 
 # Overview
 
@@ -65,14 +63,14 @@ Removal will require all mod buildings and items to be removed from the game and
 # Compatibilty Notes
  *** Subject to Conversion ***
 
-If using the mod https://steamcommunity.com/sharedfiles/filedetails/?id=1561221991]RPG Style inventory then individual jet packs have been supported by the mod to go into a unique slot.
-With the use of the mod https://steamcommunity.com/sharedfiles/filedetails/?id=1620639986]Tactical Charged Gear a TC version of the jump pack is available.
-With the use of both TCG and https://steamcommunity.com/sharedfiles/filedetails/?id=1600830185]Medical Supplements mods, Hydrogen Peroxide can be used as a fuel which offers a slight improvement with performance to existing TC JPs as well as a fuel that will last significantly longer.
+If using the mod [RPG Style inventory](https://steamcommunity.com/sharedfiles/filedetails/?id=1561221991) then individual jet packs have been supported by the mod to go into a unique slot.
+With the use of the mod [Tactical Charged Gear](https://steamcommunity.com/sharedfiles/filedetails/?id=1620639986) a TC version of the jump pack is available.
+With the use of both TCG and [Medical Supplements](https://steamcommunity.com/sharedfiles/filedetails/?id=1600830185) mods, Hydrogen Peroxide can be used as a fuel which offers a slight improvement with performance to existing TC JPs as well as a fuel that will last significantly longer.
 Using Rimefeller will add a refiner to make Kerosene.
 Infused - Using the armour conversion recipes will "NOT" transfer existing infusion properties. However, any newly created jet pack armours have the normal potential for infusions themselves.
 
 **Supports Jet pack items from the following mods:**
-https://steamcommunity.com/sharedfiles/filedetails/?id=1933848576][JDS] Star Wars Jango and Boba Fett
+[[JDS] Star Wars Jango and Boba Fett](https://steamcommunity.com/sharedfiles/filedetails/?id=1933848576)
 
 # Credits:
 
@@ -86,13 +84,12 @@ Graphic Revisions - Oleg Marko.
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib or the standalone https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Uploader and command Ctrl+F12
+-  Post your error-log using [HugsLib](https://steamcommunity.com/workshop/filedetails/?id=818773962) or the standalone [Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) and command Ctrl+F12
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
--  Use https://github.com/RimSort/RimSort/releases/latest]RimSort to sort your mods
+-  Use [RimSort](https://github.com/RimSort/RimSort/releases/latest) to sort your mods
 
+ 
 
-
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2196487991]![Image](https://img.shields.io/github/v/release/emipa606/Jetpack?label=latest%20version&style=plastic&color=9f1111&labelColor=black)
-
+[![Image](https://img.shields.io/github/v/release/emipa606/Jetpack?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2196487991) | tags:  flying, jet pack

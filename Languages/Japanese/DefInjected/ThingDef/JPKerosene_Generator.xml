@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <JPKerosene_Generator.label>火力発電(ケロシン)</JPKerosene_Generator.label>
   <JPKerosene_Generator.description>ケロシンを燃やして電力を作り出します。手動で燃料を補給する必要があります。</JPKerosene_Generator.description>

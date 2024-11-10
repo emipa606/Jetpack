@@ -161,10 +161,10 @@ public class JPInjury
             case < 50:
                 DamDef = DamageDefOf.Crush;
                 break;
-            case >= 50 and < 75:
+            case < 75:
                 DamDef = DamageDefOf.Blunt;
                 break;
-            case >= 75 and < 87:
+            case < 87:
                 DamDef = DamageDefOf.Stab;
                 break;
             default:

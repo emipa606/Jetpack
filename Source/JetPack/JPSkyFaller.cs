@@ -156,7 +156,8 @@ public class JPSkyFaller : Skyfaller
     {
         if (GetThingForGraphic() is Pawn Pilot)
         {
-            new PawnRenderer(Pilot).RenderPawnAt(drawLoc);
+            Pilot.DrawNowAt(drawLoc);
+            //new PawnRenderer(Pilot).RenderPawnAt(drawLoc);
         }
     }
 

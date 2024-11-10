@@ -2,14 +2,13 @@ using HarmonyLib;
 using RimWorld;
 using Verse;
 
-namespace JetPack;
+namespace JetPack.HarmonyPatches;
 
 [HarmonyPatch(typeof(GenSpawn), nameof(GenSpawn.SpawnBuildingAsPossible))]
-public class GenSpawn_SpawnBuildingAsPossible_PrePatch
+public class GenSpawn_SpawnBuildingAsPossible
 {
-    [HarmonyPrefix]
     [HarmonyPriority(800)]
-    public static bool PreFix(Building building, Map map, bool respawningAfterLoad = false)
+    public static bool Prefix(Building building, Map map, bool respawningAfterLoad = false)
     {
         if (!respawningAfterLoad || !CorrectJPKeroseneRefiner.RFLoaded() ||
             !CorrectJPKeroseneRefiner.IsProblematicItem(building) || building?.Faction == Faction.OfPlayer)

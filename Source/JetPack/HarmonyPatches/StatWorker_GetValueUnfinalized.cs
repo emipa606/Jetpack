@@ -2,13 +2,12 @@ using HarmonyLib;
 using RimWorld;
 using Verse;
 
-namespace JetPack;
+namespace JetPack.HarmonyPatches;
 
 [HarmonyPatch(typeof(StatWorker), nameof(StatWorker.GetValueUnfinalized))]
-public class GetValueUnfinalized_JPPostPatch
+public class StatWorker_GetValueUnfinalized
 {
-    [HarmonyPostfix]
-    public static void PostFix(ref float __result, StatDef ___stat, StatRequest req)
+    public static void Postfix(ref float __result, StatDef ___stat, StatRequest req)
     {
         if (!req.HasThing)
         {

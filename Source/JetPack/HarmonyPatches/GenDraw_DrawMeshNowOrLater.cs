@@ -3,15 +3,15 @@ using HarmonyLib;
 using UnityEngine;
 using Verse;
 
-namespace JetPack;
+namespace JetPack.HarmonyPatches;
 
 [HarmonyPatch(typeof(GenDraw), nameof(GenDraw.DrawMeshNowOrLater), typeof(Mesh), typeof(Vector3), typeof(Quaternion),
     typeof(Material), typeof(bool))]
-public class DrawMeshNowOrLater_JPPatch
+public class GenDraw_DrawMeshNowOrLater
+
 {
-    [HarmonyPrefix]
     [HarmonyPriority(800)]
-    public static bool PreFix(Mesh mesh, Vector3 loc, Quaternion quat, Material mat, bool drawNow)
+    public static bool Prefix(Mesh mesh, Vector3 loc, Quaternion quat, Material mat, bool drawNow)
     {
         var main = true;
         if (isJetPack(mat))
