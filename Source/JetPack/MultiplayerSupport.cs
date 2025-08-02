@@ -8,7 +8,7 @@ namespace JetPack;
 [StaticConstructorOnStartup]
 internal static class MultiplayerSupport
 {
-    private static readonly Harmony harmony = new Harmony("rimworld.pelador.jetpack.multiplayersupport");
+    private static readonly Harmony harmony = new("rimworld.pelador.jetpack.multiplayersupport");
 
     static MultiplayerSupport()
     {

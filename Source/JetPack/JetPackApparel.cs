@@ -22,25 +22,25 @@ public class JetPackApparel : Apparel
 
     public int JPFuelMax;
 
-    public int JPFuelMin;
+    private int JPFuelMin;
 
-    public float JPFuelRate;
+    private float JPFuelRate;
 
-    public float JPJumpRangeMax;
+    private float JPJumpRangeMax;
 
-    public float JPJumpRangeMin;
+    private float JPJumpRangeMin;
 
     public bool JPPilotIsDrafted;
 
-    public string JPSkyFallType;
+    private string JPSkyFallType;
 
     public bool JPSlowBurn;
 
-    public int JPSlowBurnTicks;
+    private int JPSlowBurnTicks;
 
     public CompJetPack JetPackComp => GetComp<CompJetPack>();
 
-    public bool JPOnCooldown => JPCooldownTicks > 0;
+    private bool JPOnCooldown => JPCooldownTicks > 0;
 
     public override void PostMake()
     {
@@ -179,7 +179,7 @@ public class JetPackApparel : Apparel
         Scribe_Values.Look(ref JPSlowBurnTicks, "JPSlowBurnTicks");
     }
 
-    public override void Tick()
+    protected override void Tick()
     {
         base.Tick();
         if (JPCooldownTicks > 0)
@@ -277,7 +277,7 @@ public class JetPackApparel : Apparel
         }
 
         var wearer = Wearer;
-        if (wearer?.Map == null || Wearer.Downed || !Wearer.Spawned || JPUtility.IsInMeleeWithJP(Wearer))
+        if (wearer?.Map == null || Wearer.Downed || !Wearer.Spawned || JPUtility.IsInMeleeWithJp(Wearer))
         {
             yield break;
         }
@@ -306,7 +306,7 @@ public class JetPackApparel : Apparel
             action = delegate(IntVec3 cell)
             {
                 SoundDefOf.Click.PlayOneShotOnCamera();
-                UseJetPack(Wearer, this, cell);
+                useJetPack(Wearer, this, cell);
             }
         };
         if (Settings.AllowSlowBurn)
@@ -319,7 +319,7 @@ public class JetPackApparel : Apparel
                 defaultLabel = text,
                 defaultDesc = desc,
                 isActive = () => JPSlowBurn,
-                toggleAction = delegate { ToggleSlowBurn(JPSlowBurn); }
+                toggleAction = delegate { toggleSlowBurn(JPSlowBurn); }
             };
         }
 
@@ -334,7 +334,7 @@ public class JetPackApparel : Apparel
             action = delegate
             {
                 SoundDefOf.Click.PlayOneShotOnCamera();
-                RefuelJetPack(Wearer, this);
+                refuelJetPack(Wearer, this);
             }
         };
         if (Prefs.DevMode)
@@ -347,20 +347,20 @@ public class JetPackApparel : Apparel
                 action = delegate
                 {
                     SoundDefOf.Click.PlayOneShotOnCamera();
-                    DoJetPackDebug(Wearer, this);
+                    doJetPackDebug();
                 }
             };
         }
     }
 
-    public void ToggleSlowBurn(bool flag)
+    private void toggleSlowBurn(bool flag)
     {
         JPSlowBurn = !flag;
     }
 
-    public void UseJetPack(Pawn pilot, Thing JP, IntVec3 targCell)
+    private void useJetPack(Pawn pilot, Thing JP, IntVec3 targCell)
     {
-        if (!JPComposMentis(pilot, JP, out var Reason))
+        if (!jpComposMentis(pilot, JP, out var Reason))
         {
             Messages.Message("JetPack.CantDo".Translate(pilot, Reason), pilot, MessageTypeDefOf.NeutralEvent,
                 false);
@@ -368,7 +368,7 @@ public class JetPackApparel : Apparel
             return;
         }
 
-        if (!FlightChecksOK(pilot, JP, out var ChecksReason))
+        if (!flightChecksOk(pilot, JP, out var ChecksReason))
         {
             Messages.Message("JetPack.ChecksReason".Translate(pilot.LabelShort.CapitalizeFirst(), ChecksReason),
                 pilot, MessageTypeDefOf.NeutralEvent, false);
@@ -376,7 +376,7 @@ public class JetPackApparel : Apparel
             return;
         }
 
-        if (JPUtility.ChkForDissallowed(pilot, out var DAllowReason))
+        if (JPUtility.ChkForDisallowed(pilot, out var DAllowReason))
         {
             Messages.Message("JetPack.DAllowReason".Translate(pilot.LabelShort.CapitalizeFirst(), DAllowReason),
                 pilot, MessageTypeDefOf.NeutralEvent, false);
@@ -384,7 +384,7 @@ public class JetPackApparel : Apparel
             return;
         }
 
-        if (!FlightCellCheck(pilot, targCell, JPFuelAmount, JPFuelRate, JPJumpRangeMin, JPJumpRangeMax,
+        if (!flightCellCheck(pilot, targCell, JPFuelAmount, JPFuelRate, JPJumpRangeMin, JPJumpRangeMax,
                 out var JumpReason))
         {
             Messages.Message("JetPack.JumpReason".Translate(JumpReason), pilot, MessageTypeDefOf.NeutralEvent,
@@ -395,7 +395,7 @@ public class JetPackApparel : Apparel
 
         if (!JPInjury.CheckForExplosion(this))
         {
-            DoJumpJet(pilot, targCell);
+            doJumpJet(pilot, targCell);
             return;
         }
 
@@ -403,13 +403,10 @@ public class JetPackApparel : Apparel
         JPFuelAmount = 0;
     }
 
-    public void DoJumpJet(Pawn Pilot, IntVec3 targCell)
+    private void doJumpJet(Pawn Pilot, IntVec3 targCell)
     {
-        JPRotatePilot(Pilot, targCell, out var angle);
-        if (JPSkyFallType == null)
-        {
-            JPSkyFallType = "SFJetPack";
-        }
+        jpRotatePilot(Pilot, targCell, out var angle);
+        JPSkyFallType ??= "SFJetPack";
 
         var JPSF = DefDatabase<ThingDef>.GetNamed(JPSkyFallType, false);
         if (JPSF == null)
@@ -452,7 +449,7 @@ public class JetPackApparel : Apparel
         skyfaller.innerContainer.TryAdd(Pilot, false);
     }
 
-    internal void JPRotatePilot(Pawn pilot, IntVec3 targCell, out float angle)
+    private static void jpRotatePilot(Pawn pilot, IntVec3 targCell, out float angle)
     {
         angle = pilot.Position.ToVector3().AngleToFlat(targCell.ToVector3());
         var offsetAngle = angle + 90f;
@@ -465,7 +462,7 @@ public class JetPackApparel : Apparel
         pilot.Rotation = facing;
     }
 
-    internal bool FlightCellCheck(Pawn pilot, IntVec3 tCell, int fuel, float fRate, float minJump, float maxJump,
+    private bool flightCellCheck(Pawn pilot, IntVec3 tCell, int fuel, float fRate, float minJump, float maxJump,
         out string cantReason)
     {
         cantReason = "";
@@ -560,23 +557,23 @@ public class JetPackApparel : Apparel
         return false;
     }
 
-    internal void RefuelJetPack(Pawn pilot, ThingWithComps thing)
+    private void refuelJetPack(Pawn pilot, ThingWithComps thing)
     {
         var list = new List<FloatMenuOption>();
         string text = "JetPack.JPDoNothing".Translate();
-        list.Add(new FloatMenuOption(text, delegate { RefuelJP(pilot, thing, false); }, MenuOptionPriority.Default,
+        list.Add(new FloatMenuOption(text, delegate { refuelJp(pilot, thing, false); }, MenuOptionPriority.Default,
             null, null, 29f));
         if (JPFuelAmount < JPFuelMax)
         {
             text = "JetPack.JPDoRefuel".Translate();
-            list.Add(new FloatMenuOption(text, delegate { RefuelJP(pilot, thing, true); },
+            list.Add(new FloatMenuOption(text, delegate { refuelJp(pilot, thing, true); },
                 MenuOptionPriority.Default, null, null, 29f));
         }
 
         if (JPFuelAmount > 0)
         {
             text = "JetPack.JPDropFuel".Translate();
-            list.Add(new FloatMenuOption(text, delegate { DropFuelJP(pilot, thing); }, MenuOptionPriority.Default,
+            list.Add(new FloatMenuOption(text, delegate { dropFuelJp(pilot); }, MenuOptionPriority.Default,
                 null, null, 29f));
         }
 
@@ -593,7 +590,7 @@ public class JetPackApparel : Apparel
 
                 text = "JetPack.JPDoChangeFuel".Translate(fuelref.label.CapitalizeFirst());
                 list.Add(new FloatMenuOption(text,
-                    delegate { ChangeFuelJP(pilot, thing, fuelref, JPJumpRangeMin); },
+                    delegate { changeFuelJp(pilot, thing, fuelref, JPJumpRangeMin); },
                     MenuOptionPriority.Default, null, null, 29f));
             }
         }
@@ -601,14 +598,14 @@ public class JetPackApparel : Apparel
         Find.WindowStack.Add(new FloatMenu(list));
     }
 
-    public void RefuelJP(Pawn pilot, Thing JP, bool Using)
+    private void refuelJp(Pawn pilot, Thing JP, bool Using)
     {
         if (!Using)
         {
             return;
         }
 
-        if (JPComposMentis(pilot, JP, out var Reason))
+        if (jpComposMentis(pilot, JP, out var Reason))
         {
             if (JPFuelAmount >= JPFuelMax)
             {
@@ -619,7 +616,7 @@ public class JetPackApparel : Apparel
             }
 
             var JPRefuel = DefDatabase<JobDef>.GetNamed("JPRefuel");
-            FindBestJPFuel(pilot, out var targ);
+            findBestJpFuel(pilot, out var targ);
             if (targ != null)
             {
                 var job = new Job(JPRefuel, targ);
@@ -639,27 +636,27 @@ public class JetPackApparel : Apparel
         }
     }
 
-    public void ChangeFuelJP(Pawn pilot, Thing JP, ThingDef fueldef, float MinRange)
+    private void changeFuelJp(Pawn pilot, Thing JP, ThingDef fueldef, float MinRange)
     {
         if (JPFuelItem == fueldef)
         {
             return;
         }
 
-        RemoveFuel(pilot);
+        removeFuel(pilot);
         JPFuelAmount = 0;
         JPFuelItem = fueldef;
         JPFuelRate = JPUtility.GetFuelRate(fueldef);
         JPJumpRangeMax = JPUtility.GetJumpRange(pilot, JP.def, fueldef, MinRange);
     }
 
-    public void DropFuelJP(Pawn pilot, Thing JP)
+    private void dropFuelJp(Pawn pilot)
     {
-        RemoveFuel(pilot);
+        removeFuel(pilot);
         JPFuelAmount = 0;
     }
 
-    public void RemoveFuel(Pawn pilot)
+    private void removeFuel(Pawn pilot)
     {
         if (JPFuelAmount <= 0)
         {
@@ -694,7 +691,7 @@ public class JetPackApparel : Apparel
         }
     }
 
-    internal void FindBestJPFuel(Pawn pilot, out Thing targ)
+    private void findBestJpFuel(Pawn pilot, out Thing targ)
     {
         targ = null;
         if (pilot?.Map == null)
@@ -754,7 +751,7 @@ public class JetPackApparel : Apparel
         }
     }
 
-    internal bool FlightChecksOK(Pawn pilot, Thing JP, out string checksReason)
+    private bool flightChecksOk(Pawn pilot, Thing JP, out string checksReason)
     {
         checksReason = "";
         if (pilot?.Map == null)
@@ -789,7 +786,7 @@ public class JetPackApparel : Apparel
         return false;
     }
 
-    internal bool JPComposMentis(Pawn pilot, Thing JP, out string Reason)
+    private static bool jpComposMentis(Pawn pilot, Thing JP, out string Reason)
     {
         Reason = "";
         if (pilot == null)
@@ -831,28 +828,28 @@ public class JetPackApparel : Apparel
         return false;
     }
 
-    public void DoJetPackDebug(Pawn p, Thing t)
+    private void doJetPackDebug()
     {
         var list = new List<FloatMenuOption>();
         var text = "Set fuel 100%";
-        list.Add(new FloatMenuOption(text, delegate { DebugUseJP(p, t, true, 100); }, MenuOptionPriority.Default,
+        list.Add(new FloatMenuOption(text, delegate { debugUseJp(true, 100); }, MenuOptionPriority.Default,
             null, null, 29f));
         text = "Set fuel 75%";
-        list.Add(new FloatMenuOption(text, delegate { DebugUseJP(p, t, true, 75); }, MenuOptionPriority.Default,
+        list.Add(new FloatMenuOption(text, delegate { debugUseJp(true, 75); }, MenuOptionPriority.Default,
             null, null, 29f));
         text = "Set fuel 50%";
-        list.Add(new FloatMenuOption(text, delegate { DebugUseJP(p, t, true, 50); }, MenuOptionPriority.Default,
+        list.Add(new FloatMenuOption(text, delegate { debugUseJp(true, 50); }, MenuOptionPriority.Default,
             null, null, 29f));
         text = "Set fuel 25%";
-        list.Add(new FloatMenuOption(text, delegate { DebugUseJP(p, t, true, 25); }, MenuOptionPriority.Default,
+        list.Add(new FloatMenuOption(text, delegate { debugUseJp(true, 25); }, MenuOptionPriority.Default,
             null, null, 29f));
         text = "Set fuel 0%";
-        list.Add(new FloatMenuOption(text, delegate { DebugUseJP(p, t, true, 0); }, MenuOptionPriority.Default,
+        list.Add(new FloatMenuOption(text, delegate { debugUseJp(true, 0); }, MenuOptionPriority.Default,
             null, null, 29f));
         Find.WindowStack.Add(new FloatMenu(list));
     }
 
-    public void DebugUseJP(Pawn p, Thing t, bool fuelset, int fuellevel)
+    private void debugUseJp(bool fuelset, int fuellevel)
     {
         if (fuelset)
         {

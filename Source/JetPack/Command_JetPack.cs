@@ -8,11 +8,11 @@ namespace JetPack;
 
 public class Command_JetPack : Command
 {
-    public static readonly bool JPRoofPunch = Settings.RoofPunch;
+    private static readonly bool JPRoofPunch = Settings.RoofPunch;
 
-    internal static readonly TargetingParameters targParms = ForJetPacksDestination();
+    private static readonly TargetingParameters targParms = forJetPacksDestination();
 
-    [NoTranslate] internal static readonly string JPIconPath = "Things/Special/JetPackIcon";
+    [NoTranslate] private static readonly string JPIconPath = "Things/Special/JetPackIcon";
 
     public Action<IntVec3> action;
 
@@ -28,7 +28,7 @@ public class Command_JetPack : Command
 
     public Pawn Pilot;
 
-    internal static TargetingParameters ForJetPacksDestination()
+    private static TargetingParameters forJetPacksDestination()
     {
         var targetingParameters = new TargetingParameters
         {

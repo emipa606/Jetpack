@@ -10,19 +10,19 @@ public class JPWeightUtility
 {
     public static float JPCarryFactor(Pawn pilot, ThingDef JP, ThingDef fuel)
     {
-        GetTotalPilotWeight(pilot);
-        GetJPCarry(JP, fuel);
-        var carryFactor = Mathf.Min(1f, GetJPCarry(JP, fuel) / GetTotalPilotWeight(pilot) * GetGravityFactor());
+        getTotalPilotWeight(pilot);
+        getJpCarry(JP, fuel);
+        var carryFactor = Mathf.Min(1f, getJpCarry(JP, fuel) / getTotalPilotWeight(pilot) * getGravityFactor());
         return Mathf.Lerp(0.5f, 1f, carryFactor);
     }
 
-    public static float GetTotalPilotWeight(Pawn pilot)
+    private static float getTotalPilotWeight(Pawn pilot)
     {
-        return 0f + GetPilotWeight(pilot) + GetInventoryWeight(pilot, true) + GetEquipmentWeight(pilot) +
-               GetApparelWeight(pilot);
+        return 0f + getPilotWeight(pilot) + getInventoryWeight(pilot, true) + getEquipmentWeight(pilot) +
+               getApparelWeight(pilot);
     }
 
-    public static float GetPilotWeight(Pawn pilot)
+    private static float getPilotWeight(Pawn pilot)
     {
         var weight = 0f;
         var baseBodyWeight = 65f;
@@ -34,7 +34,7 @@ public class JPWeightUtility
         return weight;
     }
 
-    public static float GetEquipmentWeight(Pawn pilot)
+    private static float getEquipmentWeight(Pawn pilot)
     {
         var weight = 0f;
         List<ThingWithComps> list;
@@ -62,7 +62,7 @@ public class JPWeightUtility
         return weight;
     }
 
-    public static float GetInventoryWeight(Pawn pilot, bool includeCarried)
+    private static float getInventoryWeight(Pawn pilot, bool includeCarried)
     {
         var weight = 0f;
         if (includeCarried)
@@ -110,7 +110,7 @@ public class JPWeightUtility
         return weight;
     }
 
-    public static float GetApparelWeight(Pawn pilot)
+    private static float getApparelWeight(Pawn pilot)
     {
         var weight = 0f;
         List<Apparel> list;
@@ -138,12 +138,12 @@ public class JPWeightUtility
         return weight;
     }
 
-    public static float GetJPCarry(ThingDef JP, ThingDef fuel)
+    private static float getJpCarry(ThingDef JP, ThingDef fuel)
     {
-        return GetJPBaseCarry(JP) * GetJPFuelCarryFactor(fuel);
+        return getJpBaseCarry(JP) * getJpFuelCarryFactor(fuel);
     }
 
-    public static float GetJPBaseCarry(ThingDef JP)
+    private static float getJpBaseCarry(ThingDef JP)
     {
         var carry = 75f;
         var defName = JP.defName;
@@ -169,7 +169,7 @@ public class JPWeightUtility
         return carry;
     }
 
-    public static float GetJPFuelCarryFactor(ThingDef fuel)
+    private static float getJpFuelCarryFactor(ThingDef fuel)
     {
         var carryFactor = 1f;
         var defName = fuel.defName;
@@ -188,7 +188,7 @@ public class JPWeightUtility
         return carryFactor;
     }
 
-    public static float GetGravityFactor()
+    private static float getGravityFactor()
     {
         return 1f;
     }

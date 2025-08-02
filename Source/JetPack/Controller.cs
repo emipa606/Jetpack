@@ -6,13 +6,13 @@ namespace JetPack;
 
 public class Controller : Mod
 {
-    public static Settings Settings;
-    public static string currentVersion;
+    private static Settings settings;
+    public static string CurrentVersion;
 
     public Controller(ModContentPack content) : base(content)
     {
-        Settings = GetSettings<Settings>();
-        currentVersion =
+        settings = GetSettings<Settings>();
+        CurrentVersion =
             VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 

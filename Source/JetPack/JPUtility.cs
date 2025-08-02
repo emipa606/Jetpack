@@ -8,33 +8,33 @@ namespace JetPack;
 
 public class JPUtility
 {
-    internal const string JP_TCG = "Apparel_PowArmCGearJetPack";
+    private const string JP_TCG = "Apparel_PowArmCGearJetPack";
 
     internal const string JP_POW = "Apparel_PowArmJetPack";
 
     internal const string JP_PAK = "Apparel_SpacerJetPack";
 
-    internal const string JP_BST = "Apparel_BoosterJetPack";
+    private const string JP_BST = "Apparel_BoosterJetPack";
 
     internal const string JP_SW_JT12 = "JT-12_Jetpack";
 
     internal const string JP_SW_PazViz = "PazVizla_Jetpack";
 
-    internal const string SK_PAK = "SFJetPack";
+    private const string SK_PAK = "SFJetPack";
 
-    internal const string SK_POW = "SFJetPackPowArm";
+    private const string SK_POW = "SFJetPackPowArm";
 
-    internal const string SK_TCG = "SFJetPackCGear";
+    private const string SK_TCG = "SFJetPackCGear";
 
-    internal const string SK_BST = "SFBoostPack";
+    private const string SK_BST = "SFBoostPack";
 
-    internal const string JPFuel_Chemfuel = "Chemfuel";
+    private const string JPFuel_Chemfuel = "Chemfuel";
 
-    internal const string JPFuel_Kerosene = "JPKerosene";
+    private const string JPFuel_Kerosene = "JPKerosene";
 
-    internal const string JPFuel_H2O2 = "MSHydrogenPeroxide";
+    private const string JPFuel_H2O2 = "MSHydrogenPeroxide";
 
-    internal static Apparel GetWornJP(Thing pilot)
+    internal static Apparel GetWornJp(Thing pilot)
     {
         Apparel JP = null;
         bool b;
@@ -82,13 +82,13 @@ public class JPUtility
         return JP;
     }
 
-    internal static bool IsInMeleeWithJP(Pawn pawn)
+    internal static bool IsInMeleeWithJp(Pawn pawn)
     {
         return pawn?.CurJob != null &&
                (pawn.CurJob.def == JobDefOf.AttackMelee || pawn.CurJob.def == JobDefOf.AttackStatic);
     }
 
-    internal static bool GetIsJPApparel(ThingDef def)
+    internal static bool GetIsJpApparel(ThingDef def)
     {
         string a;
         if (def == null)
@@ -104,7 +104,7 @@ public class JPUtility
         return a == "JetPack.JetPackApparel";
     }
 
-    internal static List<string> GetSkyFallList()
+    private static List<string> getSkyFallList()
     {
         var list = new List<string>();
         list.AddDistinct(SK_PAK);
@@ -132,7 +132,7 @@ public class JPUtility
 
     public static int GetJumpRange(Pawn pawn, ThingDef JP, ThingDef fuel, float minRange)
     {
-        var maxRange = GetJumpRangeMax(fuel, JP);
+        var maxRange = getJumpRangeMax(fuel, JP);
         var carryFactor = 1f;
         if (Settings.UseCarry && pawn != null)
         {
@@ -147,7 +147,7 @@ public class JPUtility
         return (int)Mathf.Lerp(minRange, maxRange, carryFactor);
     }
 
-    internal static int GetJumpRangeMax(ThingDef fuel, ThingDef JP)
+    private static int getJumpRangeMax(ThingDef fuel, ThingDef JP)
     {
         var range = 20;
         var defName = fuel.defName;
@@ -174,7 +174,7 @@ public class JPUtility
     internal static float GetSlowBurn(Pawn pilot)
     {
         var slowBurnMoveOffset = 0f;
-        var JP = GetWornJP(pilot);
+        var JP = GetWornJp(pilot);
         if (JP == null)
         {
             return slowBurnMoveOffset;
@@ -229,25 +229,6 @@ public class JPUtility
         return rate;
     }
 
-    internal static float GetMassCapacity(ThingDef fuel)
-    {
-        var MC = 70f;
-        var defName = fuel.defName;
-        if (defName != JPFuel_H2O2)
-        {
-            if (defName == JPFuel_Kerosene)
-            {
-                MC *= 2f;
-            }
-        }
-        else
-        {
-            MC *= 1.5f;
-        }
-
-        return MC;
-    }
-
     internal static float GetIgnitionFactor(ThingDef fuel)
     {
         var factor = 10f;
@@ -267,7 +248,7 @@ public class JPUtility
         return factor;
     }
 
-    internal static bool ChkForDissallowed(Pawn pilot, out string reason)
+    internal static bool ChkForDisallowed(Pawn pilot, out string reason)
     {
         reason = "";
         if (pilot.equipment.HasAnything())
@@ -277,13 +258,13 @@ public class JPUtility
             {
                 foreach (var thingWithComps in equip)
                 {
-                    if (ChkforHVY(thingWithComps) && !Settings.AllowHVY)
+                    if (checkforHvy(thingWithComps) && !Settings.AllowHVY)
                     {
                         reason = "JetPack.DAllowEQHVY".Translate(thingWithComps.Label.CapitalizeFirst());
                         return true;
                     }
 
-                    if (!ChkforWMD(thingWithComps) || Settings.AllowWMD)
+                    if (!chkforWmd(thingWithComps) || Settings.AllowWMD)
                     {
                         continue;
                     }
@@ -306,13 +287,13 @@ public class JPUtility
                         continue;
                     }
 
-                    if (ChkforHVY(comps) && !Settings.AllowHVY)
+                    if (checkforHvy(comps) && !Settings.AllowHVY)
                     {
                         reason = "JetPack.DAllowIVHVY".Translate(comps.Label.CapitalizeFirst());
                         return true;
                     }
 
-                    if (!ChkforWMD(comps) || Settings.AllowWMD)
+                    if (!chkforWmd(comps) || Settings.AllowWMD)
                     {
                         continue;
                     }
@@ -331,13 +312,13 @@ public class JPUtility
         }
 
         var carry = pilot.carryTracker.CarriedThing;
-        if (ChkforHVY(carry as ThingWithComps) && !Settings.AllowHVY)
+        if (checkforHvy(carry as ThingWithComps) && !Settings.AllowHVY)
         {
             reason = "JetPack.DAllowCYHVY".Translate(carry.Label.CapitalizeFirst());
             return true;
         }
 
-        if (!ChkforWMD(carry as ThingWithComps) || Settings.AllowWMD)
+        if (!chkforWmd(carry as ThingWithComps) || Settings.AllowWMD)
         {
             return false;
         }
@@ -346,7 +327,7 @@ public class JPUtility
         return true;
     }
 
-    internal static bool ChkforHVY(ThingWithComps thing)
+    private static bool checkforHvy(ThingWithComps thing)
     {
         var def = thing.def;
         bool b;
@@ -398,7 +379,7 @@ public class JPUtility
         return false;
     }
 
-    internal static bool ChkforWMD(ThingWithComps thing)
+    private static bool chkforWmd(ThingWithComps thing)
     {
         var def = thing.def;
         if (def?.Verbs == null)
@@ -417,31 +398,6 @@ public class JPUtility
         return false;
     }
 
-    internal static Pawn GetSkyFPilot(Thing t)
-    {
-        Thing pilot = null;
-        var skf = t as Skyfaller;
-        if (skf != null && (!skf.innerContainer.Any || skf.innerContainer.Count <= 0))
-        {
-            return null;
-        }
-
-        if (skf?.innerContainer == null)
-        {
-            return null;
-        }
-
-        foreach (var thingchk in skf.innerContainer)
-        {
-            if (thingchk is Pawn)
-            {
-                pilot = thingchk;
-            }
-        }
-
-        return pilot as Pawn;
-    }
-
     internal static bool GetJPSkyFOnMap(Map map)
     {
         if (map == null)
@@ -455,7 +411,7 @@ public class JPUtility
             return false;
         }
 
-        var JPSkyFNames = GetSkyFallList();
+        var JPSkyFNames = getSkyFallList();
         foreach (var CheckThing in CheckList)
         {
             if (JPSkyFNames.Contains(CheckThing.def.defName))

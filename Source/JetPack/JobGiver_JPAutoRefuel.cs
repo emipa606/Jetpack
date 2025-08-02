@@ -29,7 +29,7 @@ public class JobGiver_JPAutoRefuel : ThinkNode_JobGiver
             return null;
         }
 
-        var JP = JPUtility.GetWornJP(pawn);
+        var JP = JPUtility.GetWornJp(pawn);
         if (JP == null)
         {
             return null;
@@ -43,11 +43,11 @@ public class JobGiver_JPAutoRefuel : ThinkNode_JobGiver
             return null;
         }
 
-        FindBestRefuel(pawn, FuelItem, FuelMax, Fuel, out var targ);
+        findBestRefuel(pawn, FuelItem, FuelMax, Fuel, out var targ);
         return targ != null ? new Job(jobdef, targ) : null;
     }
 
-    internal void FindBestRefuel(Pawn pilot, ThingDef FuelItem, int FuelMax, int Fuel, out Thing targ)
+    private static void findBestRefuel(Pawn pilot, ThingDef FuelItem, int FuelMax, int Fuel, out Thing targ)
     {
         targ = null;
         if (pilot?.Map == null)

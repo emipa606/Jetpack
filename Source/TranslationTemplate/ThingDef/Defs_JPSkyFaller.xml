@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: BoostPack Skyfaller -->
+  <SFBoostPack.label>BoostPack Skyfaller</SFBoostPack.label>
+  <!-- EN: JetPack Skyfaller -->
+  <SFJetPack.label>JetPack Skyfaller</SFJetPack.label>
+  <!-- EN: JetPack Skyfaller (TC) -->
+  <SFJetPackCGear.label>JetPack Skyfaller (TC)</SFJetPackCGear.label>
+  <!-- EN: JetPack Skyfaller -->
+  <SFJetPackPowArm.label>JetPack Skyfaller</SFJetPackPowArm.label>
+</LanguageData>

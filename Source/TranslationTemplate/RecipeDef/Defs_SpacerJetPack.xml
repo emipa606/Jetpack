@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Dismantle Jet Pack -->
+  <DismantleJPSpacerJetPack.label>Dismantle Jet Pack</DismantleJPSpacerJetPack.label>
+  <!-- EN: Dismantle 1 Jet Pack -->
+  <DismantleJPSpacerJetPack.description>Dismantle 1 Jet Pack</DismantleJPSpacerJetPack.description>
+  <!-- EN: Dismantle a Jet Pack -->
+  <DismantleJPSpacerJetPack.jobString>Dismantle a Jet Pack</DismantleJPSpacerJetPack.jobString>
+  <!-- EN: Make Jet Pack -->
+  <MakeJPSpacerJetPack.label>Make Jet Pack</MakeJPSpacerJetPack.label>
+  <!-- EN: Make 1 Jet Pack -->
+  <MakeJPSpacerJetPack.description>Make 1 Jet Pack</MakeJPSpacerJetPack.description>
+  <!-- EN: Making a Jet Pack -->
+  <MakeJPSpacerJetPack.jobString>Making a Jet Pack</MakeJPSpacerJetPack.jobString>
+</LanguageData>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Rimefeller</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <success>Always</success>
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs</xpath>
+          <value>
+            <ThingDef ParentName="RefineryBase">
+              <defName>JPKeroseneRefinery</defName>
+              <label>Kerosene Refiner</label>
+              <description>Processes chemfuel into kerosene fuel.</description>
+              <graphicData>
+                <texPath>Things/Building/RimeFeller/JPKeroseneRefinery</texPath>
+                <!--  <texPath>Rimefeller/Things/Building/NapalmRefinery</texPath> -->
+                <graphicClass>Graphic_Single</graphicClass>
+                <drawSize>(4,4)</drawSize>
+              </graphicData>
+              <costList>
+                <Steel>150</Steel>
+                <ComponentIndustrial>3</ComponentIndustrial>
+              </costList>
+              <comps>
+                <li Class="CompProperties_Power">
+                  <compClass>CompPowerTrader</compClass>
+                  <basePowerConsumption>1000</basePowerConsumption>
+                </li>
+                <li Class="Rimefeller.CompProperties_Refinery">
+                  <compClass>Rimefeller.CompRefineryNapalm</compClass>
+                  <Product>JPKerosene</Product>
+                  <StackSize>50</StackSize>
+                  <BufferSize>10</BufferSize>
+                  <ConsumeRate>0.4</ConsumeRate>
+                </li>
+              </comps>
+              <researchPrerequisites>
+                <li>BiofuelRefining</li>
+                <li>SynthyleneProduction</li>
+              </researchPrerequisites>
+            </ThingDef>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RefineryLoadingBay"]/building/fixedStorageSettings/filter/thingDefs</xpath>
+          <value>
+            <li>JPKerosene</li>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

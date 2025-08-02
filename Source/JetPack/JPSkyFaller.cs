@@ -19,9 +19,8 @@ public class JPSkyFaller : Skyfaller
 
     private int ticksToHeadAche;
 
-    public override void Tick()
+    protected override void Tick()
     {
-        innerContainer.ThingOwnerTick();
         ticksToImpact--;
         ticksToHeadAche++;
         var drawLoc = base.DrawPos;
@@ -42,17 +41,17 @@ public class JPSkyFaller : Skyfaller
 
         if (ticksToHeadAche == 3 && Settings.AllowFire)
         {
-            JPIgnite(drawLoc.ToIntVec3(), Map);
+            jpIgnite(drawLoc.ToIntVec3(), Map);
         }
 
         if (ticksToHeadAche == 10)
         {
-            JPHitRoof(true);
+            jpHitRoof(true);
         }
 
         if (ticksToImpact == 15)
         {
-            JPHitRoof(false);
+            jpHitRoof(false);
         }
 
         if (!anticipationSoundPlayed && def.skyfaller.anticipationSound != null &&
@@ -69,7 +68,7 @@ public class JPSkyFaller : Skyfaller
 
         if (ticksToImpact == 0)
         {
-            JPImpact();
+            jpImpact();
             return;
         }
 
@@ -97,27 +96,27 @@ public class JPSkyFaller : Skyfaller
                     Map.terrainGrid.Notify_TerrainDestroyed(thing.Position);
                 }
 
-                CheckDrafting(thing);
+                checkDrafting(thing);
                 JPInjury.CheckDFA(thing, Position);
-                CheckAndApplyPostInjury(thing);
+                checkAndApplyPostInjury(thing);
                 if (Settings.CooldownTime > 0)
                 {
-                    JPApplyCooldown(thing, Math.Min(10, Settings.CooldownTime));
+                    jpApplyCooldown(thing, Math.Min(10, Settings.CooldownTime));
                 }
             });
         }
     }
 
-    internal void JPApplyCooldown(Thing pilot, int cd)
+    private static void jpApplyCooldown(Thing pilot, int cd)
     {
-        var JP = JPUtility.GetWornJP(pilot);
+        var JP = JPUtility.GetWornJp(pilot);
         if (JP is JetPackApparel apparel)
         {
             apparel.JPCooldownTicks = Math.Max(0, 60 * cd);
         }
     }
 
-    internal void CheckAndApplyPostInjury(Thing pilot)
+    private void checkAndApplyPostInjury(Thing pilot)
     {
         if (PilotRoofPunchUp)
         {
@@ -134,14 +133,14 @@ public class JPSkyFaller : Skyfaller
         PilotRoofPunchDown = false;
     }
 
-    internal void CheckDrafting(Thing pilot)
+    private static void checkDrafting(Thing pilot)
     {
         if (pilot is not Pawn pawn)
         {
             return;
         }
 
-        var JP = JPUtility.GetWornJP(pawn);
+        var JP = JPUtility.GetWornJp(pawn);
         if (JP == null || !((JetPackApparel)JP).JPPilotIsDrafted)
         {
             return;
@@ -180,7 +179,7 @@ public class JPSkyFaller : Skyfaller
         return pilot as Pawn;
     }
 
-    internal void JPHitRoof(bool up)
+    private void jpHitRoof(bool up)
     {
         if (!def.skyfaller.hitRoof)
         {
@@ -240,7 +239,7 @@ public class JPSkyFaller : Skyfaller
         PilotRoofPunchDown = true;
     }
 
-    public void JPImpact()
+    private void jpImpact()
     {
         if (def.skyfaller.CausesExplosion)
         {
@@ -288,7 +287,7 @@ public class JPSkyFaller : Skyfaller
         Destroy();
     }
 
-    public void JPIgnite(IntVec3 cell, Map map)
+    private void jpIgnite(IntVec3 cell, Map map)
     {
         var pilot = GetThingForGraphic();
         if (pilot == null)
@@ -296,7 +295,7 @@ public class JPSkyFaller : Skyfaller
             return;
         }
 
-        var JP = JPUtility.GetWornJP(pilot);
+        var JP = JPUtility.GetWornJp(pilot);
         if (JP == null)
         {
             return;

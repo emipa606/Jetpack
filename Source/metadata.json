@@ -2,10 +2,17 @@
   "Continued": true,
   "CanAdd": "0",
   "CanRemove": "2",
-  "PreviewVersion": "1.5",
+  "PreviewVersion": "1.6",
   "SocialImageSet": true,
   "SearchTags": [
     " flying",
     "jet pack"
-  ]
+  ],
+  "Patches": true,
+  "Defs": true,
+  "Assemblies": true,
+  "LinesOfCode": 81412,
+  "LinesOfXML": 64064,
+  "CodeBaseSize": 82,
+  "LastXmlCleaning": "2025-08-02T21:46:35.1874385+02:00"
 }

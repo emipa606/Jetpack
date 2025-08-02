@@ -1,0 +1,108 @@
+ManifestFileVersion: 0
+CRC: 1034581351
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f605776906368a72a73d76bd7f8be372
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ce3b6d18a872ca8039cd5eb3c4fb7ef5
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: f605776906368a72a73d76bd7f8be372
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Hulk_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Hulk_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Special/JPSlowBurn.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Fat_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Female_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Hulk_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Male_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Building/RimeFeller/JPKeroseneRefinery.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Male_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Male_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Fat_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Hulk_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Thin_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Thin_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Male_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPKerosene/JPKerosene.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Fat_east.png
+- Assets/Data/Mlie.JetPack/Sounds/JetPack/JetPack.ogg
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Fat_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Hulk_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Thin_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Hulk_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Female_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Male_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Hulk_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Female_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Female_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Thin_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Male_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Thin_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Thin_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Hulk_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Hulk_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Male_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Female_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Female_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Building/Power/JPKerosene_Generator/JPKerosene_Generator.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Female_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Special/JetPackIcon.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Fat_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Hulk_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Male_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Female_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Fat_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Fat_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Female_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Fat_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Hulk_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Thin_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Male_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Fat_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Hulk_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Male_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Male_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Female_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Fat_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Thin_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Special/JetPackBlank.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Male_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Male_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Hulk_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Female_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Male_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Female_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Male_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Fat_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Thin_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Fat_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Female_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Fat_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Thin_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Thin_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Thin_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Female_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Thin_east.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJPCGear/PowArmJPCGear_Hulk_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Fat_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/JPJumpSuit/JPJumpSuit_Hulk_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/BoosterJetPack/BoosterJetPack_Female_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Fat_north.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/SpacerJetPack/SpacerJetPack_Thin_south.png
+- Assets/Data/Mlie.JetPack/Textures/Things/Item/PowArmJetPack/PowArmJetPack_Thin_north.png
+Dependencies: []

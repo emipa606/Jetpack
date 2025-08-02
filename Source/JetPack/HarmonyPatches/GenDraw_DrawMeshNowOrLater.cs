@@ -33,7 +33,7 @@ public class GenDraw_DrawMeshNowOrLater
         return main;
     }
 
-    public static bool isJetPack(Material mat)
+    private static bool isJetPack(Material mat)
     {
         var material = mat?.name;
         if (material == null)
@@ -41,7 +41,7 @@ public class GenDraw_DrawMeshNowOrLater
             return false;
         }
 
-        foreach (var JPName in JPNames())
+        foreach (var JPName in jpNames())
         {
             if (material.EndsWith("_north") && mat.name.StartsWith($"Custom/Cutout_{JPName}"))
             {
@@ -52,7 +52,7 @@ public class GenDraw_DrawMeshNowOrLater
         return false;
     }
 
-    public static List<string> JPNames()
+    private static List<string> jpNames()
     {
         var list = new List<string>();
         list.AddDistinct("SpacerJetPack");
@@ -62,7 +62,7 @@ public class GenDraw_DrawMeshNowOrLater
         return list;
     }
 
-    public static Vector3 convertJetPack(Vector3 loc)
+    private static Vector3 convertJetPack(Vector3 loc)
     {
         var newloc = loc;
         newloc.y += 0.015625f;

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Convert Marine Pow Armour To JP -->
+  <Make_Convert_PowArmToJP.label>Convert Marine Pow Armour To JP</Make_Convert_PowArmToJP.label>
+  <!-- EN: Convert Power Armour to use a jet pack -->
+  <Make_Convert_PowArmToJP.description>Convert Power Armour to use a jet pack</Make_Convert_PowArmToJP.description>
+  <!-- EN: Converting Pow Armour to use JP -->
+  <Make_Convert_PowArmToJP.jobString>Converting Pow Armour to use JP</Make_Convert_PowArmToJP.jobString>
+</LanguageData>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: marine jet pack armor -->
+  <Apparel_PowArmJetPack.label>marine jet pack armor</Apparel_PowArmJetPack.label>
+  <!-- EN: A suit of light powered armor equipped with a jet pack. Layered plasteel-weave plates are very effective at stopping attacks, with few vulnerable joint sections. Neuro-memetic assistors allow a human to wear the armor and still move easily.\n\nArmor like this is often used by imperial janissaries and rapid-incursion space marines. -->
+  <Apparel_PowArmJetPack.description>A suit of light powered armor equipped with a jet pack. Layered plasteel-weave plates are very effective at stopping attacks, with few vulnerable joint sections. Neuro-memetic assistors allow a human to wear the armor and still move easily.
+
+Armor like this is often used by imperial janissaries and rapid-incursion space marines.</Apparel_PowArmJetPack.description>
+</LanguageData>

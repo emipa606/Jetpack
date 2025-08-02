@@ -31,61 +31,61 @@ public class Settings : ModSettings
 
     public static bool UseCarry;
 
-    public void DoWindowContents(Rect canvas)
+    public static void DoWindowContents(Rect canvas)
     {
-        var listing_Standard = new Listing_Standard
+        var listingStandard = new Listing_Standard
         {
             ColumnWidth = canvas.width
         };
-        listing_Standard.Begin(canvas);
-        listing_Standard.Gap(3f);
+        listingStandard.Begin(canvas);
+        listingStandard.Gap(3f);
         var gap = 3f;
-        listing_Standard.CheckboxLabeled("JetPack.RoofPunch".Translate(), ref RoofPunch);
-        listing_Standard.Gap(gap);
-        listing_Standard.CheckboxLabeled("JetPack.AllowFire".Translate(), ref AllowFire);
-        listing_Standard.Gap(gap);
+        listingStandard.CheckboxLabeled("JetPack.RoofPunch".Translate(), ref RoofPunch);
+        listingStandard.Gap(gap);
+        listingStandard.CheckboxLabeled("JetPack.AllowFire".Translate(), ref AllowFire);
+        listingStandard.Gap(gap);
         Text.Font = GameFont.Tiny;
-        listing_Standard.Label("          " + "JetPack.ResetTip".Translate());
+        listingStandard.Label("          " + "JetPack.ResetTip".Translate());
         Text.Font = GameFont.Small;
-        listing_Standard.Gap(gap);
-        listing_Standard.CheckboxLabeled("JetPack.DoAutoRefuel".Translate(), ref DoAutoRefuel);
-        listing_Standard.Gap(gap);
-        listing_Standard.Label("JetPack.RefuelPCT".Translate() + "  " + RefuelPCT);
+        listingStandard.Gap(gap);
+        listingStandard.CheckboxLabeled("JetPack.DoAutoRefuel".Translate(), ref DoAutoRefuel);
+        listingStandard.Gap(gap);
+        listingStandard.Label("JetPack.RefuelPCT".Translate() + "  " + RefuelPCT);
         checked
         {
-            RefuelPCT = (int)listing_Standard.Slider(RefuelPCT, 0f, 75f);
-            listing_Standard.Gap(gap);
-            listing_Standard.Label("JetPack.CooldownTime".Translate() + "  " + CooldownTime);
-            CooldownTime = (int)listing_Standard.Slider(CooldownTime, 0f, 10f);
-            listing_Standard.Gap(gap);
-            listing_Standard.CheckboxLabeled("JetPack.AllowSlowBurn".Translate(), ref AllowSlowBurn);
-            listing_Standard.Gap(gap);
-            listing_Standard.CheckboxLabeled("JetPack.ApplyDFA".Translate(), ref ApplyDFA);
-            listing_Standard.Gap(gap);
-            listing_Standard.CheckboxLabeled("JetPack.ApplyDFASplash".Translate(), ref ApplyDFASplash);
-            listing_Standard.Gap(gap);
-            listing_Standard.Label("JetPack.DFASplashFactor".Translate() + "  " + (int)DFASplashFactor);
-            DFASplashFactor = (int)listing_Standard.Slider((int)DFASplashFactor, 25f, 75f);
-            listing_Standard.Gap(gap);
-            listing_Standard.CheckboxLabeled("JetPack.AllowBoom".Translate(), ref AllowBoom);
-            listing_Standard.Gap(gap);
-            listing_Standard.CheckboxLabeled("JetPack.AllowWMD".Translate(), ref AllowWMD);
-            listing_Standard.Gap(gap);
-            listing_Standard.CheckboxLabeled("JetPack.AllowHVY".Translate(), ref AllowHVY);
-            listing_Standard.Gap(gap);
-            listing_Standard.CheckboxLabeled("JetPack.UseCarry".Translate(), ref UseCarry);
-            listing_Standard.Gap(gap);
+            RefuelPCT = (int)listingStandard.Slider(RefuelPCT, 0f, 75f);
+            listingStandard.Gap(gap);
+            listingStandard.Label("JetPack.CooldownTime".Translate() + "  " + CooldownTime);
+            CooldownTime = (int)listingStandard.Slider(CooldownTime, 0f, 10f);
+            listingStandard.Gap(gap);
+            listingStandard.CheckboxLabeled("JetPack.AllowSlowBurn".Translate(), ref AllowSlowBurn);
+            listingStandard.Gap(gap);
+            listingStandard.CheckboxLabeled("JetPack.ApplyDFA".Translate(), ref ApplyDFA);
+            listingStandard.Gap(gap);
+            listingStandard.CheckboxLabeled("JetPack.ApplyDFASplash".Translate(), ref ApplyDFASplash);
+            listingStandard.Gap(gap);
+            listingStandard.Label("JetPack.DFASplashFactor".Translate() + "  " + (int)DFASplashFactor);
+            DFASplashFactor = (int)listingStandard.Slider((int)DFASplashFactor, 25f, 75f);
+            listingStandard.Gap(gap);
+            listingStandard.CheckboxLabeled("JetPack.AllowBoom".Translate(), ref AllowBoom);
+            listingStandard.Gap(gap);
+            listingStandard.CheckboxLabeled("JetPack.AllowWMD".Translate(), ref AllowWMD);
+            listingStandard.Gap(gap);
+            listingStandard.CheckboxLabeled("JetPack.AllowHVY".Translate(), ref AllowHVY);
+            listingStandard.Gap(gap);
+            listingStandard.CheckboxLabeled("JetPack.UseCarry".Translate(), ref UseCarry);
+            listingStandard.Gap(gap);
         }
 
-        if (Controller.currentVersion != null)
+        if (Controller.CurrentVersion != null)
         {
-            listing_Standard.Gap();
+            listingStandard.Gap();
             GUI.contentColor = Color.gray;
-            listing_Standard.Label("JetPack.ModVersion".Translate(Controller.currentVersion));
+            listingStandard.Label("JetPack.ModVersion".Translate(Controller.CurrentVersion));
             GUI.contentColor = Color.white;
         }
 
-        listing_Standard.End();
+        listingStandard.End();
     }
 
     public override void ExposeData()

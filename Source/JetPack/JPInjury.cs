@@ -9,9 +9,9 @@ namespace JetPack;
 public class JPInjury
 {
     internal const float PEP = 0.33f;
-    public static readonly BodyPartDef neck = DefDatabase<BodyPartDef>.GetNamedSilentFail("Neck");
-    public static readonly BodyPartDef insectHead = DefDatabase<BodyPartDef>.GetNamedSilentFail("InsectHead");
-    public static readonly BodyPartDef body = DefDatabase<BodyPartDef>.GetNamedSilentFail("Body");
+    private static readonly BodyPartDef neck = DefDatabase<BodyPartDef>.GetNamedSilentFail("Neck");
+    private static readonly BodyPartDef insectHead = DefDatabase<BodyPartDef>.GetNamedSilentFail("InsectHead");
+    private static readonly BodyPartDef body = DefDatabase<BodyPartDef>.GetNamedSilentFail("Body");
 
 
     public static bool CheckForExplosion(JetPackApparel JP)
@@ -43,13 +43,13 @@ public class JPInjury
         var radius = compfueldef.explosiveRadius + (compfueldef.explosiveExpandPerStackcount * fuel);
         var dmgdef = compfueldef.explosiveDamageType;
         var preThingDef = compfueldef.preExplosionSpawnThingDef;
-        var dmg = (int)(fuel * GetBoomFactor(fueldef));
+        var dmg = (int)(fuel * getBoomFactor(fueldef));
         GenExplosion.DoExplosion(pilot.Position, pilot.Map, radius, dmgdef, pilot, dmg, -1f, null, null, null,
-            null, null, 1f, 2, null, false, preThingDef, 1f, 1, 0.9f, true);
+            null, null, 1f, 2, null, null, 0, false, preThingDef, 1f, 1, 0.9f, true);
         FleckMaker.ThrowSmoke(pilot.Position.ToVector3(), pilot.Map, 1f);
     }
 
-    internal static float GetBoomFactor(ThingDef fueldef)
+    private static float getBoomFactor(ThingDef fueldef)
     {
         var factor = 0.15f;
         var defName = fueldef.defName;
@@ -77,7 +77,7 @@ public class JPInjury
 
         var DFA = false;
         var injuryFull = false;
-        if (DFAEvent(DFACell, instigator, true))
+        if (dfaEvent(DFACell, instigator, true))
         {
             DFA = true;
             injuryFull = true;
@@ -90,7 +90,7 @@ public class JPInjury
             {
                 foreach (var neighbour in neighbours)
                 {
-                    if (neighbour.InBounds(instigator.Map) && DFAEvent(neighbour, instigator, false))
+                    if (neighbour.InBounds(instigator.Map) && dfaEvent(neighbour, instigator, false))
                     {
                         DFA = true;
                     }
@@ -104,7 +104,7 @@ public class JPInjury
         }
     }
 
-    internal static bool DFAEvent(IntVec3 cell, Thing instigator, bool fullDmg)
+    private static bool dfaEvent(IntVec3 cell, Thing instigator, bool fullDmg)
     {
         var DFAEvent = false;
         var cellThings = cell.GetThingList(instigator.Map);
@@ -134,7 +134,7 @@ public class JPInjury
             return;
         }
 
-        SetUpInjVars(pawn, headSpace, isDFA, instigator, out var candidate, out var injChance,
+        setUpInjVars(pawn, headSpace, isDFA, instigator, out var candidate, out var injChance,
             out var DamDef, out var dmg);
         if (candidate == null || !(Rand.Range(1f, 100f) <= injChance))
         {
@@ -151,7 +151,7 @@ public class JPInjury
         pawn.TakeDamage(dinfo);
     }
 
-    public static void SetUpInjVars(Pawn Victim, bool headspace, bool dfa, Thing instigator,
+    private static void setUpInjVars(Pawn Victim, bool headspace, bool dfa, Thing instigator,
         out BodyPartRecord candidate, out float injuryChance, out DamageDef DamDef, out float dmg)
     {
         DamDef = null;

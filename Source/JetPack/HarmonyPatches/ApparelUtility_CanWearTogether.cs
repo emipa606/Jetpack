@@ -9,7 +9,7 @@ public class ApparelUtility_CanWearTogether
 {
     public static void Postfix(ref bool __result, ThingDef A, ThingDef B)
     {
-        if (__result && JPUtility.GetIsJPApparel(A) && JPUtility.GetIsJPApparel(B))
+        if (__result && JPUtility.GetIsJpApparel(A) && JPUtility.GetIsJpApparel(B))
         {
             __result = false;
         }
