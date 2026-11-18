@@ -6,4 +6,49 @@
     <BuildType Name="Release" />
   </Configurations>
   <Project Path="JetPack/JetPack.csproj" />
+  <Folder Name="/XML/Languages/English/Keyed/">
+    <File Path="../Languages/English/Keyed/JPLanguage.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/JumpSuit/">
+    <File Path="../1.7/Defs/JumpSuit/Defs_JumpSuit.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/Jobs/">
+    <File Path="../1.7/Defs/Jobs/Defs_Jobs_JetPack.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Patches/">
+    <File Path="../1.7/Patches/owlchemist.simplefxsmoke.xml" />
+    <File Path="../1.7/Patches/Patch_SWBobaJango.xml" />
+    <File Path="../1.7/Patches/Patch_SWMandoPazvizla.xml" />
+    <File Path="../1.7/Patches/Patch_TCG.xml" />
+    <File Path="../1.7/Patches/Patches_RimeFeller.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/Buildings/">
+    <File Path="../1.7/Defs/Buildings/JPKerosene_Generator.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/Recipes/">
+    <File Path="../1.7/Defs/Recipes/Defs_Convert_PowArmToJP.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/Fuels/">
+    <File Path="../1.7/Defs/Fuels/Defs_Kerosene.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/Refuel/">
+    <File Path="../1.7/Defs/Refuel/Defs_AutoRefuel.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/SoundDefs/">
+    <File Path="../1.7/Defs/SoundDefs/Defs_JetPack_Sounds.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/SkyFaller/">
+    <File Path="../1.7/Defs/SkyFaller/Defs_JPSkyFaller.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/JetPacks/">
+    <File Path="../1.7/Defs/JetPacks/Defs_BoosterJetPack.xml" />
+    <File Path="../1.7/Defs/JetPacks/Defs_PowArmJetPack.xml" />
+    <File Path="../1.7/Defs/JetPacks/Defs_SpacerJetPack.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/Research/">
+    <File Path="../1.7/Defs/Research/Defs_Research_JP.xml" />
+  </Folder>
 </Solution>

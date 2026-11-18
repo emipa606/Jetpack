@@ -14,8 +14,6 @@ public class Command_JetPack : Command
 
     [NoTranslate] private static readonly string JPIconPath = "Things/Special/JetPackIcon";
 
-    public Action<IntVec3> action;
-
     public float JPFRate;
 
     public int JPFuel;
@@ -27,6 +25,8 @@ public class Command_JetPack : Command
     public string JPSKFStr;
 
     public Pawn Pilot;
+
+    public Action<IntVec3> action;
 
     private static TargetingParameters forJetPacksDestination()
     {

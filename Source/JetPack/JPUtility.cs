@@ -6,7 +6,7 @@ using Verse;
 
 namespace JetPack;
 
-public class JPUtility
+public static class JPUtility
 {
     private const string JP_TCG = "Apparel_PowArmCGearJetPack";
 
@@ -47,7 +47,7 @@ public class JPUtility
             var apparel = pawn.apparel;
             var num = apparel != null ? new int?(apparel.WornApparelCount) : null;
             var num2 = 0;
-            b = (num.GetValueOrDefault() > num2) & (num != null);
+            b = num.GetValueOrDefault() > num2 && num != null;
         }
 
         if (!b)
@@ -183,7 +183,7 @@ public class JPUtility
         if (((JetPackApparel)JP).JPSlowBurn)
         {
             slowBurnMoveOffset = 1.5f;
-            var defName = (JP as JetPackApparel).JPFuelItem.defName;
+            var defName = (JP as JetPackApparel)?.JPFuelItem.defName;
             if (defName != JPFuel_H2O2)
             {
                 if (defName == JPFuel_Kerosene)
@@ -348,7 +348,7 @@ public class JPUtility
                 any = weaponTags.Any(x => x == "GunHeavy");
             }
 
-            b = any.GetValueOrDefault() & (any != null);
+            b = any.GetValueOrDefault() && any != null;
         }
 
         if (b)
@@ -382,20 +382,8 @@ public class JPUtility
     private static bool chkforWmd(ThingWithComps thing)
     {
         var def = thing.def;
-        if (def?.Verbs == null)
-        {
-            return false;
-        }
-
-        foreach (var verbProperties in thing.def.Verbs)
-        {
-            if (verbProperties is { ai_AvoidFriendlyFireRadius: >= 10 })
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return def?.Verbs != null &&
+               thing.def.Verbs.Any(verbProperties => verbProperties is { ai_AvoidFriendlyFireRadius: >= 10 });
     }
 
     internal static bool GetJPSkyFOnMap(Map map)
@@ -412,14 +400,6 @@ public class JPUtility
         }
 
         var JPSkyFNames = getSkyFallList();
-        foreach (var CheckThing in CheckList)
-        {
-            if (JPSkyFNames.Contains(CheckThing.def.defName))
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return CheckList.Any(CheckThing => JPSkyFNames.Contains(CheckThing.def.defName));
     }
 }

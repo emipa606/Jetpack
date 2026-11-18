@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>[JDS] Star Wars Jango and Boba Fett</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <success>Always</success>
+      <operations>
+        <li Class="PatchOperationConditional">
+          <xpath>/Defs/ThingDef[defName="JT-12_Jetpack"]/thingClass</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>/Defs/ThingDef[defName="JT-12_Jetpack"]/thingClass</xpath>
+            <value>
+              <thingClass>JetPack.JetPackApparel</thingClass>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>/Defs/ThingDef[defName="JT-12_Jetpack"]</xpath>
+            <value>
+              <thingClass>JetPack.JetPackApparel</thingClass>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>/Defs/ThingDef[defName="JT-12_Jetpack"]/tickerType</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>/Defs/ThingDef[defName="JT-12_Jetpack"]/tickerType</xpath>
+            <value>
+              <tickerType>Normal</tickerType>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>/Defs/ThingDef[defName="JT-12_Jetpack"]</xpath>
+            <value>
+              <tickerType>Normal</tickerType>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>/Defs/ThingDef[defName="JT-12_Jetpack"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>/Defs/ThingDef[defName="JT-12_Jetpack"]/comps</xpath>
+            <value>
+              <li Class="JetPack.CompProperties_JetPack">
+                <JPFuelLevel>0</JPFuelLevel>
+                <JPFuel>Chemfuel</JPFuel>
+                <JPFuelMaximum>150</JPFuelMaximum>
+                <JPFuelBurnRate>1.0</JPFuelBurnRate>
+                <JPSKType>SFJetPack</JPSKType>
+              </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>/Defs/ThingDef[defName="JT-12_Jetpack"]</xpath>
+            <value>
+              <comps>
+                <li Class="JetPack.CompProperties_JetPack">
+                  <JPFuelLevel>0</JPFuelLevel>
+                  <JPFuel>Chemfuel</JPFuel>
+                  <JPFuelMaximum>150</JPFuelMaximum>
+                  <JPFuelBurnRate>1.0</JPFuelBurnRate>
+                  <JPSKType>SFJetPack</JPSKType>
+                </li>
+              </comps>
+            </value>
+          </nomatch>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

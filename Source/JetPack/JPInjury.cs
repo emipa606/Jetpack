@@ -6,7 +6,7 @@ using Verse;
 
 namespace JetPack;
 
-public class JPInjury
+public static class JPInjury
 {
     internal const float PEP = 0.33f;
     private static readonly BodyPartDef neck = DefDatabase<BodyPartDef>.GetNamedSilentFail("Neck");
@@ -86,15 +86,10 @@ public class JPInjury
         if (Settings.ApplyDFASplash)
         {
             var neighbours = GenRadial.RadialCellsAround(DFACell, 1.5f, false).ToList();
-            if (neighbours.Count > 0)
+            if (neighbours.Count > 0 &&
+                neighbours.Any(n => n.InBounds(instigator.Map) && dfaEvent(n, instigator, false)))
             {
-                foreach (var neighbour in neighbours)
-                {
-                    if (neighbour.InBounds(instigator.Map) && dfaEvent(neighbour, instigator, false))
-                    {
-                        DFA = true;
-                    }
-                }
+                DFA = true;
             }
         }
 
@@ -223,31 +218,31 @@ public class JPInjury
             var bodyDef = Victim?.RaceProps.body;
             if (bodyDef?.GetPartsWithDef(BodyPartDefOf.Head) != null)
             {
-                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Head));
+                potentials.AddRange(Victim?.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Head)!);
             }
 
             var body2 = Victim?.RaceProps.body;
             if (body2?.GetPartsWithDef(neck) != null)
             {
-                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(neck));
+                potentials.AddRange(Victim?.RaceProps.body.GetPartsWithDef(neck)!);
             }
 
             var body3 = Victim?.RaceProps.body;
             if (body3?.GetPartsWithDef(BodyPartDefOf.Arm) != null)
             {
-                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Arm));
+                potentials.AddRange(Victim?.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Arm)!);
             }
 
             var body4 = Victim?.RaceProps.body;
             if (body4?.GetPartsWithDef(BodyPartDefOf.Torso) != null)
             {
-                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Torso));
+                potentials.AddRange(Victim?.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Torso)!);
             }
 
             var body5 = Victim?.RaceProps.body;
             if (body5?.GetPartsWithDef(insectHead) != null)
             {
-                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(insectHead));
+                potentials.AddRange(Victim?.RaceProps.body.GetPartsWithDef(insectHead)!);
             }
         }
         else
@@ -255,7 +250,7 @@ public class JPInjury
             var body6 = Victim?.RaceProps.body;
             if (body6?.GetPartsWithDef(BodyPartDefOf.Leg) != null)
             {
-                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Leg));
+                potentials.AddRange(Victim?.RaceProps.body.GetPartsWithDef(BodyPartDefOf.Leg)!);
             }
         }
 
@@ -264,7 +259,7 @@ public class JPInjury
             var body7 = Victim?.RaceProps.body;
             if (body7?.GetPartsWithDef(body) != null)
             {
-                potentials.AddRange(Victim.RaceProps.body.GetPartsWithDef(body));
+                potentials.AddRange(Victim?.RaceProps.body.GetPartsWithDef(body)!);
             }
         }
 

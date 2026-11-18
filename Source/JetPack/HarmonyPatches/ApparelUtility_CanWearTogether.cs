@@ -5,7 +5,7 @@ using Verse;
 namespace JetPack.HarmonyPatches;
 
 [HarmonyPatch(typeof(ApparelUtility), nameof(ApparelUtility.CanWearTogether))]
-public class ApparelUtility_CanWearTogether
+public static class ApparelUtility_CanWearTogether
 {
     public static void Postfix(ref bool __result, ThingDef A, ThingDef B)
     {

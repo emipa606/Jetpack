@@ -6,7 +6,7 @@ using Verse;
 
 namespace JetPack;
 
-public class JPWeightUtility
+public static class JPWeightUtility
 {
     public static float JPCarryFactor(Pawn pilot, ThingDef JP, ThingDef fuel)
     {

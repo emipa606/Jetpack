@@ -5,7 +5,7 @@ using Verse;
 namespace JetPack.HarmonyPatches;
 
 [HarmonyPatch(typeof(StatWorker), nameof(StatWorker.GetValueUnfinalized))]
-public class StatWorker_GetValueUnfinalized
+public static class StatWorker_GetValueUnfinalized
 {
     public static void Postfix(ref float __result, StatDef ___stat, StatRequest req)
     {

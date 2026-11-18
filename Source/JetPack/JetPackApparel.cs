@@ -12,8 +12,6 @@ public class JetPackApparel : Apparel
 {
     [NoTranslate] private readonly string JPSBTexPath = "Things/Special/JPSlowBurn";
 
-    internal bool debug = true;
-
     public int JPCooldownTicks;
 
     public int JPFuelAmount;
@@ -37,6 +35,8 @@ public class JetPackApparel : Apparel
     public bool JPSlowBurn;
 
     private int JPSlowBurnTicks;
+
+    internal bool debug = true;
 
     public CompJetPack JetPackComp => GetComp<CompJetPack>();
 
@@ -252,7 +252,7 @@ public class JetPackApparel : Apparel
                 }
             }
 
-            fuelicon = JPFuelItem.uiIcon;
+            fuelicon = JPFuelItem?.uiIcon;
             if (fuelicon == null)
             {
                 JPFuelItem = ThingDefOf.Chemfuel;

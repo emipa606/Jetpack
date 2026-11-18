@@ -5,7 +5,7 @@ using Verse;
 namespace JetPack.HarmonyPatches;
 
 [HarmonyPatch(typeof(GenSpawn), nameof(GenSpawn.SpawnBuildingAsPossible))]
-public class GenSpawn_SpawnBuildingAsPossible
+public static class GenSpawn_SpawnBuildingAsPossible
 {
     [HarmonyPriority(800)]
     public static bool Prefix(Building building, Map map, bool respawningAfterLoad = false)

@@ -30,7 +30,6 @@ public class JobDriver_JPRefuel : JobDriver
             {
                 if (actor != null && actor.apparel.WornApparelCount == 0)
                 {
-                    //Log.Message("True: obj != null && obj.apparel.WornApparelCount == 0");
                     EndJobWith(JobCondition.Incompletable);
                     return;
                 }
@@ -57,32 +56,28 @@ public class JobDriver_JPRefuel : JobDriver
                     return;
                 }
 
-                //Log.Message("True: JetPack is JetPackApparel");
-                var JPFuel = (JetPack as JetPackApparel).JPFuelAmount;
-                var JPMax = (JetPack as JetPackApparel).JPFuelMax;
+                var JPFuel = (JetPack as JetPackApparel)!.JPFuelAmount;
+                var JPMax = (JetPack as JetPackApparel)!.JPFuelMax;
 
                 if (JPMax - JPFuel <= 0)
                 {
-                    //Log.Message("True: JPMax - JPFuel <= 0");
                     EndJobWith(JobCondition.Incompletable);
                     return;
                 }
 
                 if (TargetThingA.stackCount > JPMax - JPFuel)
                 {
-                    //Log.Message("True: this.TargetThingA.stackCount > JPMax - JPFuel");
-                    (JetPack as JetPackApparel).JPFuelAmount = JPMax;
+                    (JetPack as JetPackApparel)?.JPFuelAmount = JPMax;
                     TargetThingA.stackCount -= JPMax - JPFuel;
-                    Messages.Message("JetPack.FullyRefueled".Translate(actor.LabelShort), actor,
+                    Messages.Message("JetPack.FullyRefueled".Translate(actor?.LabelShort), actor,
                         MessageTypeDefOf.NeutralEvent, false);
                     EndJobWith(JobCondition.Succeeded);
                     return;
                 }
 
-                //Log.Message("False");
-                (JetPack as JetPackApparel).JPFuelAmount = JPFuel + TargetThingA.stackCount;
+                (JetPack as JetPackApparel)?.JPFuelAmount = JPFuel + TargetThingA.stackCount;
                 Messages.Message(
-                    "JetPack.Refueled".Translate(actor.LabelShort.CapitalizeFirst(),
+                    "JetPack.Refueled".Translate(actor?.LabelShort.CapitalizeFirst(),
                         TargetThingA.stackCount.ToString(), TargetThingA.stackCount > 1 ? "s" : ""), actor,
                     MessageTypeDefOf.NeutralEvent, false);
                 TargetThingA.Destroy();

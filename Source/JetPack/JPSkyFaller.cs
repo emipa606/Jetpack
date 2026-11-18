@@ -11,11 +11,11 @@ public class JPSkyFaller : Skyfaller
 {
     private readonly SoundDef JumpSound = DefDatabase<SoundDef>.GetNamed("JetPack", false);
 
-    private bool anticipationSoundPlayed;
-
     private bool PilotRoofPunchDown;
 
     private bool PilotRoofPunchUp;
+
+    private bool anticipationSoundPlayed;
 
     private int ticksToHeadAche;
 
@@ -146,7 +146,7 @@ public class JPSkyFaller : Skyfaller
             return;
         }
 
-        (JP as JetPackApparel).JPPilotIsDrafted = false;
+        (JP as JetPackApparel)?.JPPilotIsDrafted = false;
         pawn.drafter.Drafted = true;
     }
 
@@ -156,7 +156,6 @@ public class JPSkyFaller : Skyfaller
         if (GetThingForGraphic() is Pawn Pilot)
         {
             Pilot.DrawNowAt(drawLoc);
-            //new PawnRenderer(Pilot).RenderPawnAt(drawLoc);
         }
     }
 
@@ -168,12 +167,9 @@ public class JPSkyFaller : Skyfaller
             return null;
         }
 
-        foreach (var thingchk in innerContainer)
+        foreach (var thingchk in innerContainer.Where(t => t is Pawn))
         {
-            if (thingchk is Pawn)
-            {
-                pilot = thingchk;
-            }
+            pilot = thingchk;
         }
 
         return pilot as Pawn;

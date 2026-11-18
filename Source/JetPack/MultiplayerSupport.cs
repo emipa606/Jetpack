@@ -17,16 +17,16 @@ internal static class MultiplayerSupport
             return;
         }
 
-        MP.RegisterSyncMethod(typeof(JetPackApparel), "UseJetPack");
-        MP.RegisterSyncMethod(typeof(JetPackApparel), "ToggleSlowBurn");
-        MP.RegisterSyncMethod(typeof(JetPackApparel), "RefuelJP");
-        MP.RegisterSyncMethod(typeof(JetPackApparel), "DropFuelJP");
-        MP.RegisterSyncMethod(typeof(JetPackApparel), "ChangeFuelJP");
-        MP.RegisterSyncMethod(typeof(JetPackApparel), "DebugUseJP");
+        MP.RegisterSyncMethod(typeof(JetPackApparel), "useJetPack");
+        MP.RegisterSyncMethod(typeof(JetPackApparel), "toggleSlowBurn");
+        MP.RegisterSyncMethod(typeof(JetPackApparel), "refuelJP");
+        MP.RegisterSyncMethod(typeof(JetPackApparel), "dropFuelJP");
+        MP.RegisterSyncMethod(typeof(JetPackApparel), "changeFuelJP");
+        MP.RegisterSyncMethod(typeof(JetPackApparel), "debugUseJP");
         MethodInfo[] array =
         [
-            AccessTools.Method(typeof(JPInjury), "CheckForExplosion"),
-            AccessTools.Method(typeof(JPInjury), "DoJPRelatedInjury"),
+            AccessTools.Method(typeof(JPInjury), nameof(JPInjury.CheckForExplosion)),
+            AccessTools.Method(typeof(JPInjury), nameof(JPInjury.DoJPRelatedInjury)),
             AccessTools.Method(typeof(JPInjury), "SetUpInjVars"),
             AccessTools.Method(typeof(JPSkyFaller), "JPImpact"),
             AccessTools.Method(typeof(JPSkyFaller), "JPIgnite")
@@ -39,8 +39,8 @@ internal static class MultiplayerSupport
 
     private static void FixRNG(MethodInfo method)
     {
-        harmony.Patch(method, new HarmonyMethod(typeof(MultiplayerSupport), "FixRNGPre"),
-            new HarmonyMethod(typeof(MultiplayerSupport), "FixRNGPos"));
+        harmony.Patch(method, new HarmonyMethod(typeof(MultiplayerSupport), nameof(FixRNGPre)),
+            new HarmonyMethod(typeof(MultiplayerSupport), nameof(FixRNGPos)));
     }
 
     private static void FixRNGPre()

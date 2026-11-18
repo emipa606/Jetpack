@@ -7,7 +7,7 @@ namespace JetPack.HarmonyPatches;
 internal static class MapPawns_AnyPawnBlockingMapRemoval
 {
     [HarmonyPriority(800)]
-    private static void Postfix(ref bool __result, Map ___map)
+    public static void Postfix(ref bool __result, Map ___map)
     {
         if (!__result && JPUtility.GetJPSkyFOnMap(___map))
         {

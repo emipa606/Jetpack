@@ -21,8 +21,8 @@ public class Controller : Mod
         return "JetPack.Name".Translate();
     }
 
-    public override void DoSettingsWindowContents(Rect canvas)
+    public override void DoSettingsWindowContents(Rect inRect)
     {
-        Settings.DoWindowContents(canvas);
+        Settings.DoWindowContents(inRect);
     }
 }

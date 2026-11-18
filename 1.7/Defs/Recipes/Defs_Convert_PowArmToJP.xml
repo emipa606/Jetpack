@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RecipeDef>
+    <defName>Make_Convert_PowArmToJP</defName>
+    <label>Convert Marine Pow Armour To JP</label>
+    <description>Convert Power Armour to use a jet pack</description>
+    <jobString>Converting Pow Armour to use JP</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>5000</workAmount>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <targetCountAdjustment>1</targetCountAdjustment>
+    <recipeUsers>
+      <li>FabricationBench</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Apparel_PowerArmor</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>20</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Apparel_PowerArmor</li>
+        <li>ComponentSpacer</li>
+        <li>Plasteel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Apparel_PowArmJetPack>1</Apparel_PowArmJetPack>
+    </products>
+    <skillRequirements>
+      <Crafting>10</Crafting>
+    </skillRequirements>
+    <researchPrerequisite>PowArmJetPack</researchPrerequisite>
+    <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+  </RecipeDef>
+</Defs>

@@ -7,7 +7,7 @@ namespace JetPack.HarmonyPatches;
 
 [HarmonyPatch(typeof(GenDraw), nameof(GenDraw.DrawMeshNowOrLater), typeof(Mesh), typeof(Vector3), typeof(Quaternion),
     typeof(Material), typeof(bool))]
-public class GenDraw_DrawMeshNowOrLater
+public static class GenDraw_DrawMeshNowOrLater
 
 {
     [HarmonyPriority(800)]
@@ -36,20 +36,8 @@ public class GenDraw_DrawMeshNowOrLater
     private static bool isJetPack(Material mat)
     {
         var material = mat?.name;
-        if (material == null)
-        {
-            return false;
-        }
-
-        foreach (var JPName in jpNames())
-        {
-            if (material.EndsWith("_north") && mat.name.StartsWith($"Custom/Cutout_{JPName}"))
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return material != null && jpNames().Any(JPName =>
+            material.EndsWith("_north") && mat != null && mat.name.StartsWith($"Custom/Cutout_{JPName}"));
     }
 
     private static List<string> jpNames()

@@ -36,8 +36,8 @@ public class JobGiver_JPAutoRefuel : ThinkNode_JobGiver
         }
 
         var FuelMax = ((JetPackApparel)JP).JPFuelMax;
-        var Fuel = (JP as JetPackApparel).JPFuelAmount;
-        var FuelItem = (JP as JetPackApparel).JPFuelItem;
+        var Fuel = (JP as JetPackApparel)!.JPFuelAmount;
+        var FuelItem = (JP as JetPackApparel)?.JPFuelItem;
         if (FuelMax <= 0 || Fuel >= FuelMax || Fuel * 100 / FuelMax > Settings.RefuelPCT)
         {
             return null;
